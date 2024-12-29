@@ -1,5 +1,6 @@
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/core/routes/route_not_found.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/main_lay_out_screen/mian_lay_out_view/mian_lay_out_screen.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/views/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,8 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const HomeScreen(),
       );
+    case AppRoutes.mainLayOut:
+      return MaterialPageRoute(builder: (context) => const MainLayOutScreen());
     default:
       return MaterialPageRoute(
         builder: (context) => const RouteNotFound(),

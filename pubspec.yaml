@@ -43,6 +43,8 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   dio: ^5.7.0
   flutter_bloc: ^8.1.6
+  hive: ^2.2.3
+  hive_flutter:
 
 dev_dependencies:
   flutter_test:
@@ -57,6 +59,7 @@ dev_dependencies:
   injectable_generator:    
   build_runner:
   retrofit_generator:
+  hive_generator:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

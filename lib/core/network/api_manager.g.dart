@@ -17,7 +17,6 @@ class _ApiManager implements ApiManager {
     baseUrl ??= 'https://flower.elevateegy.com/api';
   }
 
-  // ignore: unused_field
   final Dio _dio;
 
   String? baseUrl;

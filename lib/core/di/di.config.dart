@@ -12,6 +12,7 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../local/hive/hive_manager.dart' as _i228;
 import '../network/api_manager.dart' as _i119;
 import '../network/network_module.dart' as _i200;
 
@@ -27,6 +28,7 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final dioModule = _$DioModule();
+    gh.singleton<_i228.HiveManager>(() => _i228.HiveManager());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.singleton<_i119.ApiManager>(() => _i119.ApiManager(gh<_i361.Dio>()));
     return this;

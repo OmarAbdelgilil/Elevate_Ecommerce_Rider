@@ -43,6 +43,8 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   dio: ^5.7.0
   flutter_bloc: ^8.1.6
+  flutter_svg:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
@@ -75,7 +77,7 @@ flutter:
       - assets/images/
       - assets/fonts/
       - assets/html/
-      - assets/svgs/
+      - assets/svg/
       - assets/lotties/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

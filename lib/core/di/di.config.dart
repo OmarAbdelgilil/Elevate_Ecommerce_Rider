@@ -65,16 +65,16 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i1047.OnlineDataSource>(),
           gh<_i459.OfflineDataSource>(),
         ));
-    gh.factory<_i1005.LoginUseCase>(
-        () => _i1005.LoginUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i788.CheckCachedUserUseCase>(
         () => _i788.CheckCachedUserUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i582.GetCachedUserUseCase>(
         () => _i582.GetCachedUserUseCase(gh<_i184.LoginRepo>()));
-    gh.factory<_i571.SetCachedUserUseCase>(
-        () => _i571.SetCachedUserUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i1.GetUserDataUseCase>(
         () => _i1.GetUserDataUseCase(gh<_i184.LoginRepo>()));
+    gh.factory<_i1005.LoginUseCase>(
+        () => _i1005.LoginUseCase(gh<_i184.LoginRepo>()));
+    gh.factory<_i571.SetCachedUserUseCase>(
+        () => _i571.SetCachedUserUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i821.LoginViewModel>(() => _i821.LoginViewModel(
           gh<_i1005.LoginUseCase>(),
           gh<_i571.SetCachedUserUseCase>(),

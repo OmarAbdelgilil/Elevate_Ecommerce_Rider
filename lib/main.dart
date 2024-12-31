@@ -3,6 +3,7 @@ import 'package:elevate_ecommerce_driver/core/common/bloc_observer.dart';
 import 'package:elevate_ecommerce_driver/core/di/di.dart';
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/core/routes/router.dart';
+import 'package:elevate_ecommerce_driver/features/login/data/models/cache_user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,12 +20,16 @@ Future<void> main() async {
   ]);
   await EasyLocalization.ensureInitialized();
   await Hive.initFlutter();
+  Hive.registerAdapter(CacheUserModelAdapter());
   runApp(EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
       child: const MyApp()));
 }
+
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+    GlobalKey<ScaffoldMessengerState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -50,7 +55,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         onGenerateRoute: manageRoutes,
-        initialRoute: AppRoutes.homeScreen,
+        initialRoute: AppRoutes.loginScreen,
       ),
     );
   }

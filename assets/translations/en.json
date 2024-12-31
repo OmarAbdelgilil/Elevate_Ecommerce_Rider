@@ -1,3 +1,10 @@
 {
-    
+    "login": "Login",
+    "enterEmail": "Enter your email",
+    "email": "Email",
+    "forgetPass": "Forget password?",
+    "enterPass": "Enter your password",
+    "pass": "Password",
+    "continueButton": "Continue",
+    "rememberMe": "Remember me"
 }

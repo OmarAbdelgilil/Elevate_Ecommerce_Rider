@@ -1,7 +1,14 @@
 import 'package:elevate_ecommerce_driver/features/login/domain/models/user.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class UserProvider extends ChangeNotifier {
+  static final UserProvider _instance = UserProvider._internal();
+  factory UserProvider() => _instance;
+
+  UserProvider._internal();
+
   User? _user;
   String? _token;
 

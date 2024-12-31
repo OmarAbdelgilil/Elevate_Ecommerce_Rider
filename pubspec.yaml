@@ -45,6 +45,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_svg:
   shared_preferences:
+  lottie:
 
 dev_dependencies:
   flutter_test:

@@ -15,5 +15,6 @@ class SVGAssets {
 
 class LottieAssets {
   LottieAssets._();
-
+  static const String _basePath = "assets/lotties/";
+  static const String success = "${_basePath}success.json";
 }

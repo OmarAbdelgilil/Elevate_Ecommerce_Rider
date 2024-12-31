@@ -1,5 +1,7 @@
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/core/routes/route_not_found.dart';
+import 'package:elevate_ecommerce_driver/features/auth/forget_password/presentation/forget_password_screen.dart';
+import 'package:elevate_ecommerce_driver/features/auth/update_password/presentation/update_password_view/update_password_view.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/main_lay_out_screen/mian_lay_out_view/mian_lay_out_screen.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/views/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +12,18 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const HomeScreen(),
       );
+
+      //mainLayOut
     case AppRoutes.mainLayOut:
       return MaterialPageRoute(builder: (context) => const MainLayOutScreen());
-    default:
+      //forget password
+    case AppRoutes.forgetPassword:
+      return MaterialPageRoute(builder: (context) => ForgetPasswordScreen());
+      //change password
+    case AppRoutes.ResetPassword:
+      return MaterialPageRoute(
+          builder: (context) => const UpdatePasswordView());
+      default:
       return MaterialPageRoute(
         builder: (context) => const RouteNotFound(),
       );

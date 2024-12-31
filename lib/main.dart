@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   Bloc.observer = SimpleBlocObserver();
@@ -23,6 +24,8 @@ Future<void> main() async {
       fallbackLocale: const Locale('en'),
       child: const MyApp()));
 }
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+GlobalKey<ScaffoldMessengerState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -30,6 +33,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return ScreenUtilInit(
       designSize: const Size(411, 890),
       minTextAdapt: true,
@@ -44,11 +48,12 @@ class MyApp extends StatelessWidget {
               secondary: const Color(0xffA6A6A6)),
           useMaterial3: true,
         ),
+        debugShowCheckedModeBanner: false,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         onGenerateRoute: manageRoutes,
-        initialRoute: AppRoutes.mainLayOut,
+        initialRoute: AppRoutes.ResetPassword,
       ),
     );
   }

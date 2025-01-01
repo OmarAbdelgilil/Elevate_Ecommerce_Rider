@@ -7,22 +7,22 @@ import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = getIt<OnBoardingViewModel>();
     return BlocProvider(
-      create: (context) =>
-          getIt<OnBoardingViewModel>()..handleIntent(CheckCacheIntent()),
+      create: (context) => viewModel..handleIntent(CheckCacheIntent()),
       child: BlocListener<OnBoardingViewModel, BoardingScreenState>(
         listener: (context, state) {
           if (state is LoggedInState) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               Navigator.of(context).pushNamedAndRemoveUntil(
-                  AppRoutes.homeScreen, (Route route) => false);
+                  AppRoutes.mainLayOut, (Route route) => false);
             });
           }
         },
@@ -41,7 +41,13 @@ class OnBoardingScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.asset('assets/svg/boarding_img.svg'),
+                    Lottie.asset(
+                      'assets/lotties/boarding_lottie.json',
+                      height: 350,
+                      width: 350,
+
+
+                    ),
                     const SizedBox(
                       height: 60,
                     ),
@@ -51,8 +57,14 @@ class OnBoardingScreen extends StatelessWidget {
                           TextStyle(fontWeight: FontWeight.w500, fontSize: 22),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 24,
                     ),
+                    // CountryDropDown(
+                    //   viewModel: viewModel,
+                    // ),
+                    // const SizedBox(
+                    //   height: 24,
+                    // ),
                     CustomButton(
                       text: StringsManager.login.tr(),
                       onPressed: () {

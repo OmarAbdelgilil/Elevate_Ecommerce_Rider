@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
+import 'package:elevate_ecommerce_driver/features/login/domain/models/country.dart';
 
 import 'package:elevate_ecommerce_driver/features/login/domain/models/user.dart';
 import 'package:elevate_ecommerce_driver/features/login/domain/usecases/check_cached_user_use_case.dart';
 import 'package:elevate_ecommerce_driver/features/login/domain/usecases/get_cached_user_use_case.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,6 +16,8 @@ import 'package:injectable/injectable.dart';
 class OnBoardingViewModel extends Cubit<BoardingScreenState> {
   final CheckCachedUserUseCase _checkCachedUserUseCase;
   final GetCachedUserUseCase _getCachedUserUseCase;
+  late List<Country> countries;
+  late var dropdownvalue;
   OnBoardingViewModel(
     this._checkCachedUserUseCase,
     this._getCachedUserUseCase,
@@ -25,6 +31,12 @@ class OnBoardingViewModel extends Cubit<BoardingScreenState> {
   }
 
   Future<void> _checkCache() async {
+    String jsonString = await rootBundle.loadString('assets/json/country.json');
+    final List<dynamic> parsed = json.decode(jsonString);
+    countries = parsed.map((json) => Country.fromJson(json)).toList();
+    dropdownvalue = countries.firstWhere(
+      (element) => element.name == 'Egypt',
+    );
     final tokenFound = await _checkCachedUserUseCase.checkUser();
     switch (tokenFound) {
       case Success<String?>():

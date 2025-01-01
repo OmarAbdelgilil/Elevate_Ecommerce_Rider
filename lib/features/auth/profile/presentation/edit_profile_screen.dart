@@ -8,46 +8,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
-class EditProfileScreen extends StatefulWidget {
+class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
-
-  @override
-  State<EditProfileScreen> createState() => _EditProfileScreenState();
-}
-
-class _EditProfileScreenState extends State<EditProfileScreen> {
-  late TextEditingController firstNameController;
-  late TextEditingController lastNameController;
-  late TextEditingController emailController;
-  late TextEditingController phoneController;
-  late TextEditingController passwordController;
-  String gender = 'Male';
-
-  @override
-  void initState() {
-    super.initState();
-    final user = context.read<UserProvider>().user;
-    firstNameController = TextEditingController(text: user?.firstName ?? '');
-    lastNameController = TextEditingController(text: user?.lastName ?? '');
-    emailController = TextEditingController(text: user?.email ?? '');
-    phoneController = TextEditingController(text: user?.phone ?? '');
-    passwordController = TextEditingController(text: '********');
-    gender = user?.gender ?? 'Male';
-  }
-
-  @override
-  void dispose() {
-    firstNameController.dispose();
-    lastNameController.dispose();
-    emailController.dispose();
-    phoneController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final user = context.watch<UserProvider>().user;
+
+    // Initialize text controllers
+    final firstNameController =
+        TextEditingController(text: user?.firstName ?? '');
+    final lastNameController =
+        TextEditingController(text: user?.lastName ?? '');
+    final emailController = TextEditingController(text: user?.email ?? '');
+    final phoneController = TextEditingController(text: user?.phone ?? '');
+    final passwordController = TextEditingController(text: '********');
+
+    // Use ValueNotifier for gender selection
+    final ValueNotifier<String> genderNotifier =
+        ValueNotifier(user?.gender ?? 'Male');
 
     return Scaffold(
       appBar: AppBar(
@@ -101,7 +80,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               label: 'Password',
               hint: 'Enter password',
               controller: passwordController,
-              obscureText: true,
               suffix: TextButton(
                 onPressed: () {
                   // Handle password change
@@ -110,15 +88,26 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            GenderSelector(
-              selectedGender: gender,
-              onChanged: (value) => setState(() => gender = value),
+            ValueListenableBuilder<String>(
+              valueListenable: genderNotifier,
+              builder: (context, selectedGender, _) {
+                return GenderSelector(
+                  selectedGender: selectedGender,
+                  onChanged: (value) => genderNotifier.value = value,
+                );
+              },
             ),
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: _handleUpdate,
+                onPressed: () => _handleUpdate(
+                    context,
+                    firstNameController,
+                    lastNameController,
+                    emailController,
+                    phoneController,
+                    genderNotifier.value),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   backgroundColor: Colors.grey,
@@ -133,7 +122,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     );
   }
 
-  void _handleUpdate() {
+  void _handleUpdate(
+      BuildContext context,
+      TextEditingController firstNameController,
+      TextEditingController lastNameController,
+      TextEditingController emailController,
+      TextEditingController phoneController,
+      String gender) {
     final cubit = getIt<EditProfileCubit>();
     final intent = UpdateProfileIntent(
       firstName: firstNameController.text,
@@ -146,6 +141,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
     cubit.stream.listen((state) {
       if (state is EditProfileLoading) {
+        // Optional loading state handling
       } else if (state is EditProfileSuccess) {
         context.read<UserProvider>().setUser(state.user);
 

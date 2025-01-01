@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce_driver/core/di/di.dart';
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
+import 'package:elevate_ecommerce_driver/features/on_boarding/presentation/country_drop_down.dart';
 import 'package:elevate_ecommerce_driver/features/on_boarding/presentation/on_boarding_view_model.dart';
 import 'package:elevate_ecommerce_driver/utils/custom_button.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
@@ -14,9 +15,9 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = getIt<OnBoardingViewModel>();
     return BlocProvider(
-      create: (context) =>
-          getIt<OnBoardingViewModel>()..handleIntent(CheckCacheIntent()),
+      create: (context) => viewModel..handleIntent(CheckCacheIntent()),
       child: BlocListener<OnBoardingViewModel, BoardingScreenState>(
         listener: (context, state) {
           if (state is LoggedInState) {
@@ -51,7 +52,13 @@ class OnBoardingScreen extends StatelessWidget {
                           TextStyle(fontWeight: FontWeight.w500, fontSize: 22),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 24,
+                    ),
+                    CountryDropDown(
+                      viewModel: viewModel,
+                    ),
+                    const SizedBox(
+                      height: 24,
                     ),
                     CustomButton(
                       text: StringsManager.login.tr(),

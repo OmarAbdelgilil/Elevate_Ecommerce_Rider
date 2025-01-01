@@ -45,7 +45,7 @@ class MockLoginUseCase extends _i1.Mock implements _i2.LoginUseCase {
   }
 
   @override
-  _i3.Future<_i4.Result<_i5.LoginResponse>> login(
+  _i3.Future<_i4.Result<_i5.LoginResponse?>> login(
     String? email,
     String? password,
   ) =>
@@ -57,8 +57,8 @@ class MockLoginUseCase extends _i1.Mock implements _i2.LoginUseCase {
             password,
           ],
         ),
-        returnValue: _i3.Future<_i4.Result<_i5.LoginResponse>>.value(
-            _i6.dummyValue<_i4.Result<_i5.LoginResponse>>(
+        returnValue: _i3.Future<_i4.Result<_i5.LoginResponse?>>.value(
+            _i6.dummyValue<_i4.Result<_i5.LoginResponse?>>(
           this,
           Invocation.method(
             #login,
@@ -68,7 +68,7 @@ class MockLoginUseCase extends _i1.Mock implements _i2.LoginUseCase {
             ],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i5.LoginResponse>>);
+      ) as _i3.Future<_i4.Result<_i5.LoginResponse?>>);
 }
 
 /// A class which mocks [SetCachedUserUseCase].

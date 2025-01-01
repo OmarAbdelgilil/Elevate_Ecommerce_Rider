@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
+        scaffoldMessengerKey: scaffoldMessengerKey,
         title: 'Flowery rider app',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
@@ -58,7 +59,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         onGenerateRoute: manageRoutes,
-        initialRoute: AppRoutes.loginScreen,
+        initialRoute: AppRoutes.boarding,
       ),
     );
   }

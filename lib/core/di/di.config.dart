@@ -69,6 +69,8 @@ import '../../features/login/domain/usecases/set_cached_user_use_case.dart'
 import '../../features/login/presentation/cubit/login_viewmodel.dart' as _i821;
 import '../../features/login/presentation/login_validator/login_validator.dart'
     as _i538;
+import '../../features/on_boarding/presentation/on_boarding_view_model.dart'
+    as _i484;
 import '../local/hive/hive_manager.dart' as _i228;
 import '../network/api_manager.dart' as _i119;
 import '../network/network_module.dart' as _i200;
@@ -151,6 +153,10 @@ extension GetItInjectableX on _i174.GetIt {
             ));
     gh.factory<_i795.LogoutViewModel>(
         () => _i795.LogoutViewModel(gh<_i459.LogoutUsecase>()));
+    gh.factory<_i484.OnBoardingViewModel>(() => _i484.OnBoardingViewModel(
+          gh<_i788.CheckCachedUserUseCase>(),
+          gh<_i582.GetCachedUserUseCase>(),
+        ));
     gh.factory<_i821.LoginViewModel>(() => _i821.LoginViewModel(
           gh<_i1005.LoginUseCase>(),
           gh<_i571.SetCachedUserUseCase>(),

@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 class LoginUseCase {
   final LoginRepo _loginRepo;
   LoginUseCase(this._loginRepo);
-  Future<Result<LoginResponse>> login(String email, String password) async {
+  Future<Result<LoginResponse?>> login(String email, String password) async {
     return await _loginRepo.login(email, password);
   }
 }

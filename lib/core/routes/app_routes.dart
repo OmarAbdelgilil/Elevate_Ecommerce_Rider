@@ -1,6 +1,7 @@
 class AppRoutes {
   static const String homeScreen = 'home';
   static const String loginScreen = 'login';
+  static const String boarding = 'boarding';
   //mainLayOut
   static const mainLayOut = "mainLayOutRoute";
   //forget password

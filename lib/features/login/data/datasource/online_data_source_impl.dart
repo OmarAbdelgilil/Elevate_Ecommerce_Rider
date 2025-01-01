@@ -13,7 +13,7 @@ class OnlineDataSourceImpl implements OnlineDataSource {
   final ApiManager _apiManager;
   OnlineDataSourceImpl(this._apiManager);
   @override
-  Future<Result<LoginResponse>> login(String email, String pass) {
+  Future<Result<LoginResponse?>> login(String email, String pass) {
     return executeApi(() async {
       LoginRequest loginRequest = LoginRequest(email: email, password: pass);
       final result = await _apiManager.login(loginRequest);

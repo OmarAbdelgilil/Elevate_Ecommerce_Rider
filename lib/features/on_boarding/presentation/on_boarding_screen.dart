@@ -41,7 +41,10 @@ class OnBoardingScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Lottie.asset('assets/lottie/boarding_lottie.json'),
+                    Lottie.asset(
+                      'assets/lotties/boarding_lottie.json',
+                      height: 350,
+                    ),
                     const SizedBox(
                       height: 60,
                     ),

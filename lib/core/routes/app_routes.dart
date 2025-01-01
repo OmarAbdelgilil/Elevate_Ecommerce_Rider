@@ -8,4 +8,7 @@ class AppRoutes {
   static const forgetPassword = "forgetPasswordRoute";
   //change password
   static const ResetPassword = "ResetPassword";
+  static const String profileScreen = 'profile';
+  static const String editVihcle = 'editVihcle';
+  static const String editProfileScreen = 'editProfile';
 }

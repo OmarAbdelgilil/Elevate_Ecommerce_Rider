@@ -32,9 +32,21 @@ import '../../features/auth/logout/data/data_sources/logout_online_datasource_im
     as _i518;
 import '../../features/auth/logout/data/repos/logout_repo_impl.dart' as _i977;
 import '../../features/auth/logout/domain/repos/logout_repo.dart' as _i371;
+import '../../features/auth/logout/domain/use_cases/clearUserData_usecase.dart'
+    as _i918;
 import '../../features/auth/logout/domain/use_cases/logout_usecase.dart'
     as _i459;
 import '../../features/auth/logout/presentation/logout_viewModel.dart' as _i795;
+import '../../features/auth/profile/data/contracts/profile_onlind_datasource.dart'
+    as _i46;
+import '../../features/auth/profile/data/data_sources/profile_online_datasource_impl.dart'
+    as _i535;
+import '../../features/auth/profile/data/repos/profile_repo_impl.dart' as _i629;
+import '../../features/auth/profile/domain/repos/profile_repo.dart' as _i456;
+import '../../features/auth/profile/domain/use_cases/profile_usecase.dart'
+    as _i632;
+import '../../features/auth/profile/presentation/viewmodel/edit_profile_cubit.dart'
+    as _i345;
 import '../../features/auth/update_password/data/dataSource/updatePassword_OnlineDatasource.dart'
     as _i154;
 import '../../features/auth/update_password/data/dataSource/updatePassword_OnlineDataSourse_impl.dart'
@@ -116,6 +128,8 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i119.ApiManager>(),
               gh<_i26.UserProvider>(),
             ));
+    gh.factory<_i46.ProfileOnlindDatasource>(
+        () => _i535.ProfileOnlineDatasourceImpl(gh<_i119.ApiManager>()));
     gh.factory<_i184.LoginRepo>(() => _i937.LoginRepoImpl(
           gh<_i1047.OnlineDataSource>(),
           gh<_i459.OfflineDataSource>(),
@@ -125,12 +139,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i923.UpdatePasswordRepository>(() =>
         _i411.UpdatePasswordRepositoryImpl(
             gh<_i154.UpdatePasswordOnlineDatasource>()));
+    gh.factory<_i371.LogoutRepo>(() => _i977.LogoutRpoImpl(
+          gh<_i731.LogoutOnlineDatasource>(),
+          gh<_i459.OfflineDataSource>(),
+        ));
     gh.factory<_i355.UpdatePasswordUseCase>(() =>
         _i355.UpdatePasswordUseCase(gh<_i923.UpdatePasswordRepository>()));
-    gh.factory<_i371.LogoutRepo>(
-        () => _i977.LogoutRpoImpl(gh<_i731.LogoutOnlineDatasource>()));
+    gh.factory<_i456.ProfileRepo>(
+        () => _i629.ProfileRepoImpl(gh<_i46.ProfileOnlindDatasource>()));
     gh.factory<_i459.LogoutUsecase>(
         () => _i459.LogoutUsecase(gh<_i371.LogoutRepo>()));
+    gh.factory<_i918.ClearUserDataUseCase>(
+        () => _i918.ClearUserDataUseCase(gh<_i371.LogoutRepo>()));
+    gh.factory<_i632.ProfileUsecase>(
+        () => _i632.ProfileUsecase(gh<_i456.ProfileRepo>()));
     gh.factory<_i833.UpdatePasswordViewModel>(
         () => _i833.UpdatePasswordViewModel(
               gh<_i355.UpdatePasswordUseCase>(),
@@ -146,13 +168,17 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1005.LoginUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i571.SetCachedUserUseCase>(
         () => _i571.SetCachedUserUseCase(gh<_i184.LoginRepo>()));
+    gh.factory<_i345.EditProfileCubit>(
+        () => _i345.EditProfileCubit(gh<_i632.ProfileUsecase>()));
     gh.factory<_i455.ForegetPasswordViewmodel>(
         () => _i455.ForegetPasswordViewmodel(
               gh<_i995.ForgetPasswordUsecase>(),
               gh<_i375.ForgetPasswordValidator>(),
             ));
-    gh.factory<_i795.LogoutViewModel>(
-        () => _i795.LogoutViewModel(gh<_i459.LogoutUsecase>()));
+    gh.factory<_i795.LogoutViewModel>(() => _i795.LogoutViewModel(
+          gh<_i459.LogoutUsecase>(),
+          gh<_i918.ClearUserDataUseCase>(),
+        ));
     gh.factory<_i484.OnBoardingViewModel>(() => _i484.OnBoardingViewModel(
           gh<_i788.CheckCachedUserUseCase>(),
           gh<_i582.GetCachedUserUseCase>(),

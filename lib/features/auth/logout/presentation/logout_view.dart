@@ -80,7 +80,7 @@ class LogoutWidget extends StatelessWidget {
       child: Consumer<LogoutViewModel>(
         builder: (context, viewModel, child) {
           return viewModel.isLoggingOut
-              ? CircularProgressIndicator()
+              ? Center(child: CircularProgressIndicator())
               : InkWell(
             onTap: () => _showLogoutDialog(context, viewModel),
             child:Row(

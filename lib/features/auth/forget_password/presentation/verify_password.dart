@@ -50,6 +50,7 @@ class VerifyPassword extends StatelessWidget {
               height: 30.h,
             ),
             CustomTextField(
+              obscureText: true,
               hint: StringsManager.passwordHint.tr(),
               label: StringsManager.newPasswordLabel.tr(),
               controller: passwordController,
@@ -62,6 +63,7 @@ class VerifyPassword extends StatelessWidget {
               height: 16.h,
             ),
             CustomTextField(
+              obscureText: true,
               hint: StringsManager.confirmPasswordHint.tr(),
               label: StringsManager.confirmPasswordHint.tr(),
               controller: confirmPasswordController,

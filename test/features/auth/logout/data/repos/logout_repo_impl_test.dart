@@ -2,23 +2,25 @@ import 'package:elevate_ecommerce_driver/core/common/result.dart';
 import 'package:elevate_ecommerce_driver/features/auth/logout/data/contracts/logout_online_datasource.dart';
 import 'package:elevate_ecommerce_driver/features/auth/logout/data/models/logout_response.dart';
 import 'package:elevate_ecommerce_driver/features/auth/logout/data/repos/logout_repo_impl.dart';
+import 'package:elevate_ecommerce_driver/features/login/data/contracts/offline_data_source.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
 import 'logout_repo_impl_test.mocks.dart';
-@GenerateMocks([LogoutOnlineDatasource])
+@GenerateMocks([LogoutOnlineDatasource,OfflineDataSource])
 void main() {
   late LogoutRpoImpl logoutRpoImpl;
   late MockLogoutOnlineDatasource mockDatasource;
+  late MockOfflineDataSource mockOfflineDataSource;
 
   final logoutResponse = Logout(
     message: 'Success',
   );
 
   setUp(() {
+    mockOfflineDataSource = MockOfflineDataSource();
     mockDatasource = MockLogoutOnlineDatasource();
-    logoutRpoImpl = LogoutRpoImpl(mockDatasource);
+    logoutRpoImpl = LogoutRpoImpl(mockDatasource,mockOfflineDataSource);
 
     provideDummy<Result<Logout?>>(
       Fail<Logout?>(Exception('Dummy exception')),

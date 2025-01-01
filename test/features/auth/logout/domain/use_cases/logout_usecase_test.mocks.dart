@@ -49,4 +49,20 @@ class MockLogoutRepo extends _i1.Mock implements _i2.LogoutRepo {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i5.Logout?>>);
+
+  @override
+  _i3.Future<_i4.Result<bool>> clearUserData() => (super.noSuchMethod(
+        Invocation.method(
+          #clearUserData,
+          [],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<bool>>.value(_i6.dummyValue<_i4.Result<bool>>(
+          this,
+          Invocation.method(
+            #clearUserData,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<bool>>);
 }

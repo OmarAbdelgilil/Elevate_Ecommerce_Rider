@@ -23,4 +23,5 @@ class LogoutOnlineDatasourceImpl implements LogoutOnlineDatasource {
       return result;
     });
   }
+
 }

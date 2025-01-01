@@ -63,6 +63,7 @@ class UpdatePasswordView extends StatelessWidget {
                     padding: const EdgeInsets.all(16.0),
                     child: Column(children: [
                       CustomTextField(
+                        obscureText: true,
                         validator: updatePasswordValidator
                             .validate(UpdatePasswordValidTypes.currentPassword),
                         controller:
@@ -74,6 +75,7 @@ class UpdatePasswordView extends StatelessWidget {
                         height: 25.h,
                       ),
                       CustomTextField(
+                          obscureText: true,
                           validator: updatePasswordValidator
                               .validate(UpdatePasswordValidTypes.newPassword),
                           controller:
@@ -84,6 +86,7 @@ class UpdatePasswordView extends StatelessWidget {
                         height: 25.h,
                       ),
                       CustomTextField(
+                          obscureText: true,
                           validator: updatePasswordValidator.validate(
                               UpdatePasswordValidTypes.confirmPassword),
                           controller:

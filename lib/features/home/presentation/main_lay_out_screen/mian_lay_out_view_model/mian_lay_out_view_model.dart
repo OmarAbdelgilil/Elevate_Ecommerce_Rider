@@ -1,8 +1,7 @@
 import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elevate_ecommerce_driver/features/auth/forget_password/presentation/forget_password_screen.dart';
-import 'package:elevate_ecommerce_driver/features/auth/update_password/presentation/update_password_view/update_password_view.dart';
+import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/profile_screen.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/views/home_screen.dart';
 import 'package:elevate_ecommerce_driver/utils/assets_manager.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
@@ -39,7 +38,7 @@ class MainLayoutViewModel extends ChangeNotifier {
       TabItem(
         icon: SVGAssets.personTab,
         label: StringsManager.profileTab.tr(),
-        screen: UpdatePasswordView(),
+        screen: ProfileScreen(),
       ),
     ];
   }

@@ -4,4 +4,5 @@ import 'package:elevate_ecommerce_driver/features/auth/logout/data/models/logout
 
 abstract class LogoutRepo {
   Future<Result<Logout?>> logout();
+  Future<Result<bool>> clearUserData();
 }

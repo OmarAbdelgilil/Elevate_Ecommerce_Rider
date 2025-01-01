@@ -149,6 +149,22 @@ class MockOfflineDataSource extends _i1.Mock implements _i8.OfflineDataSource {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i7.User>>);
+
+  @override
+  _i3.Future<_i4.Result<bool>> clearUserData() => (super.noSuchMethod(
+        Invocation.method(
+          #clearUserData,
+          [],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<bool>>.value(_i6.dummyValue<_i4.Result<bool>>(
+          this,
+          Invocation.method(
+            #clearUserData,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<bool>>);
 }
 
 /// A class which mocks [UserProvider].

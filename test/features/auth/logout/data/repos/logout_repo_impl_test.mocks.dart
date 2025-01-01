@@ -10,6 +10,10 @@ import 'package:elevate_ecommerce_driver/features/auth/logout/data/contracts/log
     as _i2;
 import 'package:elevate_ecommerce_driver/features/auth/logout/data/models/logout_response.dart'
     as _i5;
+import 'package:elevate_ecommerce_driver/features/login/data/contracts/offline_data_source.dart'
+    as _i7;
+import 'package:elevate_ecommerce_driver/features/login/domain/models/user.dart'
+    as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
 
@@ -50,4 +54,87 @@ class MockLogoutOnlineDatasource extends _i1.Mock
           ),
         )),
       ) as _i3.Future<_i4.Result<_i5.Logout?>>);
+}
+
+/// A class which mocks [OfflineDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockOfflineDataSource extends _i1.Mock implements _i7.OfflineDataSource {
+  MockOfflineDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<_i4.Result<String?>> checkUser() => (super.noSuchMethod(
+        Invocation.method(
+          #checkUser,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<String?>>.value(
+            _i6.dummyValue<_i4.Result<String?>>(
+          this,
+          Invocation.method(
+            #checkUser,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<String?>>);
+
+  @override
+  _i3.Future<_i4.Result<bool>> setUser(
+    _i8.User? user,
+    String? token,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setUser,
+          [
+            user,
+            token,
+          ],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<bool>>.value(_i6.dummyValue<_i4.Result<bool>>(
+          this,
+          Invocation.method(
+            #setUser,
+            [
+              user,
+              token,
+            ],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<bool>>);
+
+  @override
+  _i3.Future<_i4.Result<_i8.User>> getUser() => (super.noSuchMethod(
+        Invocation.method(
+          #getUser,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i8.User>>.value(
+            _i6.dummyValue<_i4.Result<_i8.User>>(
+          this,
+          Invocation.method(
+            #getUser,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i8.User>>);
+
+  @override
+  _i3.Future<_i4.Result<bool>> clearUserData() => (super.noSuchMethod(
+        Invocation.method(
+          #clearUserData,
+          [],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<bool>>.value(_i6.dummyValue<_i4.Result<bool>>(
+          this,
+          Invocation.method(
+            #clearUserData,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<bool>>);
 }

@@ -1,14 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce_driver/core/di/di.dart';
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
-import 'package:elevate_ecommerce_driver/features/on_boarding/presentation/country_drop_down.dart';
 import 'package:elevate_ecommerce_driver/features/on_boarding/presentation/on_boarding_view_model.dart';
 import 'package:elevate_ecommerce_driver/utils/custom_button.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -42,7 +41,7 @@ class OnBoardingScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.asset('assets/svg/boarding_img.svg'),
+                    Lottie.asset('assets/lottie/boarding_lottie.json'),
                     const SizedBox(
                       height: 60,
                     ),
@@ -54,12 +53,12 @@ class OnBoardingScreen extends StatelessWidget {
                     const SizedBox(
                       height: 24,
                     ),
-                    CountryDropDown(
-                      viewModel: viewModel,
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
+                    // CountryDropDown(
+                    //   viewModel: viewModel,
+                    // ),
+                    // const SizedBox(
+                    //   height: 24,
+                    // ),
                     CustomButton(
                       text: StringsManager.login.tr(),
                       onPressed: () {

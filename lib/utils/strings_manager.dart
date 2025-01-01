@@ -7,4 +7,8 @@ class StringsManager {
   static const String pass = "Password";
   static const String continueButton = "Continue";
   static const String rememberMe = "remember me";
+  // mainLayOutScreen
+  static const homeTab = 'Home';
+  static const ordersTab = 'Orders';
+  static const profileTab = 'Profile';
 }

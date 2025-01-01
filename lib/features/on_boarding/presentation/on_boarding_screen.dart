@@ -23,7 +23,7 @@ class OnBoardingScreen extends StatelessWidget {
           if (state is LoggedInState) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               Navigator.of(context).pushNamedAndRemoveUntil(
-                  AppRoutes.homeScreen, (Route route) => false);
+                  AppRoutes.mainLayOut, (Route route) => false);
             });
           }
         },

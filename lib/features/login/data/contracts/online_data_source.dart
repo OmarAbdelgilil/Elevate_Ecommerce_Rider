@@ -3,6 +3,6 @@ import 'package:elevate_ecommerce_driver/features/login/data/models/response/log
 import 'package:elevate_ecommerce_driver/features/login/domain/models/user.dart';
 
 abstract class OnlineDataSource {
-  Future<Result<LoginResponse>> login(String email, String pass);
+  Future<Result<LoginResponse?>> login(String email, String pass);
   Future<Result<User>> getUserData();
 }

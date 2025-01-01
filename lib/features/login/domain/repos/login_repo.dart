@@ -3,7 +3,7 @@ import 'package:elevate_ecommerce_driver/features/login/data/models/response/log
 import 'package:elevate_ecommerce_driver/features/login/domain/models/user.dart';
 
 abstract class LoginRepo {
-  Future<Result<LoginResponse>> login(String email, String password);
+  Future<Result<LoginResponse?>> login(String email, String password);
   Future<Result<User>> getUserData();
   Future<Result<String?>> checkCachedUser();
   Future<Result<User>> getCachedUser();

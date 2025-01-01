@@ -13,13 +13,13 @@ class LoginRepoImpl implements LoginRepo {
   final OfflineDataSource _offlineDataSource;
   LoginRepoImpl(this._onlineDataSource, this._offlineDataSource);
   @override
-  Future<Result<LoginResponse>> login(String email, String password) async {
+  Future<Result<LoginResponse?>> login(String email, String password) async {
     final result = await _onlineDataSource.login(email, password);
     switch (result) {
-      case Success<LoginResponse>():
+      case Success<LoginResponse?>():
         UserProvider().login(result.data!.token!);
         return result;
-      case Fail<LoginResponse>():
+      case Fail<LoginResponse?>():
         return result;
     }
   }

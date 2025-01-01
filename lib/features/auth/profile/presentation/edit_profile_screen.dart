@@ -122,6 +122,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   backgroundColor: Colors.grey,
+                  foregroundColor: Colors.white,
                 ),
                 child: const Text('Update'),
               ),
@@ -134,7 +135,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   void _handleUpdate() {
     final cubit = getIt<EditProfileCubit>();
-    // Create an intent for updating the profile
     final intent = UpdateProfileIntent(
       firstName: firstNameController.text,
       lastName: lastNameController.text,
@@ -142,25 +142,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       phone: phoneController.text,
     );
 
-    // Call the cubit to perform the update
     cubit.doIntent(intent);
 
-    // Listen for state changes
     cubit.stream.listen((state) {
       if (state is EditProfileLoading) {
-        // Optionally show a loading indicator
       } else if (state is EditProfileSuccess) {
-        // Update the UserProvider with the new user data
         context.read<UserProvider>().setUser(state.user);
 
-        // Show success message
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Profile updated successfully')),
         );
-
-        // Optionally navigate back or refresh UI
       } else if (state is EditProfileError) {
-        // Show error message
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(state.message)),
         );

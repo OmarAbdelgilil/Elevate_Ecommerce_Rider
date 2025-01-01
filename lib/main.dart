@@ -48,6 +48,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: scaffoldMessengerKey,
         title: 'Flowery rider app',
         theme: ThemeData(

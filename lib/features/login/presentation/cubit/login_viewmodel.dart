@@ -24,7 +24,7 @@ class LoginViewModel extends Cubit<LoginState> {
       this._checkCachedUserUseCase,
       this._getCachedUserUseCase,
       this._getUserDataUseCase)
-      : super(LoadingScreenState());
+      : super(InitialState());
 
   Future<void> handleIntent(LoginScreenIntent intent) async {
     switch (intent) {
@@ -36,6 +36,7 @@ class LoginViewModel extends Cubit<LoginState> {
   }
 
   Future<void> _checkCache() async {
+    emit(LoadingScreenState());
     final tokenFound = await _checkCachedUserUseCase.checkUser();
     switch (tokenFound) {
       case Success<String?>():
@@ -61,7 +62,7 @@ class LoginViewModel extends Cubit<LoginState> {
     emit(LoadingState());
     final result = await loginUsecase.login(intent.email, intent.password);
     switch (result) {
-      case Success<LoginResponse>():
+      case Success<LoginResponse?>():
         final getUser = await _getUserDataUseCase.getUserData();
         switch (getUser) {
           case Success<User>():
@@ -84,7 +85,7 @@ class LoginViewModel extends Cubit<LoginState> {
         }
         emit(SuccessState(result.data));
         return;
-      case Fail<LoginResponse>():
+      case Fail<LoginResponse?>():
         emit(ErrorState(result.exception));
     }
   }

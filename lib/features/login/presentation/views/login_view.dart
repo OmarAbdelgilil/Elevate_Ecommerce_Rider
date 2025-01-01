@@ -38,21 +38,21 @@ class LoginView extends StatelessWidget {
           }
         }, child: BlocBuilder<LoginViewModel, LoginState>(
           builder: (context, state) {
-            if (state is LoadingState || state is InitialState) {
-              return Scaffold(
-                  appBar: customAppBar(
-                    title: StringsManager.login.tr(),
-                  ),
-                  body: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: LoginViewBody(),
-                  ));
+            if (state is LoadingScreenState || state is LoggedInState) {
+              return const Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
             }
-            return const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
+            return Scaffold(
+                appBar: customAppBar(
+                  title: StringsManager.login.tr(),
+                ),
+                body: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: LoginViewBody(),
+                ));
           },
         )));
   }

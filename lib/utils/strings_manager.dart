@@ -7,6 +7,8 @@ class StringsManager {
   static const String pass = "Password";
   static const String continueButton = "Continue";
   static const String rememberMe = "remember me";
+  static const String boardingWelcome = "Welcome To\nFlowery rider app";
+  static const String apply = "Apply now";
   // mainLayOutScreen
   static const homeTab = 'Home';
   static const ordersTab = 'Orders';

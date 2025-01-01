@@ -1,6 +1,7 @@
 
-
-import 'package:elevate_ecommerce_driver/core/common/api_result.dart';
+import 'package:elevate_ecommerce_driver/core/common/result.dart';
+import 'package:elevate_ecommerce_driver/core/local/hive/hive_manager.dart';
+import 'package:elevate_ecommerce_driver/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce_driver/features/auth/domain_auth/model/user.dart';
 import 'package:elevate_ecommerce_driver/features/auth/update_password/data/model/updatePassword_request.dart';
 import 'package:elevate_ecommerce_driver/features/auth/update_password/domain/useCases/update_password_useCase.dart';
@@ -16,7 +17,7 @@ class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
   /*final LogoutUsecase logoutUsecase;*/
 
   UpdatePasswordViewModel(this.updatePasswordUseCase,
-      this.updatePasswordValidator)
+      this.updatePasswordValidator, /*this.logoutUsecase*/)
       : super(InitialState()) {
     updatePasswordValidator.attachListeners(_onFieldsChanged);
   }
@@ -49,21 +50,16 @@ class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
       return;
     }
     var result =
-        await updatePasswordUseCase.updatePassword(UpdatePasswordRequest(
+    await updatePasswordUseCase.updatePassword(UpdatePasswordRequest(
       newPassword: updatePasswordValidator.newPasswordController.text,
       password: updatePasswordValidator.currentPasswordController.text,
     ));
 
     switch (result) {
       case Success<User?>():
-/*        TokenProvider().saveToken(result.data!.token!);
-        await logoutUsecase.logout();
-        final token = TokenProvider().token;
-        HiveService().clearUser(token!);
-        UserProvider().clearUserData();
-        TokenProvider().clearToken();
-        TokenStorage().deleteToken();*/
 
+        await HiveManager().clearUser();
+        UserProvider().logout();
         emit(SuccessState(result.data));
         break;
       case Fail<User?>():

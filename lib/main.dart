@@ -3,10 +3,12 @@ import 'package:elevate_ecommerce_driver/core/common/bloc_observer.dart';
 import 'package:elevate_ecommerce_driver/core/di/di.dart';
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/core/routes/router.dart';
+import 'package:elevate_ecommerce_driver/features/login/data/models/cache_user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/adapters.dart';
 
 Future<void> main() async {
 
@@ -18,6 +20,8 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]);
   await EasyLocalization.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(CacheUserModelAdapter());
   runApp(EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/translations',
@@ -26,6 +30,7 @@ Future<void> main() async {
 }
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
 GlobalKey<ScaffoldMessengerState>();
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -53,7 +58,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         onGenerateRoute: manageRoutes,
-        initialRoute: AppRoutes.ResetPassword,
+        initialRoute: AppRoutes.loginScreen,
       ),
     );
   }

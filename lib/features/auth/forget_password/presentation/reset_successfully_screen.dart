@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/utils/assets_manager.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,8 @@ class ResetSuccessfullyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
-/*      Navigator.of(mainContext)
-          .pushNamedAndRemoveUntil(AppRoutes.login, (Route route) => false);*/
+      Navigator.of(mainContext)
+          .pushNamedAndRemoveUntil(AppRoutes.loginScreen, (Route route) => false);
     });
     return PopScope(
       canPop: false,

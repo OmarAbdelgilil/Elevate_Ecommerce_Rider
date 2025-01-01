@@ -1,5 +1,4 @@
-
-import 'package:elevate_ecommerce_driver/core/common/api_result.dart';
+import 'package:elevate_ecommerce_driver/core/common/result.dart';
 import 'package:elevate_ecommerce_driver/core/network/api_execution.dart';
 import 'package:elevate_ecommerce_driver/core/network/api_manager.dart';
 import 'package:elevate_ecommerce_driver/features/auth/data/DTOs/user_dto.dart';

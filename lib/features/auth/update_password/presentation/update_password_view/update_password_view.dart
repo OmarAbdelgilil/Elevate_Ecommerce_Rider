@@ -2,6 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce_driver/core/di/di.dart';
+import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce_driver/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce_driver/core/widgets/custom_textfield.dart';
@@ -50,7 +51,7 @@ class UpdatePasswordView extends StatelessWidget {
             }
 
             if (state is SuccessState) {
-           /*   Navigator.of(context).pushNamed(AppRoutes.login);*/
+              Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
             }
           },
           child: Form(

@@ -42,7 +42,7 @@ class MockOnlineDataSource extends _i1.Mock implements _i2.OnlineDataSource {
   }
 
   @override
-  _i3.Future<_i4.Result<_i5.LoginResponse>> login(
+  _i3.Future<_i4.Result<_i5.LoginResponse?>> login(
     String? email,
     String? pass,
   ) =>
@@ -54,8 +54,8 @@ class MockOnlineDataSource extends _i1.Mock implements _i2.OnlineDataSource {
             pass,
           ],
         ),
-        returnValue: _i3.Future<_i4.Result<_i5.LoginResponse>>.value(
-            _i6.dummyValue<_i4.Result<_i5.LoginResponse>>(
+        returnValue: _i3.Future<_i4.Result<_i5.LoginResponse?>>.value(
+            _i6.dummyValue<_i4.Result<_i5.LoginResponse?>>(
           this,
           Invocation.method(
             #login,
@@ -65,7 +65,7 @@ class MockOnlineDataSource extends _i1.Mock implements _i2.OnlineDataSource {
             ],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i5.LoginResponse>>);
+      ) as _i3.Future<_i4.Result<_i5.LoginResponse?>>);
 
   @override
   _i3.Future<_i4.Result<_i7.User>> getUserData() => (super.noSuchMethod(
@@ -149,6 +149,22 @@ class MockOfflineDataSource extends _i1.Mock implements _i8.OfflineDataSource {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i7.User>>);
+
+  @override
+  _i3.Future<_i4.Result<bool>> clearUserData() => (super.noSuchMethod(
+        Invocation.method(
+          #clearUserData,
+          [],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<bool>>.value(_i6.dummyValue<_i4.Result<bool>>(
+          this,
+          Invocation.method(
+            #clearUserData,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<bool>>);
 }
 
 /// A class which mocks [UserProvider].

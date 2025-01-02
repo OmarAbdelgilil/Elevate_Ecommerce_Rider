@@ -44,6 +44,9 @@ class OnBoardingScreen extends StatelessWidget {
                     Lottie.asset(
                       'assets/lotties/boarding_lottie.json',
                       height: 350,
+                      width: 350,
+
+
                     ),
                     const SizedBox(
                       height: 60,

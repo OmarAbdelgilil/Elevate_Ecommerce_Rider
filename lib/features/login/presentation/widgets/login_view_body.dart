@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/features/login/presentation/cubit/login_viewmodel.dart';
 import 'package:elevate_ecommerce_driver/features/login/presentation/login_validator/login_validator.dart';
 import 'package:elevate_ecommerce_driver/features/login/presentation/login_validator/login_validator_types.dart';
@@ -47,8 +48,10 @@ class LoginViewBody extends StatelessWidget {
               children: [
                 RememberMeCheckbox(notifier: rememberMeNotifier),
                 TextButton(
-                  onPressed: () {},
-                  // Navigator.pushNamed(context, AppRoutes.forgetPassword),
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.forgetPassword);
+                  },
+
                   child: Text(
                     StringsManager.forgetPass.tr(),
                     style: const TextStyle(

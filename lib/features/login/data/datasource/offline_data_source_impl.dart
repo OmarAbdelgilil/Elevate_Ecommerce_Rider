@@ -32,5 +32,18 @@ class OfflineDataSourceImpl implements OfflineDataSource {
           await _hiveManager.setUser(HiveUserDto.toHiveModel(user), token);
       return result;
     });
+
+
   }
-}
+
+  @override
+  Future<Result<bool>> clearUserData() {
+    return executeHive(() async {
+      final success = await _hiveManager.clearUser();
+      if (success) {
+        return true;
+      } else {
+        throw Exception('Failed to clear user data');
+      }
+  });
+}}

@@ -5,4 +5,5 @@ abstract class OfflineDataSource {
   Future<Result<String?>> checkUser();
   Future<Result<bool>> setUser(User user, String token);
   Future<Result<User>> getUser();
+  Future<Result<bool>> clearUserData();
 }

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
+import 'package:elevate_ecommerce_driver/features/auth/logout/domain/use_cases/clearUserData_usecase.dart';
 import 'updatePassword_ViewModel_test.mocks.dart';
 
 @GenerateMocks([
@@ -16,8 +16,10 @@ import 'updatePassword_ViewModel_test.mocks.dart';
   FormState,
   GlobalKey<FormState>,
   TextEditingController,
+  ClearUserDataUseCase
 ])
 void main() {
+  late MockClearUserDataUseCase mockClearUserDataUseCase;
   late UpdatePasswordViewModel viewmodel;
   late MockUpdatePasswordUseCase mockUpdatePasswordUseCase;
   late MockUpdatePasswordValidator mockUpdatePasswordValidator;
@@ -28,6 +30,7 @@ void main() {
   late MockTextEditingController mockConfirmPasswordController;
 
   setUp(() {
+    mockClearUserDataUseCase = MockClearUserDataUseCase();
     mockUpdatePasswordUseCase = MockUpdatePasswordUseCase();
     mockUpdatePasswordValidator = MockUpdatePasswordValidator();
     mockFormState = MockFormState();
@@ -52,6 +55,7 @@ void main() {
     viewmodel = UpdatePasswordViewModel(
       mockUpdatePasswordUseCase,
       mockUpdatePasswordValidator,
+        mockClearUserDataUseCase
     );
   });
 

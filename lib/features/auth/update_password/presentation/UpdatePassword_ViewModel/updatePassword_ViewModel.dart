@@ -9,21 +9,34 @@ import 'package:elevate_ecommerce_driver/features/auth/update_password/presentat
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:elevate_ecommerce_driver/features/auth/logout/domain/use_cases/clearUserData_usecase.dart';
 
 @injectable
 class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
   final UpdatePasswordUseCase updatePasswordUseCase;
   final UpdatePasswordValidator updatePasswordValidator;
-  /*final LogoutUsecase logoutUsecase;*/
+  final ClearUserDataUseCase _clearUserDataUseCase;
+
 
   UpdatePasswordViewModel(this.updatePasswordUseCase,
-      this.updatePasswordValidator, /*this.logoutUsecase*/)
+      this.updatePasswordValidator,this._clearUserDataUseCase)
       : super(InitialState()) {
     updatePasswordValidator.attachListeners(_onFieldsChanged);
   }
 
   final ValueNotifier<bool> fieldsFilledNotifier = ValueNotifier(false);
 
+  Future<void> clearUserData() async {
+    final result = await _clearUserDataUseCase.clearUserData();
+    switch (result) {
+      case Success<bool>():
+        UserProvider().logout();
+        break;
+      case Fail<bool>():
+        print('failed to clear user data');
+        break;
+    }
+  }
   void _onFieldsChanged() {
     fieldsFilledNotifier.value =
         updatePasswordValidator.currentPasswordController.text.isNotEmpty &&
@@ -57,9 +70,7 @@ class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
 
     switch (result) {
       case Success<User?>():
-
-        await HiveManager().clearUser();
-        UserProvider().logout();
+        clearUserData();
         emit(SuccessState(result.data));
         break;
       case Fail<User?>():

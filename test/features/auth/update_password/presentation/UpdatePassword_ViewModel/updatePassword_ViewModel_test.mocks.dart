@@ -9,6 +9,8 @@ import 'dart:ui' as _i11;
 import 'package:elevate_ecommerce_driver/core/common/result.dart' as _i6;
 import 'package:elevate_ecommerce_driver/features/auth/domain_auth/model/user.dart'
     as _i7;
+import 'package:elevate_ecommerce_driver/features/auth/logout/domain/use_cases/clearUserData_usecase.dart'
+    as _i13;
 import 'package:elevate_ecommerce_driver/features/auth/update_password/data/model/updatePassword_request.dart'
     as _i8;
 import 'package:elevate_ecommerce_driver/features/auth/update_password/domain/useCases/update_password_useCase.dart'
@@ -627,4 +629,30 @@ class MockTextEditingController extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+}
+
+/// A class which mocks [ClearUserDataUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockClearUserDataUseCase extends _i1.Mock
+    implements _i13.ClearUserDataUseCase {
+  MockClearUserDataUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<_i6.Result<bool>> clearUserData() => (super.noSuchMethod(
+        Invocation.method(
+          #clearUserData,
+          [],
+        ),
+        returnValue:
+            _i5.Future<_i6.Result<bool>>.value(_i9.dummyValue<_i6.Result<bool>>(
+          this,
+          Invocation.method(
+            #clearUserData,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i6.Result<bool>>);
 }

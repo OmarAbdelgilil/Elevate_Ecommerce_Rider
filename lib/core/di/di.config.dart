@@ -153,11 +153,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i918.ClearUserDataUseCase(gh<_i371.LogoutRepo>()));
     gh.factory<_i632.ProfileUsecase>(
         () => _i632.ProfileUsecase(gh<_i456.ProfileRepo>()));
-    gh.factory<_i833.UpdatePasswordViewModel>(
-        () => _i833.UpdatePasswordViewModel(
-              gh<_i355.UpdatePasswordUseCase>(),
-              gh<_i826.UpdatePasswordValidator>(),
-            ));
     gh.factory<_i788.CheckCachedUserUseCase>(
         () => _i788.CheckCachedUserUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i582.GetCachedUserUseCase>(
@@ -174,6 +169,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i455.ForegetPasswordViewmodel(
               gh<_i995.ForgetPasswordUsecase>(),
               gh<_i375.ForgetPasswordValidator>(),
+            ));
+    gh.factory<_i833.UpdatePasswordViewModel>(
+        () => _i833.UpdatePasswordViewModel(
+              gh<_i355.UpdatePasswordUseCase>(),
+              gh<_i826.UpdatePasswordValidator>(),
+              gh<_i918.ClearUserDataUseCase>(),
             ));
     gh.factory<_i795.LogoutViewModel>(() => _i795.LogoutViewModel(
           gh<_i459.LogoutUsecase>(),

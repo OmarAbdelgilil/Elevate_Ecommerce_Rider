@@ -6,5 +6,36 @@
     "enterPass": "أدخل كلمة المرور",
     "pass": "كلمة المرور",
     "continueButton": "استمرار",
-    "rememberMe": "تذكرني"
+    "rememberMe": "تذكرني",
+
+    "firstName": "الاسم الأول",
+    "secondName": "الاسم الثاني",
+    "phoneNumber": "رقم الهاتف",
+    "idNumber": "رقم الهوية",
+    "idImage": "صورة الهوية",
+    "vehicleNumber": "رقم المركبة",
+    "vehicleType": "نوع المركبة",
+    "vehicleImage": "صورة المركبة",
+    "country": "البلد",
+    "gender": "الجنس",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "imagesSelected": "الصور المختارة",
+
+
+
+
+    "validationsFieldRequired": "هذا الحقل مطلوب",
+    "validationsFieldLengthMoreThan6": "يجب ان يحتوي علي 6 حروف او اكتر",
+    "validationsValidEmail": "أدخل بريد ألكتروني صحيح",
+    "validationsNumbersOnly": "استعمل أرقام فقط",
+    "validationsNumbersMustEqual16Digit": "يرجي كتابة 16 رقما",
+    "validationsNumbersMustEqual14Digit": "يرجي كتابة 14 رقما",
+    "validationsNumbersMustEqual11Digit": "يرجي كتابة 11 رقما",
+    "validationsNumbersMustEqual4Digit": "يرجي كتابة 4 رقما",
+    "validationsPasswordSpecifications": "- يجب أن يتكون من 8 احرف او اكتر\n- يجب أن يحتوي علي حروف و أرقام",
+    "validationsEnterTheSamePassword": "يرجي كتابة نفس كلمة المرور",
+    "validationsInvalidCardExpirationDate": "تاريخ البطاقة غير صالح",
+    "validationsUsername": "استعمل حروف و أرقام فقط",
+    "validationsTitle": "ادخل عنوان مناسب"
 }

@@ -52,7 +52,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: _obscureText, // Use _obscureText to toggle visibility
+      obscureText: _obscureText,
       validator: _validate,
       readOnly: widget.readOnly ?? false,
       onChanged: widget.onChange,

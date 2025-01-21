@@ -6,5 +6,30 @@
     "enterPass": "Enter your password",
     "pass": "Password",
     "continueButton": "Continue",
-    "rememberMe": "Remember me"
+    "rememberMe": "Remember me",
+
+
+    "firstName": "First Name",
+    "secondName": "Second Name",
+    "phoneNumber": "Phone Number",
+    "idNumber": "ID Number",
+    "idImage": "ID Image",
+    "vehicleNumber": "Vehicle Number",
+    "vehicleType": "Vehicle Type",
+    "vehicleImage": "Vehicle Image",
+    "country": "Country",
+    "gender": "Gender",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "imagesSelected": "images Selected",
+
+    "validationsFieldRequired": "field is required",
+    "validationsFieldLengthMoreThan6": "length must be more than 6 characters",
+    "validationsValidEmail": "enter a valid email",
+    "validationsNumbersOnly": "enter numbers only",
+    "validationsNumbersMustEqual14Digit": "field must contain more than 14 digits",
+    "validationsNumbersMustEqual11Digit": "field must contain more than 11 digits",
+    "validationsPasswordSpecifications": "- must be more than or equal to 8 characters\n- must contain letters and numbers",
+    "validationsEnterTheSamePassword": "please enter the same password",
+    "validationsUsername": "use letters and numbers only"
 }

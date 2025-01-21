@@ -6,6 +6,8 @@ import 'package:elevate_ecommerce_driver/features/login/presentation/views/login
 import 'package:elevate_ecommerce_driver/features/on_boarding/presentation/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/auth/apply/presentation/apply_screen/view/apply_screen.dart';
+
 Route manageRoutes(RouteSettings settings) {
   switch (settings.name) {
     case AppRoutes.homeScreen:
@@ -20,6 +22,8 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const MainLayOutScreen());
     case AppRoutes.boarding:
       return MaterialPageRoute(builder: (context) => const OnBoardingScreen());
+    case AppRoutes.applyRoute:
+      return MaterialPageRoute(builder: (context) => const ApplyScreen());
     default:
       return MaterialPageRoute(
         builder: (context) => const RouteNotFound(),

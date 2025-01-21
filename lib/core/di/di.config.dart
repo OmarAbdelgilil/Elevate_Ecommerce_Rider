@@ -12,6 +12,18 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/auth/apply/data/contracts/apply_data_source.dart'
+    as _i613;
+import '../../features/auth/apply/data/datasource/apply_data_source_impl.dart'
+    as _i750;
+import '../../features/auth/apply/data/repos/apply_repo_impl.dart' as _i691;
+import '../../features/auth/apply/domain_auth/repos/apply_repo.dart' as _i356;
+import '../../features/auth/apply/domain_auth/usecases/apply_use_case.dart'
+    as _i140;
+import '../../features/auth/apply/domain_auth/usecases/get_allVehicles_use_case.dart'
+    as _i524;
+import '../../features/auth/apply/presentation/apply_screen/view_model/apply_viewmodel.dart'
+    as _i83;
 import '../../features/login/data/contracts/offline_data_source.dart' as _i459;
 import '../../features/login/data/contracts/online_data_source.dart' as _i1047;
 import '../../features/login/data/datasource/offline_data_source_impl.dart'
@@ -61,12 +73,20 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           gh<_i26.UserProvider>(),
         ));
+    gh.factory<_i613.ApplyDataSource>(
+        () => _i750.ApplyDataSourceImpl(gh<_i119.ApiManager>()));
     gh.factory<_i1047.OnlineDataSource>(
         () => _i235.OnlineDataSourceImpl(gh<_i119.ApiManager>()));
+    gh.factory<_i356.ApplyRepo>(
+        () => _i691.ApplyRepoImpl(gh<_i613.ApplyDataSource>()));
     gh.factory<_i184.LoginRepo>(() => _i937.LoginRepoImpl(
           gh<_i1047.OnlineDataSource>(),
           gh<_i459.OfflineDataSource>(),
         ));
+    gh.factory<_i140.ApplyUseCase>(
+        () => _i140.ApplyUseCase(gh<_i356.ApplyRepo>()));
+    gh.factory<_i524.GetAllVehicleUseCase>(
+        () => _i524.GetAllVehicleUseCase(gh<_i356.ApplyRepo>()));
     gh.factory<_i788.CheckCachedUserUseCase>(
         () => _i788.CheckCachedUserUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i582.GetCachedUserUseCase>(
@@ -77,6 +97,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1005.LoginUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i571.SetCachedUserUseCase>(
         () => _i571.SetCachedUserUseCase(gh<_i184.LoginRepo>()));
+    gh.factory<_i83.ApplyViewModel>(() => _i83.ApplyViewModel(
+          gh<_i140.ApplyUseCase>(),
+          gh<_i524.GetAllVehicleUseCase>(),
+        ));
     gh.factory<_i484.OnBoardingViewModel>(() => _i484.OnBoardingViewModel(
           gh<_i788.CheckCachedUserUseCase>(),
           gh<_i582.GetCachedUserUseCase>(),

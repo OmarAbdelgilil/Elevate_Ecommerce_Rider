@@ -1,11 +1,10 @@
-
 class User {
-  String?id ;
+  String? id;
   String? country;
   String? firstName;
   String? lastName;
   String? vehicleType;
-  String?vehicleNumber;
+  String? vehicleNumber;
   String? NID;
   String? email;
   String? gender;
@@ -15,8 +14,7 @@ class User {
   bool? isVerified;
   String? token;
   User(
-      {
-      this.id,
+      {this.id,
       this.country,
       this.firstName,
       this.lastName,
@@ -29,8 +27,7 @@ class User {
       this.rePassword,
       this.phone,
       this.isVerified,
-      this.token
-      });
+      this.token});
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json['_id'] as String?,
@@ -65,6 +62,4 @@ class User {
         'isverified': isVerified,
         'token': token,
       };
-
-
 }

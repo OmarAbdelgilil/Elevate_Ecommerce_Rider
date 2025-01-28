@@ -7,8 +7,6 @@ import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-
 class MainLayoutViewModel extends ChangeNotifier {
   int _selectedIndex = 0;
   String _currentLanguage;

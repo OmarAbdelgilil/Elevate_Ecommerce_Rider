@@ -12,6 +12,16 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/home/data/contracts/online_data_source.dart' as _i89;
+import '../../features/home/data/datasource/online_data_source_impl.dart'
+    as _i1015;
+import '../../features/home/data/repositories/home_repository_impl.dart'
+    as _i76;
+import '../../features/home/domain/repositories/home_repository.dart' as _i0;
+import '../../features/home/domain/usecases/get_pending_orders_use_case.dart'
+    as _i346;
+import '../../features/home/presentation/viewmodels/home_view_model.dart'
+    as _i514;
 import '../../features/login/data/contracts/offline_data_source.dart' as _i459;
 import '../../features/login/data/contracts/online_data_source.dart' as _i1047;
 import '../../features/login/data/datasource/offline_data_source_impl.dart'
@@ -61,12 +71,20 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           gh<_i26.UserProvider>(),
         ));
+    gh.factory<_i89.OnlineDataSource>(
+        () => _i1015.OnlineDataSourceImpl(gh<_i119.ApiManager>()));
     gh.factory<_i1047.OnlineDataSource>(
         () => _i235.OnlineDataSourceImpl(gh<_i119.ApiManager>()));
     gh.factory<_i184.LoginRepo>(() => _i937.LoginRepoImpl(
           gh<_i1047.OnlineDataSource>(),
           gh<_i459.OfflineDataSource>(),
         ));
+    gh.factory<_i0.HomeRepository>(
+        () => _i76.HomeRepositoryImpl(gh<_i89.OnlineDataSource>()));
+    gh.factory<_i346.GetPendingOrdersUseCase>(
+        () => _i346.GetPendingOrdersUseCase(gh<_i0.HomeRepository>()));
+    gh.lazySingleton<_i514.HomeViewModel>(
+        () => _i514.HomeViewModel(gh<_i346.GetPendingOrdersUseCase>()));
     gh.factory<_i788.CheckCachedUserUseCase>(
         () => _i788.CheckCachedUserUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i582.GetCachedUserUseCase>(

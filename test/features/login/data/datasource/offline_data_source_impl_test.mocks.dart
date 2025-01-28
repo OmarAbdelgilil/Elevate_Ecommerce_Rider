@@ -100,4 +100,31 @@ class MockHiveManager extends _i1.Mock implements _i3.HiveManager {
           ),
         )),
       ) as _i4.Future<_i2.CacheUserModel>);
+
+  @override
+  _i4.Future<bool> setOngoingOrder() => (super.noSuchMethod(
+        Invocation.method(
+          #setOngoingOrder,
+          [],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+
+  @override
+  _i4.Future<bool> clearOngoingOrder() => (super.noSuchMethod(
+        Invocation.method(
+          #clearOngoingOrder,
+          [],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+
+  @override
+  _i4.Future<bool> checkOngoingOrder() => (super.noSuchMethod(
+        Invocation.method(
+          #checkOngoingOrder,
+          [],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
 }

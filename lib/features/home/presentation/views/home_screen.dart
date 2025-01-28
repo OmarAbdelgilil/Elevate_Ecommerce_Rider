@@ -47,6 +47,7 @@ class HomeScreen extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: OrderCard(
+                            key: UniqueKey(),
                             orderDetails: viewModel.orders[index],
                             viewModel: viewModel,
                           ),

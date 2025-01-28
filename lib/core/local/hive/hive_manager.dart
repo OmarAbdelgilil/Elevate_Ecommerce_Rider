@@ -34,4 +34,21 @@ class HiveManager {
     final user = await box.get('user');
     return user;
   }
+
+  Future<bool> setOngoingOrder() async {
+    final box = await Hive.openBox('delivery');
+    await box.put('onGoing', true);
+    return true;
+  }
+
+  Future<bool> clearOngoingOrder() async {
+    final box = await Hive.openBox('delivery');
+    await box.put('onGoing', false);
+    return true;
+  }
+
+  Future<bool> checkOngoingOrder() async {
+    final box = await Hive.openBox('delivery');
+    return await box.get('onGoing');
+  }
 }

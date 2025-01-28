@@ -62,9 +62,7 @@ class OrderCard extends StatelessWidget {
                   style: const TextStyle(
                       fontWeight: FontWeight.w600, fontSize: 16),
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
+                const Spacer(),
                 CustomButton(
                   text: "Reject",
                   fontColor: Theme.of(context).colorScheme.primary,

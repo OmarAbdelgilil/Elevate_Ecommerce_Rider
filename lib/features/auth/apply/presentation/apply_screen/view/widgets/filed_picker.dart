@@ -44,6 +44,16 @@ class FilePickerField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final defaultBorderRadius = borderRadius ?? AppSize.s10;
+    final defaultBorderColor = borderColor ?? ColorManager.black;
+    final defaultBackgroundColor = backgroundColor ?? Colors.transparent;
+    final defaultLabelTextStyle = labelTextStyle ??
+        AppTextStyles.title(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          color: ColorManager.black,
+        );
+
     return FormField(
       validator: (_) {
         if (controlledFile == null) {
@@ -63,66 +73,76 @@ class FilePickerField extends StatelessWidget {
               ),
               child: Text(
                 placeholder,
-                style: labelTextStyle ??
-                    AppTextStyles.title(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: ColorManager.black,
-                    ),
+                style: defaultLabelTextStyle,
               ),
             ),
             Container(
               padding: const EdgeInsets.all(AppPadding.p10),
               decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(borderRadius ?? AppSize.s10),
+                color: defaultBackgroundColor,
+                borderRadius: BorderRadius.circular(defaultBorderRadius),
                 border: Border.all(
                   color: formState.isValid
                       ? ColorManager.green
                       : formState.hasError
                       ? ColorManager.error
-                      : borderColor ?? ColorManager.black,
+                      : defaultBorderColor,
                 ),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    controlledFile != null ? '1 ${StringsManager.imagesSelected.tr()}' : '0 ${StringsManager.imagesSelected.tr()}',
+                  controlledFile != null  ? const Icon(Icons.check_circle_outline,color: ColorManager.green,):Text(
+                    '0 ${StringsManager.imagesSelected.tr()}',
                     style: GoogleFonts.kreon(
                       color: ColorManager.grey,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      _getFileFromGallery(context);
-                    },
-                    child: SvgPicture.asset(SVGAssets.upload),
+                    onTap: () => _getFileFromGallery(context),
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: SvgPicture.asset(
+                        SVGAssets.upload,
+                        color: foregroundColor ?? ColorManager.black,
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 10),
             if (controlledFile != null)
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.file(
-                  controlledFile!,
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
+              Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.file(
+                      controlledFile!,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
               ),
             if (formState.hasError && !formState.isValid)
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Text(
-                  formState.errorText!,
-                  style: GoogleFonts.kreon(
-                    color: ColorManager.error,
-                    fontWeight: FontWeight.w500,
-                  ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.error_outline, color: ColorManager.error, size: 16),
+                    const SizedBox(width: 8),
+                    Text(
+                      formState.errorText!,
+                      style: GoogleFonts.kreon(
+                        color: ColorManager.error,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
                 ),
               ),
           ],

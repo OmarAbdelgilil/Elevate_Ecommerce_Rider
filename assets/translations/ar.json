@@ -21,9 +21,16 @@
     "password": "كلمة المرور",
     "confirmPassword": "تأكيد كلمة المرور",
     "imagesSelected": "الصور المختارة",
+    "applyAppBar": "سجِّل الآن",
+    "continueApply": "متابعة",
+    "male": "ذكر",
+    "female": "أنثى",
+    "applyMessage": "هل تريد أن تكون عامل توصيل ؟",
+    "applyMessage2": " انضم إلى فريقنا ",
 
-
-
+    "welcome": "أهلاً وسهلاً",
+    "applicationMessage": "تم تقديم طلبك!",
+    "applicationMessage2": "شكرًا لك على تقديم طلبك، سنراجع طلبك وسنعاود الاتصال بك قريبًا.",
 
     "validationsFieldRequired": "هذا الحقل مطلوب",
     "validationsFieldLengthMoreThan6": "يجب ان يحتوي علي 6 حروف او اكتر",

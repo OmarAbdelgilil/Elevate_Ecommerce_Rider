@@ -4,4 +4,5 @@ class AppRoutes {
   static const mainLayOut = "mainLayOutRoute";
   static const String boarding = 'boarding';
   static const String applyRoute = '/apply';
+  static const String continueScreen = '/continueScreen';
 }

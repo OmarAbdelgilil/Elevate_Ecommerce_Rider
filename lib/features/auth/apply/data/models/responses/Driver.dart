@@ -1,18 +1,3 @@
-/// country : "Egypt"
-/// firstName : "Ahmed"
-/// lastName : "Ali"
-/// vehicleType : "676b31a45d05310ca82657ac"
-/// vehicleNumber : "12224"
-/// vehicleLicense : "d8d33612-7019-4a0a-8d54-e50e312b05bb-كأس افضل حد يكتب css.jpg"
-/// NID : "12345678912343"
-/// NIDImg : "7c9c0f9f-76ab-4c7c-a922-b8cb6bbc9d89-كأس افضل حد يكتب css.jpg"
-/// email : "daly13abdall@gmail.com"
-/// gender : "male"
-/// phone : "+201010700880"
-/// photo : "default-profile.png"
-/// _id : "677549ca9f3884b3405c48b6"
-/// createdAt : "2025-01-01T13:57:30.058Z"
-
 class Driver {
   Driver({
       this.country, 

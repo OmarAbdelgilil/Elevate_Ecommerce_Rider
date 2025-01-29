@@ -27,22 +27,32 @@ class ApplyViewModel extends BaseCubit implements ApplyViewModelInput, ApplyView
 
   String? get selectedCountryFlag => _selectedCountryFlag;
 
-  void setCountryFlag(String flagEmoji) {
+  set setCountryFlag(String flagEmoji) {
     _selectedCountryFlag = flagEmoji;
     emit(ContentState());
   }
 
+  String? _selectedGender;
+
+  String? get selectedGender => _selectedGender;
+
+  set setSelectedGender(String gender) {
+    _selectedGender = gender;
+    emit(ContentState());
+  }
+
+  get getCountryFlag => _selectedCountryFlag;
   final TextEditingController _countryController = TextEditingController();
-  final TextEditingController _firstNameController = TextEditingController(text: "Daly");
-  final TextEditingController _lastNameController = TextEditingController(text: "Daly");
-  final TextEditingController _vehicleTypeController = TextEditingController(text: "676b31a45d05310ca82657ac");
-  final TextEditingController _vehicleNumberController = TextEditingController(text: "12227");
-  final TextEditingController _nidController = TextEditingController(text: "11111111111111");
-  final TextEditingController _emailController = TextEditingController(text: "xda988ly3@gmail.com");
-  final TextEditingController _genderController = TextEditingController(text: "male");
-  final TextEditingController _passwordController = TextEditingController(text: "male!12A");
-  final TextEditingController _rePasswordController = TextEditingController(text: "male!12A");
-  final TextEditingController _phoneController = TextEditingController(text: "+201010700880");
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _vehicleTypeController = TextEditingController();
+  final TextEditingController _vehicleNumberController = TextEditingController();
+  final TextEditingController _nidController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _genderController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _rePasswordController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController(text: '+2012951616');
 
   List<OptionMenuItem> menuItems = [];
 
@@ -86,11 +96,11 @@ class ApplyViewModel extends BaseCubit implements ApplyViewModelInput, ApplyView
       country: _countryController.text,
       firstName: _firstNameController.text,
       lastName: _lastNameController.text,
-      vehicleType: _vehicleTypeController.text,
+      vehicleType: _selectedVehicleId,
       vehicleNumber: _vehicleNumberController.text,
       nid: _nidController.text,
       email: _emailController.text,
-      gender: _genderController.text,
+      gender: _selectedGender,
       phone: _phoneController.text,
       password: _passwordController.text,
       rePassword: _rePasswordController.text,
@@ -109,12 +119,14 @@ class ApplyViewModel extends BaseCubit implements ApplyViewModelInput, ApplyView
       if (result is Success<ApplyResponse?>) {
         emit(SuccessState(result.data?.message ?? "Application Submitted"));
       } else if (result is Fail<ApplyResponse?>) {
-        emit(ErrorState(result.exception.toString()));
+        emit(ErrorState(result.data?.error??'An error occurred'));
       }
     } catch (e) {
       emit(ErrorState("An error occurred: $e"));
     }
-  }  Future<void> _fetchAllVehicles() async {
+  }
+
+  Future<void> _fetchAllVehicles() async {
     emit(LoadingState());
 
     final result = await _allVehicleUseCase.getAllVehicles();

@@ -9,6 +9,11 @@ class StringsManager {
   static const String rememberMe = "remember me";
   static const String boardingWelcome = "Welcome To\nFlowery rider app";
   static const String apply = "Apply now";
+  static const String welcome = "welcome";
+  static const String applyMessage = "applyMessage";
+  static const String applyMessage2 = "applyMessage2";
+  static const String applicationMessage = "applicationMessage";
+  static const String applicationMessage2 = "applicationMessage2";
   // mainLayOutScreen
   static const homeTab = 'Home';
   static const ordersTab = 'Orders';
@@ -27,9 +32,13 @@ class StringsManager {
   static const String vehicleImage = "vehicleImage";
   static const String country = "country";
   static const String gender = "gender";
+  static const String male = "male";
+  static const String female = "female";
   static const String password = "password";
   static const String confirmPassword = "confirmPassword";
   static const String imagesSelected = "imagesSelected";
+  static const String applyAppBar = "Apply";
+  static const String continueApply = "continue";
 
 
 

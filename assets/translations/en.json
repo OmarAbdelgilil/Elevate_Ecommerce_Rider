@@ -22,6 +22,17 @@
     "password": "Password",
     "confirmPassword": "Confirm Password",
     "imagesSelected": "images Selected",
+    "applyAppBar": "Apply",
+    "continueApply": "Continue",
+    "male": "male",
+    "female": "female",
+    "applyMessage": "You want to be a delivery man? ",
+    "applyMessage2": "Join our team ",
+    "applicationMessage": "Your application has been submitted!",
+    "applicationMessage2": "Thank you for providing your application, we will review your application and will get back to you soon.",
+
+
+    "welcome": "welcome",
 
     "validationsFieldRequired": "field is required",
     "validationsFieldLengthMoreThan6": "length must be more than 6 characters",

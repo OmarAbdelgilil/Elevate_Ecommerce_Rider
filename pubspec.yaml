@@ -56,6 +56,9 @@ dependencies:
   cached_network_image: ^3.4.1
   mime:
   http_parser:
+  phone_number_validator:
+    path: X:\StudioProjects\Elevate_Ecommerce_Rider\phone_number_validator\lib\phone_number_validator.dart
+
 
 
 dev_dependencies:

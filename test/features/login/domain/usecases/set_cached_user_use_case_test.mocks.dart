@@ -37,7 +37,7 @@ class MockLoginRepo extends _i1.Mock implements _i2.LoginRepo {
   }
 
   @override
-  _i3.Future<_i4.Result<_i5.LoginResponse>> login(
+  _i3.Future<_i4.Result<_i5.LoginResponse?>> login(
     String? email,
     String? password,
   ) =>
@@ -49,8 +49,8 @@ class MockLoginRepo extends _i1.Mock implements _i2.LoginRepo {
             password,
           ],
         ),
-        returnValue: _i3.Future<_i4.Result<_i5.LoginResponse>>.value(
-            _i6.dummyValue<_i4.Result<_i5.LoginResponse>>(
+        returnValue: _i3.Future<_i4.Result<_i5.LoginResponse?>>.value(
+            _i6.dummyValue<_i4.Result<_i5.LoginResponse?>>(
           this,
           Invocation.method(
             #login,
@@ -60,7 +60,7 @@ class MockLoginRepo extends _i1.Mock implements _i2.LoginRepo {
             ],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i5.LoginResponse>>);
+      ) as _i3.Future<_i4.Result<_i5.LoginResponse?>>);
 
   @override
   _i3.Future<_i4.Result<_i7.User>> getUserData() => (super.noSuchMethod(

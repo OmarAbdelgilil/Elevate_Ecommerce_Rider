@@ -4,22 +4,24 @@ class CustomTextField extends StatefulWidget {
   final String hint;
   final Function(String)? onChange;
   final TextEditingController controller;
-  final bool obscureText; // Controls initial text visibility
-  final bool? readOnly; // Controls initial text visibility
+  final bool obscureText;
+  final bool? readOnly;
   final String label;
   final String? Function(String?)? validator;
   final String? errorText;
+  final Widget? suffix; // Added suffix parameter
 
   const CustomTextField({
     super.key,
     required this.hint,
     this.onChange,
-    this.obscureText = false, // Default is false (text visible)
+    this.obscureText = false,
     this.validator,
     required this.label,
     required this.controller,
     this.errorText,
     this.readOnly,
+    this.suffix, // Added to constructor
   });
 
   @override
@@ -27,13 +29,12 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  late bool _obscureText; // Controls the text visibility dynamically
+  late bool _obscureText;
   Color labelColor = Colors.grey[850]!;
 
   @override
   void initState() {
     super.initState();
-    // Initialize _obscureText with the value of widget.obscureText
     _obscureText = widget.obscureText;
   }
 
@@ -52,7 +53,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: _obscureText, // Use _obscureText to toggle visibility
+      obscureText: _obscureText,
       validator: _validate,
       readOnly: widget.readOnly ?? false,
       onChanged: widget.onChange,
@@ -86,11 +87,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 ),
                 onPressed: () {
                   setState(() {
-                    _obscureText = !_obscureText; // Toggle text visibility
+                    _obscureText = !_obscureText;
                   });
                 },
               )
-            : null, // No icon if obscureText is false
+            : widget.suffix, // Use custom suffix if not password field
       ),
     );
   }

@@ -1,5 +1,8 @@
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/core/routes/route_not_found.dart';
+import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/edit_profile_screen.dart';
+import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/edit_vihcle.dart';
+import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/profile_screen.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/main_lay_out_screen/mian_lay_out_view/mian_lay_out_screen.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/views/home_screen.dart';
 import 'package:elevate_ecommerce_driver/features/login/presentation/views/login_view.dart';
@@ -20,6 +23,12 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const MainLayOutScreen());
     case AppRoutes.boarding:
       return MaterialPageRoute(builder: (context) => const OnBoardingScreen());
+    case AppRoutes.profileScreen:
+      return MaterialPageRoute(builder: (context) => const ProfileScreen());
+    case AppRoutes.editVihcle:
+      return MaterialPageRoute(builder: (context) => const EditVehicleScreen());
+    case AppRoutes.editProfileScreen:
+      return MaterialPageRoute(builder: (context) => const EditProfileScreen());
     default:
       return MaterialPageRoute(
         builder: (context) => const RouteNotFound(),

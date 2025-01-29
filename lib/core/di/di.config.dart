@@ -120,6 +120,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i514.HomeViewModel>(() => _i514.HomeViewModel(
           gh<_i346.GetPendingOrdersUseCase>(),
           gh<_i2.CheckOrderUseCase>(),
+          gh<_i234.SetOrderUseCase>(),
         ));
     return this;
   }

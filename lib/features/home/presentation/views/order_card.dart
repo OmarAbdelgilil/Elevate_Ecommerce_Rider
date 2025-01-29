@@ -77,7 +77,10 @@ class OrderCard extends StatelessWidget {
                 const SizedBox(
                   width: 5,
                 ),
-                const CustomButton(
+                CustomButton(
+                  onPressed: () {
+                    viewModel.doIntent(AcceptOrderIntent(orderDetails));
+                  },
                   text: "Accept",
                   height: 45,
                   width: 120,

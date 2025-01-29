@@ -21,7 +21,6 @@ void main() {
     mockProfileOnlindDatasource = MockProfileOnlindDatasource();
     profileRepo = ProfileRepoImpl(mockProfileOnlindDatasource);
 
-    // Provide dummy values for Result<EditProfileResponse?> and Result<UpdateProfileImageResponse?>
     provideDummy<Result<EditProfileResponse?>>(
       Success(EditProfileResponse(
         message: "Dummy response",
@@ -54,10 +53,8 @@ void main() {
       when(mockProfileOnlindDatasource.editProfile(editProfileRequest))
           .thenAnswer((_) async => Success(expectedResponse));
 
-      // Act
       final result = await profileRepo.editProfile(editProfileRequest);
 
-      // Assert
       expect(result, isA<Success<EditProfileResponse?>>());
       expect((result as Success<EditProfileResponse?>).data, expectedResponse);
       verify(mockProfileOnlindDatasource.editProfile(editProfileRequest))

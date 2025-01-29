@@ -15,8 +15,10 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => UserProvider(),
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+
+    return ChangeNotifierProvider.value(
+      value: userProvider,
       child: BlocProvider(
         create: (context) => getIt<EditProfileCubit>(),
         child: const ProfileScreenContent(),

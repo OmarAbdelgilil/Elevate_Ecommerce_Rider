@@ -8,8 +8,12 @@ import 'dart:async' as _i4;
 import 'package:elevate_ecommerce_driver/core/common/result.dart' as _i5;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/edit_profile_request.dart'
     as _i7;
+import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/upload_image_request.dart'
+    as _i10;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/edit_profile_response/edit_profile_response.dart'
     as _i6;
+import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/update_profile_image_response.dart'
+    as _i9;
 import 'package:elevate_ecommerce_driver/features/auth/profile/domain/repos/profile_repo.dart'
     as _i2;
 import 'package:elevate_ecommerce_driver/features/auth/profile/domain/use_cases/profile_usecase.dart'
@@ -74,4 +78,23 @@ class MockProfileUsecase extends _i1.Mock implements _i3.ProfileUsecase {
           ),
         )),
       ) as _i4.Future<_i5.Result<_i6.EditProfileResponse?>>);
+
+  @override
+  _i4.Future<_i5.Result<_i9.UpdateProfileImageResponse?>> uploadImage(
+          _i10.UploadImageRequest? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadImage,
+          [request],
+        ),
+        returnValue:
+            _i4.Future<_i5.Result<_i9.UpdateProfileImageResponse?>>.value(
+                _i8.dummyValue<_i5.Result<_i9.UpdateProfileImageResponse?>>(
+          this,
+          Invocation.method(
+            #uploadImage,
+            [request],
+          ),
+        )),
+      ) as _i4.Future<_i5.Result<_i9.UpdateProfileImageResponse?>>);
 }

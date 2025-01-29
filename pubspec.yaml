@@ -49,6 +49,8 @@ dependencies:
   mockito: ^5.4.4
   flutter_svg:
   shared_preferences:
+  image_picker: ^1.1.2
+  http_parser: ^4.0.2
 
 dev_dependencies:
   flutter_test:

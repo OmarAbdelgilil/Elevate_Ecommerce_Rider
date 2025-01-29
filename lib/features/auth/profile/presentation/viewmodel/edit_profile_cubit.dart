@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/domain/use_cases/profile_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/edit_profile_request.dart';
+import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/upload_image_request.dart';
 import 'package:elevate_ecommerce_driver/features/login/domain/models/user.dart';
 
 @injectable
@@ -15,6 +17,26 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     switch (intent) {
       case UpdateProfileIntent():
         await _updateProfile(intent);
+      case UploadImageIntent():
+        await _uploadImage(intent);
+    }
+  }
+
+  Future<void> _uploadImage(UploadImageIntent intent) async {
+    try {
+      emit(EditProfileLoading());
+
+      final request = UploadImageRequest(imageFile: intent.imageFile);
+      final result = await _profileUsecase.uploadImage(request);
+
+      switch (result) {
+        case Success():
+          emit(ImageUploadSuccess());
+        case Fail():
+          emit(EditProfileError(message: result.exception.toString()));
+      }
+    } catch (e) {
+      emit(EditProfileError(message: e.toString()));
     }
   }
 
@@ -68,6 +90,8 @@ class EditProfileSuccess extends EditProfileState {
   EditProfileSuccess({required this.user});
 }
 
+class ImageUploadSuccess extends EditProfileState {}
+
 class EditProfileError extends EditProfileState {
   final String message;
   EditProfileError({required this.message});
@@ -87,4 +111,10 @@ class UpdateProfileIntent extends EditProfileIntent {
     required this.email,
     required this.phone,
   });
+}
+
+class UploadImageIntent extends EditProfileIntent {
+  final File imageFile;
+
+  UploadImageIntent({required this.imageFile});
 }

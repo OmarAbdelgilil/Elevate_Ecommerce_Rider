@@ -47,6 +47,7 @@ import '../../features/on_boarding/presentation/on_boarding_view_model.dart'
 import '../local/hive/hive_manager.dart' as _i228;
 import '../network/api_manager.dart' as _i119;
 import '../network/network_module.dart' as _i200;
+import '../network/upload_image_api_manager.dart' as _i964;
 import '../providers/user_provider.dart' as _i26;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -71,18 +72,27 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           gh<_i26.UserProvider>(),
         ));
-    gh.factory<_i1047.OnlineDataSource>(
-        () => _i235.OnlineDataSourceImpl(gh<_i119.ApiManager>()));
-    gh.factory<_i46.ProfileOnlindDatasource>(
-        () => _i535.ProfileOnlineDatasourceImpl(gh<_i119.ApiManager>()));
-    gh.factory<_i184.LoginRepo>(() => _i937.LoginRepoImpl(
-          gh<_i1047.OnlineDataSource>(),
-          gh<_i459.OfflineDataSource>(),
+    gh.singleton<_i964.UploadImageApiManager>(() => _i964.UploadImageApiManager(
+          gh<_i361.Dio>(),
+          gh<_i26.UserProvider>(),
         ));
+    gh.factory<_i46.ProfileOnlindDatasource>(
+        () => _i535.ProfileOnlineDatasourceImpl(
+              gh<_i119.ApiManager>(),
+              gh<_i964.UploadImageApiManager>(),
+            ));
     gh.factory<_i456.ProfileRepo>(
         () => _i629.ProfileRepoImpl(gh<_i46.ProfileOnlindDatasource>()));
     gh.factory<_i632.ProfileUsecase>(
         () => _i632.ProfileUsecase(gh<_i456.ProfileRepo>()));
+    gh.factory<_i345.EditProfileCubit>(
+        () => _i345.EditProfileCubit(gh<_i632.ProfileUsecase>()));
+    gh.factory<_i1047.OnlineDataSource>(
+        () => _i235.OnlineDataSourceImpl(gh<_i119.ApiManager>()));
+    gh.factory<_i184.LoginRepo>(() => _i937.LoginRepoImpl(
+          gh<_i1047.OnlineDataSource>(),
+          gh<_i459.OfflineDataSource>(),
+        ));
     gh.factory<_i788.CheckCachedUserUseCase>(
         () => _i788.CheckCachedUserUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i582.GetCachedUserUseCase>(
@@ -93,8 +103,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1005.LoginUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i571.SetCachedUserUseCase>(
         () => _i571.SetCachedUserUseCase(gh<_i184.LoginRepo>()));
-    gh.factory<_i345.EditProfileCubit>(
-        () => _i345.EditProfileCubit(gh<_i632.ProfileUsecase>()));
     gh.factory<_i484.OnBoardingViewModel>(() => _i484.OnBoardingViewModel(
           gh<_i788.CheckCachedUserUseCase>(),
           gh<_i582.GetCachedUserUseCase>(),

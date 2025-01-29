@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/edit_profile_response/edit_profile_response.dart';
+import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/update_profile_image_response.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/domain/use_cases/profile_usecase.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/viewmodel/edit_profile_cubit.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/user_data_response/driver.dart';
@@ -18,6 +21,7 @@ void main() {
     mockProfileUsecase = MockProfileUsecase();
     editProfileCubit = EditProfileCubit(mockProfileUsecase);
 
+    // Provide dummy values for Result<EditProfileResponse?> and Result<UpdateProfileImageResponse?>
     provideDummy<Result<EditProfileResponse?>>(
       Success(EditProfileResponse(
         message: "Dummy response",
@@ -27,6 +31,12 @@ void main() {
           email: "dummy@example.com",
           phone: "1234567890",
         ),
+      )),
+    );
+
+    provideDummy<Result<UpdateProfileImageResponse?>>(
+      Success(UpdateProfileImageResponse(
+        message: "Dummy image response",
       )),
     );
   });
@@ -97,6 +107,57 @@ void main() {
 
       // Act
       await editProfileCubit.doIntent(updateIntent);
+    });
+
+    test(
+        'doIntent with UploadImageIntent emits Loading, Success states on success',
+        () async {
+      // Arrange
+      final uploadImageIntent = UploadImageIntent(
+        imageFile: File('/path/to/image.jpg'),
+      );
+
+      final expectedImageResponse = UpdateProfileImageResponse(
+        message: "Image uploaded successfully",
+      );
+
+      when(mockProfileUsecase.uploadImage(any))
+          .thenAnswer((_) async => Success(expectedImageResponse));
+
+      expectLater(
+        editProfileCubit.stream,
+        emitsInOrder([
+          isA<EditProfileLoading>(),
+          isA<ImageUploadSuccess>(),
+        ]),
+      );
+
+      // Act
+      await editProfileCubit.doIntent(uploadImageIntent);
+    });
+
+    test(
+        'doIntent with UploadImageIntent emits Loading, Error states on failure',
+        () async {
+      // Arrange
+      final uploadImageIntent = UploadImageIntent(
+        imageFile: File('/path/to/image.jpg'),
+      );
+
+      final exception = Exception('Error uploading image');
+      when(mockProfileUsecase.uploadImage(any)).thenAnswer(
+          (_) async => Fail<UpdateProfileImageResponse?>(exception));
+
+      expectLater(
+        editProfileCubit.stream,
+        emitsInOrder([
+          isA<EditProfileLoading>(),
+          isA<EditProfileError>(),
+        ]),
+      );
+
+      // Act
+      await editProfileCubit.doIntent(uploadImageIntent);
     });
   });
 }

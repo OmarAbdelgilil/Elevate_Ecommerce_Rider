@@ -4,12 +4,17 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i6;
+import 'dart:io' as _i11;
 
 import 'package:elevate_ecommerce_driver/core/network/api_manager.dart' as _i5;
+import 'package:elevate_ecommerce_driver/core/network/upload_image_api_manager.dart'
+    as _i9;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/edit_profile_request.dart'
     as _i8;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/edit_profile_response/edit_profile_response.dart'
     as _i4;
+import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/update_profile_image_response.dart'
+    as _i10;
 import 'package:elevate_ecommerce_driver/features/login/data/models/request/login_request.dart'
     as _i7;
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/login_response.dart'
@@ -120,4 +125,24 @@ class MockApiManager extends _i1.Mock implements _i5.ApiManager {
           ),
         )),
       ) as _i6.Future<_i4.EditProfileResponse>);
+}
+
+/// A class which mocks [UploadImageApiManager].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUploadImageApiManager extends _i1.Mock
+    implements _i9.UploadImageApiManager {
+  MockUploadImageApiManager() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i6.Future<_i10.UpdateProfileImageResponse?> uploadImage(_i11.File? image) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadImage,
+          [image],
+        ),
+        returnValue: _i6.Future<_i10.UpdateProfileImageResponse?>.value(),
+      ) as _i6.Future<_i10.UpdateProfileImageResponse?>);
 }

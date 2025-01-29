@@ -23,7 +23,7 @@ class LoginView extends StatelessWidget {
           if (state is SuccessState || state is LoggedInState) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               Navigator.of(context).pushNamedAndRemoveUntil(
-                  AppRoutes.profileScreen, (Route route) => false);
+                  AppRoutes.mainLayOut, (Route route) => false);
             });
           }
 

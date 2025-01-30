@@ -1,10 +1,16 @@
 {
-    "login": "تسجيل الدخول",
-    "enterEmail": "أدخل بريدك الإلكتروني",
-    "email": "البريد الإلكتروني",
-    "forgetPass": "هل نسيت كلمة المرور؟",
-    "enterPass": "أدخل كلمة المرور",
-    "pass": "كلمة المرور",
-    "continueButton": "استمرار",
-    "rememberMe": "تذكرني"
-}
+    "Login": "تسجيل الدخول",
+    "Enter your email": "أدخل بريدك الإلكتروني",
+    "Email": "البريد الإلكتروني",
+    "Forget password?": "هل نسيت كلمة المرور؟",
+    "Enter your password": "أدخل كلمة المرور",
+    "Password": "كلمة المرور",
+    "Continue": "استمرار",
+    "Remember me": "تذكرني",
+    "Flower order": "طلب زهور",
+    "Pickup address": "عنوان الاستلام",
+    "User address": "عنوان المستخدم",
+    "Reject": "رفض",
+    "Accept": "قبول"
+  }
+  

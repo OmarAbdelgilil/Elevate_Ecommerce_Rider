@@ -1,10 +1,16 @@
 {
-    "login": "Login",
-    "enterEmail": "Enter your email",
-    "email": "Email",
-    "forgetPass": "Forget password?",
-    "enterPass": "Enter your password",
-    "pass": "Password",
-    "continueButton": "Continue",
-    "rememberMe": "Remember me"
-}
+    "Login": "Login",
+    "Enter your email": "Enter your email",
+    "Email": "Email",
+    "Forget password?": "Forget password?",
+    "Enter your password": "Enter your password",
+    "Password": "Password",
+    "Continue": "Continue",
+    "Remember me": "Remember me",
+    "Flower order": "Flower order",
+    "Pickup address": "Pickup address",
+    "User address": "User address",
+    "Reject": "Reject",
+    "Accept": "Accept"
+  }
+  

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/viewmodels/home_view_model.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/views/store_address_card.dart';
@@ -33,24 +34,24 @@ class OrderCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              StringsManager.orderCardTitle,
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+            Text(
+              StringsManager.orderCardTitle.tr(),
+              style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
             ),
             const SizedBox(
               height: 16,
             ),
-            const Text(
-              StringsManager.pickupAddress,
-              style: TextStyle(color: ColorManager.darkGrey),
+            Text(
+              StringsManager.pickupAddress.tr(),
+              style: const TextStyle(color: ColorManager.darkGrey),
             ),
             StoreAddressCard(data: orderDetails.store!),
             const SizedBox(
               height: 16,
             ),
-            const Text(
-              StringsManager.userAddress,
-              style: TextStyle(color: ColorManager.darkGrey),
+            Text(
+              StringsManager.userAddress.tr(),
+              style: const TextStyle(color: ColorManager.darkGrey),
             ),
             UserAddressCard(data: orderDetails.user!),
             const SizedBox(
@@ -65,7 +66,7 @@ class OrderCard extends StatelessWidget {
                 ),
                 const Spacer(),
                 CustomButton(
-                  text: StringsManager.rejectBtnLabel,
+                  text: StringsManager.rejectBtnLabel.tr(),
                   fontColor: Theme.of(context).colorScheme.primary,
                   color: Colors.white,
                   borderColor: Theme.of(context).colorScheme.primary,
@@ -82,7 +83,7 @@ class OrderCard extends StatelessWidget {
                   onPressed: () {
                     viewModel.doIntent(AcceptOrderIntent(orderDetails));
                   },
-                  text: StringsManager.acceptBtnLabel,
+                  text: StringsManager.acceptBtnLabel.tr(),
                   height: 45,
                   width: 120,
                 )

@@ -4,6 +4,7 @@ import 'package:elevate_ecommerce_driver/features/home/presentation/views/store_
 import 'package:elevate_ecommerce_driver/features/home/presentation/views/user_address_card.dart';
 import 'package:elevate_ecommerce_driver/utils/color_manager.dart';
 import 'package:elevate_ecommerce_driver/utils/custom_button.dart';
+import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
 
 class OrderCard extends StatelessWidget {
@@ -33,14 +34,14 @@ class OrderCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              "Flower order",
+              StringsManager.orderCardTitle,
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
             ),
             const SizedBox(
               height: 16,
             ),
             const Text(
-              "Pickup address",
+              StringsManager.pickupAddress,
               style: TextStyle(color: ColorManager.darkGrey),
             ),
             StoreAddressCard(data: orderDetails.store!),
@@ -48,7 +49,7 @@ class OrderCard extends StatelessWidget {
               height: 16,
             ),
             const Text(
-              "User address",
+              StringsManager.userAddress,
               style: TextStyle(color: ColorManager.darkGrey),
             ),
             UserAddressCard(data: orderDetails.user!),
@@ -64,7 +65,7 @@ class OrderCard extends StatelessWidget {
                 ),
                 const Spacer(),
                 CustomButton(
-                  text: "Reject",
+                  text: StringsManager.rejectBtnLabel,
                   fontColor: Theme.of(context).colorScheme.primary,
                   color: Colors.white,
                   borderColor: Theme.of(context).colorScheme.primary,
@@ -81,7 +82,7 @@ class OrderCard extends StatelessWidget {
                   onPressed: () {
                     viewModel.doIntent(AcceptOrderIntent(orderDetails));
                   },
-                  text: "Accept",
+                  text: StringsManager.acceptBtnLabel,
                   height: 45,
                   width: 120,
                 )

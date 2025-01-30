@@ -103,7 +103,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          '/v1/orders/pending-orders',
+          '/v1/orders/driver-orders',
           queryParameters: queryParameters,
           data: _data,
         )

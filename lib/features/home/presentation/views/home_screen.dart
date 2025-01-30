@@ -2,6 +2,7 @@ import 'package:elevate_ecommerce_driver/core/di/di.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/viewmodels/home_view_model.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/views/ongoing_order_screen.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/views/order_card.dart';
+import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,9 +18,9 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
         title: Text(
-          "Flowery rider",
+          StringsManager.appTitle,
           style: TextStyle(
-              fontFamily: 'IMFellEnglish',
+              fontFamily: StringsManager.iMFellfont,
               fontWeight: FontWeight.w400,
               fontSize: 20,
               color: Theme.of(context).colorScheme.primary),

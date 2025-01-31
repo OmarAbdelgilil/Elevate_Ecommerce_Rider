@@ -16,22 +16,23 @@ class OrderEntity {
   String? orderNumber;
   int? v;
   Store? store;
+  String? status;
 
-  OrderEntity({
-    this.id,
-    this.user,
-    this.orderItems,
-    this.totalPrice,
-    this.paymentType,
-    this.isPaid,
-    this.isDelivered,
-    this.state,
-    this.createdAt,
-    this.updatedAt,
-    this.orderNumber,
-    this.v,
-    this.store,
-  });
+  OrderEntity(
+      {this.id,
+      this.user,
+      this.orderItems,
+      this.totalPrice,
+      this.paymentType,
+      this.isPaid,
+      this.isDelivered,
+      this.state,
+      this.createdAt,
+      this.updatedAt,
+      this.orderNumber,
+      this.v,
+      this.store,
+      this.status});
 
   factory OrderEntity.fromJson(Map<String, dynamic> json) => OrderEntity(
         id: json['_id'] as String?,
@@ -57,6 +58,7 @@ class OrderEntity {
         store: json['store'] == null
             ? null
             : Store.fromJson(json['store'] as Map<String, dynamic>),
+        status: json['status'] as String?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -73,5 +75,6 @@ class OrderEntity {
         'orderNumber': orderNumber,
         '__v': v,
         'store': store?.toJson(),
+        'status': status
       };
 }

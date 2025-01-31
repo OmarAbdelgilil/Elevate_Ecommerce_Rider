@@ -130,12 +130,12 @@ class MockHiveManager extends _i1.Mock implements _i3.HiveManager {
       ) as _i4.Future<bool>);
 
   @override
-  _i4.Future<Map<String, dynamic>> getOrder() => (super.noSuchMethod(
+  _i4.Future<Map<dynamic, dynamic>> getOrder() => (super.noSuchMethod(
         Invocation.method(
           #getOrder,
           [],
         ),
         returnValue:
-            _i4.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i4.Future<Map<String, dynamic>>);
+            _i4.Future<Map<dynamic, dynamic>>.value(<dynamic, dynamic>{}),
+      ) as _i4.Future<Map<dynamic, dynamic>>);
 }

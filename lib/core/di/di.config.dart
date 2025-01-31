@@ -22,11 +22,14 @@ import '../../features/home/data/repositories/home_repository_impl.dart'
     as _i76;
 import '../../features/home/domain/repositories/home_repository.dart' as _i0;
 import '../../features/home/domain/usecases/check_order_use_case.dart' as _i2;
+import '../../features/home/domain/usecases/get_order_use_case.dart' as _i997;
 import '../../features/home/domain/usecases/get_pending_orders_use_case.dart'
     as _i346;
 import '../../features/home/domain/usecases/set_order_use_case.dart' as _i234;
 import '../../features/home/presentation/viewmodels/home_view_model.dart'
     as _i514;
+import '../../features/home/presentation/viewmodels/ongoing_order_view_model.dart'
+    as _i655;
 import '../../features/login/data/contracts/offline_data_source.dart' as _i459;
 import '../../features/login/data/contracts/online_data_source.dart' as _i1047;
 import '../../features/login/data/datasource/offline_data_source_impl.dart'
@@ -106,6 +109,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i2.CheckOrderUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i234.SetOrderUseCase>(
         () => _i234.SetOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i997.GetOrderUseCase>(
+        () => _i997.GetOrderUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i484.OnBoardingViewModel>(() => _i484.OnBoardingViewModel(
           gh<_i788.CheckCachedUserUseCase>(),
           gh<_i582.GetCachedUserUseCase>(),
@@ -117,6 +122,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i582.GetCachedUserUseCase>(),
           gh<_i1.GetUserDataUseCase>(),
         ));
+    gh.factory<_i655.OngoingOrderViewModel>(
+        () => _i655.OngoingOrderViewModel(gh<_i997.GetOrderUseCase>()));
     gh.lazySingleton<_i514.HomeViewModel>(() => _i514.HomeViewModel(
           gh<_i346.GetPendingOrdersUseCase>(),
           gh<_i2.CheckOrderUseCase>(),

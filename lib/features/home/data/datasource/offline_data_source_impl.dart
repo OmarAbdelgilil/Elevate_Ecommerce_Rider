@@ -3,6 +3,7 @@ import 'package:elevate_ecommerce_driver/core/local/hive/hive_execution.dart';
 import 'package:elevate_ecommerce_driver/core/local/hive/hive_manager.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/contracts/offline_data_source.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart';
+import 'package:elevate_ecommerce_driver/utils/map_converter.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: OfflineDataSource)
@@ -37,7 +38,8 @@ class OfflineDataSourceImpl implements OfflineDataSource {
   Future<Result<OrderEntity>> getOngoingOrder() {
     return executeHive(() async {
       final result = await _hiveManager.getOrder();
-      return OrderEntity.fromJson(result);
+      Map<String, dynamic> convertedMap = convertMap(result);
+      return OrderEntity.fromJson(convertedMap);
     });
   }
 }

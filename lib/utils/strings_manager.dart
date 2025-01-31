@@ -22,4 +22,8 @@ class StringsManager {
   static const String userAddress = "User address";
   static const String rejectBtnLabel = "Reject";
   static const String acceptBtnLabel = "Accept";
+  static const String orderAcceptedStatus = "Accepted";
+  //order_details
+  static const String orderDetailsTitle = "Order details";
+  static const String acceptedOrderBtn = "Arrived at Pickup point";
 }

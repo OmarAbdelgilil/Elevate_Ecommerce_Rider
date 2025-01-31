@@ -55,7 +55,7 @@ class HiveManager {
     return result;
   }
 
-  Future<Map<String, dynamic>> getOrder() async {
+  Future<Map<dynamic, dynamic>> getOrder() async {
     final box = await Hive.openBox('delivery');
     return await box.get('orderData');
   }

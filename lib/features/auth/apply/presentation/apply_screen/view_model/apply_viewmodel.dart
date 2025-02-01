@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dio/dio.dart';
 import 'package:elevate_ecommerce_driver/features/auth/apply/data/models/responses/all_vehicles/VehicleResponse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -108,23 +109,23 @@ class ApplyViewModel extends BaseCubit implements ApplyViewModelInput, ApplyView
       nIDImg: _nidImagePath,
     );
 
-    try {
+
       final formData = await request.toFormData();
 
-      print("FormData Fields: ${formData.fields}");
-      print("FormData Files: ${formData.files}");
+
 
       final result = await _applyUseCase.applyWithFiles(formData);
 
       if (result is Success<ApplyResponse?>) {
         emit(SuccessState(result.data?.message ?? "Application Submitted"));
       } else if (result is Fail<ApplyResponse?>) {
-        emit(ErrorState(result.data?.error??'An error occurred'));
+        final errorMessage = result.data?.error ?? "An error occurred";
+        emit(ErrorState(errorMessage));
       }
-    } catch (e) {
-      emit(ErrorState("An error occurred: $e"));
-    }
+
   }
+
+
 
   Future<void> _fetchAllVehicles() async {
     emit(LoadingState());

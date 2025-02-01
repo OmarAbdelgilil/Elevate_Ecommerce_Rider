@@ -15,17 +15,34 @@ class ApplyDataSourceImpl implements ApplyDataSource {
   final ApiManager _apiManager;
 
   ApplyDataSourceImpl(this._apiManager);
-
   @override
   Future<Result<ApplyResponse?>> applyWithFiles(FormData request) async {
     try {
-      // Pass the FormData directly to the API manager
       final result = await _apiManager.applyWithFiles(request);
       return Success(result);
     } catch (e) {
+      if (e is DioException) {
+        String errorMessage = _handleDioError(e);
+        return Fail(Exception(errorMessage), data: ApplyResponse(error: errorMessage));
+      }
       return Fail(Exception(e.toString()));
     }
   }
+
+  String _handleDioError(DioException e) {
+    if (e.response != null && e.response?.data != null) {
+      try {
+        final errorData = e.response?.data;
+        if (errorData is Map<String, dynamic> && errorData.containsKey("error")) {
+          return errorData["error"];
+        }
+      } catch (error) {
+        return "Error processing response.";
+      }
+    }
+    return e.message ?? "An unknown error occurred.";
+  }
+
 
   @override
   Future<Result<VehicleResponse?>> getAllVehicles() {

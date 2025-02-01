@@ -4,6 +4,7 @@ import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/orde
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/check_order_use_case.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/get_pending_orders_use_case.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/set_order_use_case.dart';
+import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -65,6 +66,7 @@ class HomeViewModel extends Cubit<HomeScreenState> {
 
   Future<void> _acceptOrder(OrderEntity order) async {
     emit(LoadingState());
+    order.status = StringsManager.orderAcceptedStatus;
     final result = await _setOrderUseCase.setOngoingOrder(order);
     switch (result) {
       case Success<bool>():

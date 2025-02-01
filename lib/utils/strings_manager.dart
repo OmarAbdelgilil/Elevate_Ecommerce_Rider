@@ -26,4 +26,7 @@ class StringsManager {
   //order_details
   static const String orderDetailsTitle = "Order details";
   static const String acceptedOrderBtn = "Arrived at Pickup point";
+  static const String orderDetails = "Order details";
+  static const String total = "Total";
+  static const String paymentMethod = "Payment Method";
 }

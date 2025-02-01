@@ -17,7 +17,7 @@ class OrderStatusContainer extends StatelessWidget {
     String formattedDate = DateFormat('EEE, dd MMM yyyy, hh:mm a').format(date);
 
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(16),

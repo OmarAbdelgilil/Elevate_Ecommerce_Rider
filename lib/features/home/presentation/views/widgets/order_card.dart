@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/viewmodels/home_view_model.dart';
-import 'package:elevate_ecommerce_driver/features/home/presentation/views/store_address_card.dart';
-import 'package:elevate_ecommerce_driver/features/home/presentation/views/user_address_card.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/views/widgets/store_address_card.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/views/widgets/user_address_card.dart';
 import 'package:elevate_ecommerce_driver/utils/color_manager.dart';
 import 'package:elevate_ecommerce_driver/utils/custom_button.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
@@ -16,6 +16,7 @@ class OrderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(orderDetails.user);
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -45,7 +46,10 @@ class OrderCard extends StatelessWidget {
               StringsManager.pickupAddress.tr(),
               style: const TextStyle(color: ColorManager.darkGrey),
             ),
-            StoreAddressCard(data: orderDetails.store!),
+            StoreAddressCard(
+              data: orderDetails.store!,
+              showIcons: false,
+            ),
             const SizedBox(
               height: 16,
             ),
@@ -53,7 +57,10 @@ class OrderCard extends StatelessWidget {
               StringsManager.userAddress.tr(),
               style: const TextStyle(color: ColorManager.darkGrey),
             ),
-            UserAddressCard(data: orderDetails.user!),
+            UserAddressCard(
+              data: orderDetails.user!,
+              showIcons: false,
+            ),
             const SizedBox(
               height: 16,
             ),

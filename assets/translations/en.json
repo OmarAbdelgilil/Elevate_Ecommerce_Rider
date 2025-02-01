@@ -11,6 +11,11 @@
     "Pickup address": "Pickup address",
     "User address": "User address",
     "Reject": "Reject",
-    "Accept": "Accept"
+    "Accept": "Accept",
+    "Accepted":"Accepted",
+    "Order details":"Order details",
+    "Arrived at Pickup point":"Arrived at Pickup point",
+    "Total":"Total",
+    "Payment Method":"Payment Method"
   }
   

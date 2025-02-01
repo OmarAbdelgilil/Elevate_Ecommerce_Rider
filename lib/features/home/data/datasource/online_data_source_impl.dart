@@ -15,6 +15,7 @@ class OnlineDataSourceImpl implements OnlineDataSource {
   Future<Result<OrdersEntity>> getOrders() {
     return executeApi(() async {
       final result = await _apiManager.getOrders();
+      print(result.orders!.first.user);
       return OrdersDto(result).toOrdersEntity();
     });
   }

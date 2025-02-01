@@ -50,6 +50,7 @@ dependencies:
   flutter_svg:
   shared_preferences:
   lottie: ^3.2.0
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:

@@ -1,16 +1,20 @@
 {
-    "Login": "تسجيل الدخول",
-    "Enter your email": "أدخل بريدك الإلكتروني",
-    "Email": "البريد الإلكتروني",
-    "Forget password?": "هل نسيت كلمة المرور؟",
-    "Enter your password": "أدخل كلمة المرور",
-    "Password": "كلمة المرور",
-    "Continue": "استمرار",
-    "Remember me": "تذكرني",
-    "Flower order": "طلب زهور",
-    "Pickup address": "عنوان الاستلام",
-    "User address": "عنوان المستخدم",
-    "Reject": "رفض",
-    "Accept": "قبول"
-  }
-  
+  "Login": "تسجيل الدخول",
+  "Enter your email": "أدخل بريدك الإلكتروني",
+  "Email": "البريد الإلكتروني",
+  "Forget password?": "هل نسيت كلمة المرور؟",
+  "Enter your password": "أدخل كلمة المرور",
+  "Password": "كلمة المرور",
+  "Continue": "استمرار",
+  "Remember me": "تذكرني",
+  "Flower order": "طلب زهور",
+  "Pickup address": "عنوان الاستلام",
+  "User address": "عنوان المستخدم",
+  "Reject": "رفض",
+  "Accept": "قبول",
+  "Accepted": "تم القبول",
+  "Order details": "تفاصيل الطلب",
+  "Arrived at Pickup point": "وصل إلى نقطة الاستلام",
+  "Total": "المجموع",
+  "Payment Method": "طريقة الدفع"
+}

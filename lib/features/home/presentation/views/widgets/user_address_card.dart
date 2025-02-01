@@ -1,10 +1,15 @@
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/user.dart';
 import 'package:elevate_ecommerce_driver/utils/color_manager.dart';
+import 'package:elevate_ecommerce_driver/utils/open_phone_dialer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class UserAddressCard extends StatelessWidget {
   final User data;
-  const UserAddressCard({super.key, required this.data});
+  final bool showIcons;
+  const UserAddressCard(
+      {super.key, required this.data, required this.showIcons});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +49,33 @@ class UserAddressCard extends StatelessWidget {
                   ],
                 )
               ],
-            )
+            ),
+            if (showIcons)
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        openDialer(data.phone!);
+                      },
+                      child: Icon(
+                        Icons.phone_outlined,
+                        size: 20.sp,
+                        color: ColorManager.pink,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          openWhatsApp(data.phone!);
+                        },
+                        child: SvgPicture.asset("assets/svg/whatsapp_icon.svg"))
+                  ],
+                ),
+              )
           ],
         ),
       ),

@@ -5,6 +5,7 @@ import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/view
 import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/widgets/profile_header.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/widgets/profile_menu_item.dart';
 import 'package:elevate_ecommerce_driver/features/login/domain/models/user.dart';
+import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -37,13 +38,13 @@ class ProfileScreenContent extends StatelessWidget {
         final User? user = userProvider.user;
 
         if (user == null) {
-          return const Center(child: Text('No user data available'));
+          return const Center(child: Text(StringsManager.noUserDataAvailable));
         }
 
         return Scaffold(
           appBar: AppBar(
             leading: const BackButton(),
-            title: const Text('Profile'),
+            title: const Text(StringsManager.profile),
             actions: [
               Padding(
                 padding: EdgeInsets.only(right: 16.w),
@@ -90,7 +91,7 @@ class ProfileScreenContent extends StatelessWidget {
                     ),
                     SizedBox(height: 20.h),
                     ProfileMenuItem(
-                      title: 'Vehicle info',
+                      title: StringsManager.vehicleinfo,
                       subtitle: '${user.vehicleType}\n${user.vehicleNumber}',
                       onTap: () {
                         Navigator.of(context).pushNamed(AppRoutes.editVihcle);
@@ -98,14 +99,14 @@ class ProfileScreenContent extends StatelessWidget {
                     ),
                     Divider(height: 1.h),
                     ProfileMenuItem(
-                      title: 'Language',
-                      subtitle: 'English',
+                      title: StringsManager.language,
+                      subtitle: StringsManager.english,
                       textColor: Theme.of(context).colorScheme.primary,
                       onTap: () {},
                     ),
                     Divider(height: 1.h),
                     ProfileMenuItem(
-                      title: 'Logout',
+                      title: StringsManager.logout,
                       trailing: const Icon(Icons.logout),
                       onTap: () => userProvider.logout(),
                     ),

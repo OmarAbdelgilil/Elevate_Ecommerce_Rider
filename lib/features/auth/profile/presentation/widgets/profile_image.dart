@@ -1,3 +1,4 @@
+import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -30,7 +31,7 @@ class _ProfileImageState extends State<ProfileImage> {
         widget.onImageSelected?.call(_selectedImage!);
       }
     } catch (e) {
-      debugPrint('Error taking photo: $e');
+      debugPrint('${StringsManager.errorTakingPhoto}$e');
     }
   }
 
@@ -44,7 +45,7 @@ class _ProfileImageState extends State<ProfileImage> {
         widget.onImageSelected?.call(_selectedImage!);
       }
     } catch (e) {
-      debugPrint('Error picking image: $e');
+      debugPrint('${StringsManager.errorPickingImage}$e');
     }
   }
 
@@ -70,7 +71,7 @@ class _ProfileImageState extends State<ProfileImage> {
             ),
             ListTile(
               leading: const Icon(Icons.camera_alt, color: Colors.grey),
-              title: const Text('Take Photo'),
+              title: const Text(StringsManager.takePhoto),
               onTap: () {
                 Navigator.pop(context);
                 _takePhoto();
@@ -78,7 +79,7 @@ class _ProfileImageState extends State<ProfileImage> {
             ),
             ListTile(
               leading: const Icon(Icons.photo_library, color: Colors.grey),
-              title: const Text('Choose from Gallery'),
+              title: const Text(StringsManager.chooseFromGallery),
               onTap: () {
                 Navigator.pop(context);
                 _pickFromGallery();
@@ -90,7 +91,7 @@ class _ProfileImageState extends State<ProfileImage> {
               child: TextButton(
                 onPressed: () => Navigator.pop(context),
                 child: const Text(
-                  'Cancel',
+                  StringsManager.cancel,
                   style: TextStyle(color: Colors.red),
                 ),
               ),

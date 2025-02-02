@@ -2,6 +2,7 @@ import 'package:elevate_ecommerce_driver/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/widgets/custom_drop_down.dart';
 import 'package:elevate_ecommerce_driver/utils/custom_button.dart';
 import 'package:elevate_ecommerce_driver/utils/custom_textfield.dart';
+import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +47,7 @@ class EditVehicleScreen extends StatelessWidget {
         final user = userProvider.user;
 
         if (user == null) {
-          return const Center(child: Text('No user data available'));
+          return const Center(child: Text(StringsManager.noUserDataAvailable));
         }
 
         // Initialize controllers with user data
@@ -70,7 +71,7 @@ class EditVehicleScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             leading: const BackButton(),
-            title: const Text('Edit Vehicle'),
+            title: const Text(StringsManager.editVehicle),
             actions: [
               IconButton(
                 icon: const Icon(Icons.notifications_outlined),
@@ -84,7 +85,7 @@ class EditVehicleScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 CustomDropdown(
-                  label: "Vehicle type",
+                  label: StringsManager.vehicleType,
                   value: selectedVehicleType,
                   items: vehicleTypes,
                   onChanged: (value) {
@@ -95,18 +96,18 @@ class EditVehicleScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 CustomTextField(
-                  label: 'Vehicle number',
-                  hint: 'Enter vehicle number',
+                  label: StringsManager.vehicleNumber,
+                  hint: StringsManager.enterVehicleNumber,
                   controller: vehicleNumberController,
                 ),
                 const SizedBox(height: 16),
                 CustomTextField(
-                  label: 'Vehicle license',
+                  label: StringsManager.vehicleLicense,
                   suffix: IconButton(
                     icon: const Icon(Icons.file_upload_outlined),
                     onPressed: () {},
                   ),
-                  hint: 'Enter vehicle license',
+                  hint: StringsManager.enterVehicleLicense,
                   controller: vehicleLicenseController,
                 ),
                 const Spacer(),
@@ -118,7 +119,7 @@ class EditVehicleScreen extends StatelessWidget {
                     userProvider.setUser(user);
                     Navigator.pop(context); // Navigate back after updating
                   },
-                  text: 'Update',
+                  text: StringsManager.update,
                 ),
                 const SizedBox(height: 16),
               ],

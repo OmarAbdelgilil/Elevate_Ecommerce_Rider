@@ -4,6 +4,7 @@ import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/view
 import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/widgets/gender_selector.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/widgets/profile_image.dart';
 import 'package:elevate_ecommerce_driver/utils/custom_textfield.dart';
+import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -36,11 +37,13 @@ class EditProfileScreen extends StatelessWidget {
         if (state is EditProfileSuccess) {
           context.read<UserProvider>().setUser(state.user);
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Profile updated successfully')),
+            const SnackBar(
+                content: Text(StringsManager.profileUpdatedSuccessfully)),
           );
         } else if (state is ImageUploadSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Profile image updated successfully')),
+            const SnackBar(
+                content: Text(StringsManager.profileImageUpdatedSuccessfully)),
           );
         } else if (state is EditProfileError) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -55,7 +58,7 @@ class EditProfileScreen extends StatelessWidget {
             icon: const Icon(Icons.arrow_back),
             onPressed: () => Navigator.pop(context),
           ),
-          title: const Text('Edit profile'),
+          title: const Text(StringsManager.editProfile),
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
@@ -74,16 +77,16 @@ class EditProfileScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: CustomTextField(
-                      label: 'First name',
-                      hint: 'Enter first name',
+                      label: StringsManager.firstName,
+                      hint: StringsManager.enterFirstName,
                       controller: firstNameController,
                     ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
                     child: CustomTextField(
-                      label: 'Last name',
-                      hint: 'Enter last name',
+                      label: StringsManager.lastName,
+                      hint: StringsManager.enterLastName,
                       controller: lastNameController,
                     ),
                   ),
@@ -91,26 +94,26 @@ class EditProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               CustomTextField(
-                label: 'Email',
-                hint: 'Enter email',
+                label: StringsManager.email,
+                hint: StringsManager.enterEmail,
                 controller: emailController,
               ),
               const SizedBox(height: 16),
               CustomTextField(
-                label: 'Phone number',
-                hint: 'Enter phone number',
+                label: StringsManager.phoneNumber,
+                hint: StringsManager.enterPhoneNumber,
                 controller: phoneController,
               ),
               const SizedBox(height: 16),
               CustomTextField(
-                label: 'Password',
-                hint: 'Enter password',
+                label: StringsManager.pass,
+                hint: StringsManager.enterPass,
                 controller: passwordController,
                 suffix: TextButton(
                   onPressed: () {
                     // Handle password change
                   },
-                  child: const Text('Change'),
+                  child: const Text(StringsManager.changePassword),
                 ),
               ),
               const SizedBox(height: 16),
@@ -146,7 +149,7 @@ class EditProfileScreen extends StatelessWidget {
                       ),
                       child: state is EditProfileLoading
                           ? const CircularProgressIndicator(color: Colors.white)
-                          : const Text('Update'),
+                          : const Text(StringsManager.update),
                     ),
                   );
                 },

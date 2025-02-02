@@ -10,7 +10,23 @@ class StringsManager {
   static const String boardingWelcome = "Welcome To\nFlowery rider app";
   static const String apply = "Apply now";
   // mainLayOutScreen
-  static const homeTab = 'Home';
-  static const ordersTab = 'Orders';
-  static const profileTab = 'Profile';
+  static const String homeTab = 'Home';
+  static const String ordersTab = 'Orders';
+  static const String profileTab = 'Profile';
+  //home page
+  static const String appTitle = "Flowery rider";
+  static const String iMFellfont = "IMFellEnglish";
+  //order card
+  static const String orderCardTitle = "Flower order";
+  static const String pickupAddress = "Pickup address";
+  static const String userAddress = "User address";
+  static const String rejectBtnLabel = "Reject";
+  static const String acceptBtnLabel = "Accept";
+  static const String orderAcceptedStatus = "Accepted";
+  //order_details
+  static const String orderDetailsTitle = "Order details";
+  static const String acceptedOrderBtn = "Arrived at Pickup point";
+  static const String orderDetails = "Order details";
+  static const String total = "Total";
+  static const String paymentMethod = "Payment Method";
 }

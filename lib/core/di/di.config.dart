@@ -21,15 +21,26 @@ import '../../features/home/data/datasource/online_data_source_impl.dart'
 import '../../features/home/data/repositories/home_repository_impl.dart'
     as _i76;
 import '../../features/home/domain/repositories/home_repository.dart' as _i0;
+import '../../features/home/domain/usecases/check_firebase_orders_use_case.dart'
+    as _i937;
 import '../../features/home/domain/usecases/check_order_use_case.dart' as _i2;
+import '../../features/home/domain/usecases/clear_ongoing_order_use_case.dart'
+    as _i212;
+import '../../features/home/domain/usecases/complete_order_use_case.dart'
+    as _i767;
 import '../../features/home/domain/usecases/get_order_use_case.dart' as _i997;
 import '../../features/home/domain/usecases/get_pending_orders_use_case.dart'
     as _i346;
 import '../../features/home/domain/usecases/set_order_use_case.dart' as _i234;
-import '../../features/home/presentation/viewmodels/home_view_model.dart'
-    as _i514;
-import '../../features/home/presentation/viewmodels/ongoing_order_view_model.dart'
-    as _i655;
+import '../../features/home/domain/usecases/start_order_use_case.dart' as _i631;
+import '../../features/home/domain/usecases/update_driver_location_use_case.dart'
+    as _i894;
+import '../../features/home/domain/usecases/update_firebase_order_data_use_case.dart'
+    as _i705;
+import '../../features/home/presentation/home_screen/viewmodels/home_view_model.dart'
+    as _i993;
+import '../../features/home/presentation/home_screen/viewmodels/ongoing_order_view_model.dart'
+    as _i812;
 import '../../features/login/data/contracts/offline_data_source.dart' as _i459;
 import '../../features/login/data/contracts/online_data_source.dart' as _i1047;
 import '../../features/login/data/datasource/offline_data_source_impl.dart'
@@ -53,8 +64,9 @@ import '../../features/login/presentation/login_validator/login_validator.dart'
 import '../../features/on_boarding/presentation/on_boarding_view_model.dart'
     as _i484;
 import '../local/hive/hive_manager.dart' as _i228;
-import '../network/api_manager.dart' as _i119;
-import '../network/network_module.dart' as _i200;
+import '../network/api/api_manager.dart' as _i561;
+import '../network/api/network_module.dart' as _i138;
+import '../network/firebase/firebase_manager.dart' as _i18;
 import '../providers/user_provider.dart' as _i26;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -69,6 +81,7 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final dioModule = _$DioModule();
+    gh.factory<_i18.FirebaseManager>(() => _i18.FirebaseManager());
     gh.factory<_i26.UserProvider>(() => _i26.UserProvider());
     gh.factory<_i538.LoginValidator>(() => _i538.LoginValidator());
     gh.singleton<_i228.HiveManager>(() => _i228.HiveManager());
@@ -77,14 +90,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i294.OfflineDataSourceImpl(gh<_i228.HiveManager>()));
     gh.factory<_i842.OfflineDataSource>(
         () => _i902.OfflineDataSourceImpl(gh<_i228.HiveManager>()));
-    gh.singleton<_i119.ApiManager>(() => _i119.ApiManager(
+    gh.singleton<_i561.ApiManager>(() => _i561.ApiManager(
           gh<_i361.Dio>(),
           gh<_i26.UserProvider>(),
         ));
-    gh.factory<_i89.OnlineDataSource>(
-        () => _i1015.OnlineDataSourceImpl(gh<_i119.ApiManager>()));
+    gh.factory<_i89.OnlineDataSource>(() => _i1015.OnlineDataSourceImpl(
+          gh<_i561.ApiManager>(),
+          gh<_i18.FirebaseManager>(),
+        ));
     gh.factory<_i1047.OnlineDataSource>(
-        () => _i235.OnlineDataSourceImpl(gh<_i119.ApiManager>()));
+        () => _i235.OnlineDataSourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i184.LoginRepo>(() => _i937.LoginRepoImpl(
           gh<_i1047.OnlineDataSource>(),
           gh<_i459.OfflineDataSource>(),
@@ -103,14 +118,26 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1005.LoginUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i571.SetCachedUserUseCase>(
         () => _i571.SetCachedUserUseCase(gh<_i184.LoginRepo>()));
-    gh.factory<_i346.GetPendingOrdersUseCase>(
-        () => _i346.GetPendingOrdersUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i937.CheckFirebaseOrdersUseCase>(
+        () => _i937.CheckFirebaseOrdersUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i2.CheckOrderUseCase>(
         () => _i2.CheckOrderUseCase(gh<_i0.HomeRepository>()));
-    gh.factory<_i234.SetOrderUseCase>(
-        () => _i234.SetOrderUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i997.GetOrderUseCase>(
         () => _i997.GetOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i346.GetPendingOrdersUseCase>(
+        () => _i346.GetPendingOrdersUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i234.SetOrderUseCase>(
+        () => _i234.SetOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i631.StartOrderUseCase>(
+        () => _i631.StartOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i705.UpdateFirebaseOrderDataUseCase>(
+        () => _i705.UpdateFirebaseOrderDataUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i894.UpdateDriverLocationUseCase>(
+        () => _i894.UpdateDriverLocationUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i767.CompleteOrderUseCase>(
+        () => _i767.CompleteOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i212.ClearOngoingOrderUseCase>(
+        () => _i212.ClearOngoingOrderUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i484.OnBoardingViewModel>(() => _i484.OnBoardingViewModel(
           gh<_i788.CheckCachedUserUseCase>(),
           gh<_i582.GetCachedUserUseCase>(),
@@ -122,15 +149,24 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i582.GetCachedUserUseCase>(),
           gh<_i1.GetUserDataUseCase>(),
         ));
-    gh.factory<_i655.OngoingOrderViewModel>(
-        () => _i655.OngoingOrderViewModel(gh<_i997.GetOrderUseCase>()));
-    gh.lazySingleton<_i514.HomeViewModel>(() => _i514.HomeViewModel(
+    gh.singleton<_i993.HomeViewModel>(() => _i993.HomeViewModel(
           gh<_i346.GetPendingOrdersUseCase>(),
           gh<_i2.CheckOrderUseCase>(),
           gh<_i234.SetOrderUseCase>(),
+          gh<_i631.StartOrderUseCase>(),
+          gh<_i937.CheckFirebaseOrdersUseCase>(),
+          gh<_i705.UpdateFirebaseOrderDataUseCase>(),
+        ));
+    gh.factory<_i812.OngoingOrderViewModel>(() => _i812.OngoingOrderViewModel(
+          gh<_i997.GetOrderUseCase>(),
+          gh<_i894.UpdateDriverLocationUseCase>(),
+          gh<_i705.UpdateFirebaseOrderDataUseCase>(),
+          gh<_i234.SetOrderUseCase>(),
+          gh<_i767.CompleteOrderUseCase>(),
+          gh<_i212.ClearOngoingOrderUseCase>(),
         ));
     return this;
   }
 }
 
-class _$DioModule extends _i200.DioModule {}
+class _$DioModule extends _i138.DioModule {}

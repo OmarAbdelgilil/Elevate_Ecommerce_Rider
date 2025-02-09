@@ -4,6 +4,8 @@ import 'package:elevate_ecommerce_driver/core/di/di.dart';
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/core/routes/router.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/cache_user_model.dart';
+import 'package:elevate_ecommerce_driver/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +14,9 @@ import 'package:hive_flutter/adapters.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   configureDependencies();
   Bloc.observer = SimpleBlocObserver();
   await SystemChrome.setPreferredOrientations([
@@ -56,7 +61,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         onGenerateRoute: manageRoutes,
-        initialRoute: AppRoutes.boarding,
+        initialRoute: AppRoutes.mainLayOut,
       ),
     );
   }

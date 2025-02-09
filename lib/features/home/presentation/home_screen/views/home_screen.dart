@@ -1,7 +1,7 @@
 import 'package:elevate_ecommerce_driver/core/di/di.dart';
-import 'package:elevate_ecommerce_driver/features/home/presentation/viewmodels/home_view_model.dart';
-import 'package:elevate_ecommerce_driver/features/home/presentation/views/ongoing_order_screen.dart';
-import 'package:elevate_ecommerce_driver/features/home/presentation/views/widgets/order_card.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/home_screen/viewmodels/home_view_model.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/home_screen/views/ongoing_order_screen.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/home_screen/views/widgets/order_card.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

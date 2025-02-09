@@ -4,7 +4,7 @@ import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/orde
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/check_order_use_case.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/get_pending_orders_use_case.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/set_order_use_case.dart';
-import 'package:elevate_ecommerce_driver/features/home/presentation/viewmodels/home_view_model.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/home_screen/viewmodels/home_view_model.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

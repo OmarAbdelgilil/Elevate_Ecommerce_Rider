@@ -23,10 +23,24 @@ class StringsManager {
   static const String rejectBtnLabel = "Reject";
   static const String acceptBtnLabel = "Accept";
   static const String orderAcceptedStatus = "Accepted";
+  static const String orderArrivePickupStatus = "Picked";
+  static const String orderArriveUserStatus = "Arrived";
+  static const String orderDeliveringStatus = "Out for delivery";
+  static const String orderCompletedStatus = "Delivered";
+
   //order_details
   static const String orderDetailsTitle = "Order details";
   static const String acceptedOrderBtn = "Arrived at Pickup point";
+  static const String startDeliverBtn = "Start deliver";
+  static const String arrivedOrderBtn = "Arrived to the user";
+  static const String deliveredOrderBtn = "Delivered to the user";
   static const String orderDetails = "Order details";
   static const String total = "Total";
   static const String paymentMethod = "Payment Method";
+
+  //success_order
+  static const String thankYou = "Thank you!!";
+  static const String successMessage = "The order delivered";
+  static const String successfully = "successfully";
+  static const String doneBtn = "Done";
 }

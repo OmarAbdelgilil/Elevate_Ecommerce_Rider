@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elevate_ecommerce_driver/features/home/presentation/views/home_screen.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/home_screen/views/home_screen.dart';
 import 'package:elevate_ecommerce_driver/utils/assets_manager.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';

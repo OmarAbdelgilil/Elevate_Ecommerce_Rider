@@ -32,7 +32,7 @@ void main() {
 
       final result = await onlineDataSource.login(email, pass);
 
-      expect(result, isA<Success<LoginResponse>>());
+      expect(result, isA<Success<LoginResponse?>>());
     });
 
     test('login fails on invalid credentials', () async {
@@ -44,7 +44,7 @@ void main() {
 
       final result = await onlineDataSource.login(email, pass);
 
-      expect(result, isA<Fail<LoginResponse>>());
+      expect(result, isA<Fail<LoginResponse?>>());
     });
 
     test('getUserData retrieves user data successfully', () async {

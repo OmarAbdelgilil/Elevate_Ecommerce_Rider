@@ -3,16 +3,19 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i7;
+import 'dart:async' as _i8;
 
+import 'package:cloud_firestore/cloud_firestore.dart' as _i6;
 import 'package:elevate_ecommerce_driver/core/network/api/api_manager.dart'
-    as _i6;
+    as _i7;
+import 'package:elevate_ecommerce_driver/core/network/firebase/firebase_manager.dart'
+    as _i10;
 import 'package:elevate_ecommerce_driver/features/home/data/models/response/orders_response/orders_response.dart'
     as _i4;
 import 'package:elevate_ecommerce_driver/features/home/data/models/response/start_order_response/start_order_response.dart'
     as _i5;
 import 'package:elevate_ecommerce_driver/features/login/data/models/request/login_request.dart'
-    as _i8;
+    as _i9;
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/login_response.dart'
     as _i2;
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/user_data_response/user_data_response.dart'
@@ -75,80 +78,91 @@ class _FakeStartOrderResponse_3 extends _i1.SmartFake
         );
 }
 
+class _FakeQuerySnapshot_4<T extends Object?> extends _i1.SmartFake
+    implements _i6.QuerySnapshot<T> {
+  _FakeQuerySnapshot_4(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ApiManager].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiManager extends _i1.Mock implements _i6.ApiManager {
+class MockApiManager extends _i1.Mock implements _i7.ApiManager {
   MockApiManager() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i7.Future<_i2.LoginResponse> login(_i8.LoginRequest? request) =>
+  _i8.Future<_i2.LoginResponse> login(_i9.LoginRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [request],
         ),
-        returnValue: _i7.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
+        returnValue: _i8.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
           this,
           Invocation.method(
             #login,
             [request],
           ),
         )),
-      ) as _i7.Future<_i2.LoginResponse>);
+      ) as _i8.Future<_i2.LoginResponse>);
 
   @override
-  _i7.Future<_i3.UserDataResponse> getUserData() => (super.noSuchMethod(
+  _i8.Future<_i3.UserDataResponse> getUserData() => (super.noSuchMethod(
         Invocation.method(
           #getUserData,
           [],
         ),
         returnValue:
-            _i7.Future<_i3.UserDataResponse>.value(_FakeUserDataResponse_1(
+            _i8.Future<_i3.UserDataResponse>.value(_FakeUserDataResponse_1(
           this,
           Invocation.method(
             #getUserData,
             [],
           ),
         )),
-      ) as _i7.Future<_i3.UserDataResponse>);
+      ) as _i8.Future<_i3.UserDataResponse>);
 
   @override
-  _i7.Future<_i4.OrdersResponse> getOrders() => (super.noSuchMethod(
+  _i8.Future<_i4.OrdersResponse> getOrders() => (super.noSuchMethod(
         Invocation.method(
           #getOrders,
           [],
         ),
-        returnValue: _i7.Future<_i4.OrdersResponse>.value(_FakeOrdersResponse_2(
+        returnValue: _i8.Future<_i4.OrdersResponse>.value(_FakeOrdersResponse_2(
           this,
           Invocation.method(
             #getOrders,
             [],
           ),
         )),
-      ) as _i7.Future<_i4.OrdersResponse>);
+      ) as _i8.Future<_i4.OrdersResponse>);
 
   @override
-  _i7.Future<_i5.StartOrderResponse> startOrder(String? orderID) =>
+  _i8.Future<_i5.StartOrderResponse> startOrder(String? orderID) =>
       (super.noSuchMethod(
         Invocation.method(
           #startOrder,
           [orderID],
         ),
         returnValue:
-            _i7.Future<_i5.StartOrderResponse>.value(_FakeStartOrderResponse_3(
+            _i8.Future<_i5.StartOrderResponse>.value(_FakeStartOrderResponse_3(
           this,
           Invocation.method(
             #startOrder,
             [orderID],
           ),
         )),
-      ) as _i7.Future<_i5.StartOrderResponse>);
+      ) as _i8.Future<_i5.StartOrderResponse>);
 
   @override
-  _i7.Future<_i5.StartOrderResponse> completeOrder(
+  _i8.Future<_i5.StartOrderResponse> completeOrder(
     String? orderID,
     Map<String, dynamic>? body,
   ) =>
@@ -161,7 +175,7 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
           ],
         ),
         returnValue:
-            _i7.Future<_i5.StartOrderResponse>.value(_FakeStartOrderResponse_3(
+            _i8.Future<_i5.StartOrderResponse>.value(_FakeStartOrderResponse_3(
           this,
           Invocation.method(
             #completeOrder,
@@ -171,5 +185,48 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
             ],
           ),
         )),
-      ) as _i7.Future<_i5.StartOrderResponse>);
+      ) as _i8.Future<_i5.StartOrderResponse>);
+}
+
+/// A class which mocks [FirebaseManager].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFirebaseManager extends _i1.Mock implements _i10.FirebaseManager {
+  MockFirebaseManager() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i8.Future<_i6.QuerySnapshot<Map<String, dynamic>>> getOngoingOrders() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getOngoingOrders,
+          [],
+        ),
+        returnValue: _i8.Future<_i6.QuerySnapshot<Map<String, dynamic>>>.value(
+            _FakeQuerySnapshot_4<Map<String, dynamic>>(
+          this,
+          Invocation.method(
+            #getOngoingOrders,
+            [],
+          ),
+        )),
+      ) as _i8.Future<_i6.QuerySnapshot<Map<String, dynamic>>>);
+
+  @override
+  _i8.Future<void> updateOrderDetails(
+    String? orderId,
+    Map<String, dynamic>? data,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateOrderDetails,
+          [
+            orderId,
+            data,
+          ],
+        ),
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
 }

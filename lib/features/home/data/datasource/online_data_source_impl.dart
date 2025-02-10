@@ -44,11 +44,14 @@ class OnlineDataSourceImpl implements OnlineDataSource {
 
   @override
   Future<Result<void>> updateOrderData(String orderStatus, String orderId,
-      {User? driverData}) {
+      {User? driverData, String? driverDeviceToken}) {
     return executeApi(() async {
       Map<String, dynamic> data = {};
       if (driverData != null) {
         data['driver'] = driverData.toJson();
+      }
+      if (driverDeviceToken != null) {
+        data['driverDeviceToken'] = driverDeviceToken;
       }
       data['status'] = orderStatus;
       data['timestamp'] = FieldValue.serverTimestamp();

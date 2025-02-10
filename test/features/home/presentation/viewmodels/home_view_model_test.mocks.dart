@@ -185,8 +185,9 @@ class MockUpdateFirebaseOrderDataUseCase extends _i1.Mock
   @override
   _i3.Future<_i4.Result<void>> updateOrderData(
     String? orderStatus,
-    String? orderId,
-  ) =>
+    String? orderId, {
+    String? driverDeviceToken,
+  }) =>
       (super.noSuchMethod(
         Invocation.method(
           #updateOrderData,
@@ -194,6 +195,7 @@ class MockUpdateFirebaseOrderDataUseCase extends _i1.Mock
             orderStatus,
             orderId,
           ],
+          {#driverDeviceToken: driverDeviceToken},
         ),
         returnValue:
             _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
@@ -204,6 +206,7 @@ class MockUpdateFirebaseOrderDataUseCase extends _i1.Mock
               orderStatus,
               orderId,
             ],
+            {#driverDeviceToken: driverDeviceToken},
           ),
         )),
       ) as _i3.Future<_i4.Result<void>>);

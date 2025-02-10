@@ -122,6 +122,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i937.CheckFirebaseOrdersUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i2.CheckOrderUseCase>(
         () => _i2.CheckOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i212.ClearOngoingOrderUseCase>(
+        () => _i212.ClearOngoingOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i767.CompleteOrderUseCase>(
+        () => _i767.CompleteOrderUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i997.GetOrderUseCase>(
         () => _i997.GetOrderUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i346.GetPendingOrdersUseCase>(
@@ -130,14 +134,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i234.SetOrderUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i631.StartOrderUseCase>(
         () => _i631.StartOrderUseCase(gh<_i0.HomeRepository>()));
-    gh.factory<_i705.UpdateFirebaseOrderDataUseCase>(
-        () => _i705.UpdateFirebaseOrderDataUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i894.UpdateDriverLocationUseCase>(
         () => _i894.UpdateDriverLocationUseCase(gh<_i0.HomeRepository>()));
-    gh.factory<_i767.CompleteOrderUseCase>(
-        () => _i767.CompleteOrderUseCase(gh<_i0.HomeRepository>()));
-    gh.factory<_i212.ClearOngoingOrderUseCase>(
-        () => _i212.ClearOngoingOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i705.UpdateFirebaseOrderDataUseCase>(
+        () => _i705.UpdateFirebaseOrderDataUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i484.OnBoardingViewModel>(() => _i484.OnBoardingViewModel(
           gh<_i788.CheckCachedUserUseCase>(),
           gh<_i582.GetCachedUserUseCase>(),

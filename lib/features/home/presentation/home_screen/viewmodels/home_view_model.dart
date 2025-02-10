@@ -10,6 +10,7 @@ import 'package:elevate_ecommerce_driver/features/home/domain/usecases/set_order
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/start_order_use_case.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/update_firebase_order_data_use_case.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -103,6 +104,12 @@ class HomeViewModel extends Cubit<HomeScreenState> {
     }
   }
 
+  Future<String?> _getDeviceToken() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    await messaging.requestPermission();
+    return await messaging.getToken();
+  }
+
   Future<void> _acceptOrder(OrderEntity order) async {
     emit(LoadingState());
     order.status = StringsManager.orderAcceptedStatus;
@@ -111,7 +118,8 @@ class HomeViewModel extends Cubit<HomeScreenState> {
       case Success<StartOrderResponse>():
         await _setLocalOrder(order);
         await _updateFirebaseOrderDataUseCase.updateOrderData(
-            StringsManager.orderAcceptedStatus, order.id!);
+            StringsManager.orderAcceptedStatus, order.id!,
+            driverDeviceToken: await _getDeviceToken());
         return;
       case Fail<StartOrderResponse>():
         emit(ErrorState(result.exception!));

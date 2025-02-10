@@ -9,7 +9,7 @@ abstract class OnlineDataSource {
   Future<Result<StartOrderResponse>> startOrder(String orderId);
   Future<Result<FirebaseOrdersResponse>> getFirebaseOrders();
   Future<Result<void>> updateOrderData(String orderStatus, String orderId,
-      {User? driverData});
+      {User? driverData, String? driverDeviceToken});
   Future<Result<void>> updateDriverLoc(
       String orderId, double driverLat, double driverLong);
   Future<Result<void>> completeOrder(String orderId);

@@ -51,10 +51,10 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Result<void>> updateOrderData(
-      String orderStatus, String orderId) async {
+  Future<Result<void>> updateOrderData(String orderStatus, String orderId,
+      {String? driverDeviceToken}) async {
     return await _onlineDataSource.updateOrderData(orderStatus, orderId,
-        driverData: UserProvider().user);
+        driverData: UserProvider().user, driverDeviceToken: driverDeviceToken);
   }
 
   @override

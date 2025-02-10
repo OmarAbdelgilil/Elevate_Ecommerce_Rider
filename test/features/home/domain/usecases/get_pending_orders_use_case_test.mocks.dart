@@ -158,8 +158,9 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
   @override
   _i3.Future<_i4.Result<void>> updateOrderData(
     String? orderStatus,
-    String? orderId,
-  ) =>
+    String? orderId, {
+    String? driverDeviceToken,
+  }) =>
       (super.noSuchMethod(
         Invocation.method(
           #updateOrderData,
@@ -167,6 +168,7 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
             orderStatus,
             orderId,
           ],
+          {#driverDeviceToken: driverDeviceToken},
         ),
         returnValue:
             _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
@@ -177,6 +179,7 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
               orderStatus,
               orderId,
             ],
+            {#driverDeviceToken: driverDeviceToken},
           ),
         )),
       ) as _i3.Future<_i4.Result<void>>);

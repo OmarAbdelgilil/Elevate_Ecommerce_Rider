@@ -99,6 +99,7 @@ class MockOnlineDataSource extends _i1.Mock implements _i2.OnlineDataSource {
     String? orderStatus,
     String? orderId, {
     _i9.User? driverData,
+    String? driverDeviceToken,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -107,7 +108,10 @@ class MockOnlineDataSource extends _i1.Mock implements _i2.OnlineDataSource {
             orderStatus,
             orderId,
           ],
-          {#driverData: driverData},
+          {
+            #driverData: driverData,
+            #driverDeviceToken: driverDeviceToken,
+          },
         ),
         returnValue:
             _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
@@ -118,7 +122,10 @@ class MockOnlineDataSource extends _i1.Mock implements _i2.OnlineDataSource {
               orderStatus,
               orderId,
             ],
-            {#driverData: driverData},
+            {
+              #driverData: driverData,
+              #driverDeviceToken: driverDeviceToken,
+            },
           ),
         )),
       ) as _i3.Future<_i4.Result<void>>);

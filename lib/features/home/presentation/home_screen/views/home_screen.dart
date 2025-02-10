@@ -7,11 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
+  HomeScreen({super.key});
+  final viewModel = getIt<HomeViewModel>();
   @override
   Widget build(BuildContext context) {
-    final viewModel = getIt<HomeViewModel>();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

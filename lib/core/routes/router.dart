@@ -11,7 +11,7 @@ Route manageRoutes(RouteSettings settings) {
   switch (settings.name) {
     case AppRoutes.homeScreen:
       return MaterialPageRoute(
-        builder: (context) => const HomeScreen(),
+        builder: (context) => HomeScreen(),
       );
     case AppRoutes.loginScreen:
       return MaterialPageRoute(

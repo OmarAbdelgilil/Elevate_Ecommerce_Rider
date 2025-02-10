@@ -30,12 +30,12 @@ class MainLayoutViewModel extends ChangeNotifier {
       TabItem(
         icon: SVGAssets.ordersTab,
         label: StringsManager.ordersTab.tr(),
-        screen: HomeScreen(),
+        screen: Placeholder(),
       ),
       TabItem(
         icon: SVGAssets.personTab,
         label: StringsManager.profileTab.tr(),
-        screen: HomeScreen(),
+        screen: Placeholder(),
       ),
     ];
   }

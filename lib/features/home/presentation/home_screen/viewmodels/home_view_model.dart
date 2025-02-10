@@ -13,7 +13,7 @@ import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-@singleton
+@injectable
 class HomeViewModel extends Cubit<HomeScreenState> {
   final GetPendingOrdersUseCase _getPendingOrdersUseCase;
   final CheckOrderUseCase _checkOrderUseCase;

@@ -149,7 +149,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i582.GetCachedUserUseCase>(),
           gh<_i1.GetUserDataUseCase>(),
         ));
-    gh.singleton<_i993.HomeViewModel>(() => _i993.HomeViewModel(
+    gh.factory<_i993.HomeViewModel>(() => _i993.HomeViewModel(
           gh<_i346.GetPendingOrdersUseCase>(),
           gh<_i2.CheckOrderUseCase>(),
           gh<_i234.SetOrderUseCase>(),

@@ -1,14 +1,15 @@
-import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/user.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/store.dart';
 import 'package:elevate_ecommerce_driver/utils/color_manager.dart';
 import 'package:elevate_ecommerce_driver/utils/open_phone_dialer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class UserAddressCard extends StatelessWidget {
-  final User data;
+class StoreAddressCard extends StatelessWidget {
+  final Store data;
   final bool showIcons;
-  const UserAddressCard(
+  const StoreAddressCard(
       {super.key, required this.data, required this.showIcons});
 
   @override
@@ -21,8 +22,18 @@ class UserAddressCard extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 22,
-              backgroundImage: NetworkImage(data.photo!),
               backgroundColor: ColorManager.darkGrey,
+              child: CachedNetworkImage(
+                imageUrl: data.image!,
+                imageBuilder: (context, imageProvider) => CircleAvatar(
+                  radius: 22,
+                  backgroundImage: imageProvider,
+                ),
+                placeholder: (context, url) =>
+                    const CircularProgressIndicator(),
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.person, color: Colors.white),
+              ),
             ),
             const SizedBox(
               width: 8,
@@ -33,19 +44,26 @@ class UserAddressCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
                   child: Text(
-                    '${data.firstName!} ${data.lastName}',
+                    data.name!,
                     style: const TextStyle(color: ColorManager.darkGrey),
                   ),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
-                const Row(
+                Row(
                   children: [
-                    Icon(Icons.location_on_outlined),
-                    Text(
-                      "NA",
-                    ),
+                    const Icon(Icons.location_on_outlined),
+                    SizedBox(
+                      width: 200.w,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Text(
+                          maxLines: 1,
+                          data.address ?? 'NA',
+                        ),
+                      ),
+                    )
                   ],
                 )
               ],
@@ -57,7 +75,7 @@ class UserAddressCard extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        openDialer(data.phone!);
+                        openDialer(data.phoneNumber!);
                       },
                       child: Icon(
                         Icons.phone_outlined,
@@ -70,7 +88,7 @@ class UserAddressCard extends StatelessWidget {
                     ),
                     GestureDetector(
                         onTap: () {
-                          openWhatsApp(data.phone!);
+                          openWhatsApp(data.phoneNumber!);
                         },
                         child: SvgPicture.asset("assets/svg/whatsapp_icon.svg"))
                   ],

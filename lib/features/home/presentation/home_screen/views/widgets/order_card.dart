@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart';
-import 'package:elevate_ecommerce_driver/features/home/presentation/viewmodels/home_view_model.dart';
-import 'package:elevate_ecommerce_driver/features/home/presentation/views/widgets/store_address_card.dart';
-import 'package:elevate_ecommerce_driver/features/home/presentation/views/widgets/user_address_card.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/home_screen/viewmodels/home_view_model.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/home_screen/views/widgets/store_address_card.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/home_screen/views/widgets/user_address_card.dart';
 import 'package:elevate_ecommerce_driver/utils/color_manager.dart';
 import 'package:elevate_ecommerce_driver/utils/custom_button.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';

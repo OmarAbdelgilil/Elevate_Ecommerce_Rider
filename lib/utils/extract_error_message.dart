@@ -1,4 +1,4 @@
-import 'package:elevate_ecommerce_driver/core/network/api_error_handler.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_error_handler.dart';
 
 String extractErrorMessage(Exception? exception) {
   var message = "something went wrong";

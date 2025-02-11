@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:elevate_ecommerce_driver/core/network/api_constants.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_constants.dart';
 import 'package:elevate_ecommerce_driver/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/models/response/orders_response/orders_response.dart';
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/start_order_response/start_order_response.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/request/login_request.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/login_response.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/user_data_response/user_data_response.dart';
@@ -47,4 +48,11 @@ abstract class ApiManager {
 
   @GET(ApiConstants.ordersPath)
   Future<OrdersResponse> getOrders();
+
+  @PUT("${ApiConstants.startOrderPath}{orderId}")
+  Future<StartOrderResponse> startOrder(@Path('orderId') String orderID);
+
+  @PUT("${ApiConstants.updateOrderStatePath}{orderId}")
+  Future<StartOrderResponse> completeOrder(
+      @Path('orderId') String orderID, Map<String, dynamic> body);
 }

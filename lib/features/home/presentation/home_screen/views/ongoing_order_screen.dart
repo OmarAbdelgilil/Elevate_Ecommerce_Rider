@@ -78,6 +78,7 @@ class OngoingOrderScreen extends StatelessWidget {
                                 ),
                                 StoreAddressCard(
                                   data: state.order.store!,
+                                  userData: state.order.user!,
                                   showIcons: true,
                                 ),
                                 const SizedBox(
@@ -94,6 +95,7 @@ class OngoingOrderScreen extends StatelessWidget {
                                   height: 16,
                                 ),
                                 UserAddressCard(
+                                  storeData: state.order.store!,
                                   data: state.order.user!,
                                   showIcons: true,
                                 ),

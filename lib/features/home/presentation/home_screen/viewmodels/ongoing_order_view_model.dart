@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
+import 'package:elevate_ecommerce_driver/core/providers/location_provider.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/clear_ongoing_order_use_case.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/complete_order_use_case.dart';
@@ -17,7 +18,6 @@ import 'package:injectable/injectable.dart';
 @injectable
 class OngoingOrderViewModel extends Cubit<OngoingOrderState> {
   final GetOrderUseCase _getOrderUseCase;
-  Stream<Position>? _positionStream;
   StreamSubscription<Position>? _positonListener;
   final UpdateDriverLocationUseCase _updateDriverLocationUseCase;
   final UpdateFirebaseOrderDataUseCase _updateFirebaseOrderDataUseCase;
@@ -75,31 +75,11 @@ class OngoingOrderViewModel extends Cubit<OngoingOrderState> {
   }
 
   Future<void> _startLocationStream(OrderEntity order) async {
-    bool serviceEnabled;
-    LocationPermission permission;
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return;
+    if (LocationProvider().positionStream == null) {
+      await LocationProvider().startLocationStream();
     }
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return;
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      return;
-    }
-    _positionStream = Geolocator.getPositionStream(
-      locationSettings: const LocationSettings(
-        accuracy: LocationAccuracy.high,
-        distanceFilter: 10,
-      ),
-    );
-
-    _positonListener = _positionStream!.listen((Position position) {
+    _positonListener =
+        LocationProvider().positionStream!.listen((Position position) {
       _updateDriverLocationUseCase.updateDriverLoc(
           order.id!, position.latitude, position.longitude);
     });

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
 import 'package:elevate_ecommerce_driver/core/providers/location_provider.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart';
@@ -93,23 +94,23 @@ class OngoingOrderViewModel extends Cubit<OngoingOrderState> {
     switch (order.status) {
       case StringsManager.orderAcceptedStatus:
         stepCount = 1;
-        buttonText = StringsManager.acceptedOrderBtn;
+        buttonText = StringsManager.acceptedOrderBtn.tr();
         break;
       case StringsManager.orderArrivePickupStatus:
         stepCount = 2;
-        buttonText = StringsManager.startDeliverBtn;
+        buttonText = StringsManager.startDeliverBtn.tr();
         break;
       case StringsManager.orderDeliveringStatus:
         stepCount = 3;
-        buttonText = StringsManager.arrivedOrderBtn;
+        buttonText = StringsManager.arrivedOrderBtn.tr();
         break;
       case StringsManager.orderArriveUserStatus:
         stepCount = 4;
-        buttonText = StringsManager.deliveredOrderBtn;
+        buttonText = StringsManager.deliveredOrderBtn.tr();
         break;
       case StringsManager.orderCompletedStatus:
         stepCount = 5;
-        buttonText = StringsManager.deliveredOrderBtn;
+        buttonText = StringsManager.deliveredOrderBtn.tr();
         break;
 
       default:

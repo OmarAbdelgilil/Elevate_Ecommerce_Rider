@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/utils/custom_button.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
@@ -23,15 +24,15 @@ class SuccessOrderScreen extends StatelessWidget {
               height: 20,
             ),
             Text(
-              StringsManager.thankYou,
+              StringsManager.thankYou.tr(),
               style: TextStyle(fontSize: 24.sp, color: Colors.green),
             ),
             Text(
-              StringsManager.successMessage,
+              StringsManager.successMessage.tr(),
               style: TextStyle(fontSize: 24.sp),
             ),
             Text(
-              StringsManager.successfully,
+              StringsManager.successfully.tr(),
               style: TextStyle(fontSize: 24.sp),
             ),
             const SizedBox(
@@ -40,7 +41,7 @@ class SuccessOrderScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: CustomButton(
-                text: StringsManager.doneBtn,
+                text: StringsManager.doneBtn.tr(),
                 onPressed: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
                       AppRoutes.mainLayOut, (Route route) => false);

@@ -126,13 +126,13 @@ class OngoingOrderScreen extends StatelessWidget {
                                   ),
                                 ),
                                 DynamicCard(
-                                    title: StringsManager.total,
+                                    title: StringsManager.total.tr(),
                                     data: 'EGP ${state.order.totalPrice}'),
                                 const SizedBox(
                                   height: 16,
                                 ),
                                 DynamicCard(
-                                    title: StringsManager.paymentMethod,
+                                    title: StringsManager.paymentMethod.tr(),
                                     data: state.order.paymentType!),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -141,6 +141,7 @@ class OngoingOrderScreen extends StatelessWidget {
                                     text: state.buttonText,
                                     color: state.order.status ==
                                             StringsManager.orderCompletedStatus
+                                                .tr()
                                         ? ColorManager.lightGrey
                                         : null,
                                     onPressed: () {

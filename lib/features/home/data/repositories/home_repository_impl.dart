@@ -1,6 +1,7 @@
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/contracts/offline_data_source.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/contracts/online_data_source.dart';
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/order_respose2/order_response2/order_response2.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/orders_entity.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/repositories/home_repository.dart';
@@ -35,5 +36,10 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<Result<OrderEntity>> getOrder() async {
     return await _offlineDataSource.getOngoingOrder();
+  }
+
+  @override
+  Future<Result<OrderResponse2?>> getAllOrder() {
+    return _onlineDataSource.getAllOrder();
   }
 }

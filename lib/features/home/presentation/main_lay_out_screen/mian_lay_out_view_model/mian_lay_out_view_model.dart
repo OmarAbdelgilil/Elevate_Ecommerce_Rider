@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/orders/views/orders_view.dart';
 import 'package:elevate_ecommerce_driver/features/home/presentation/views/home_screen.dart';
 import 'package:elevate_ecommerce_driver/utils/assets_manager.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
@@ -30,7 +31,7 @@ class MainLayoutViewModel extends ChangeNotifier {
       TabItem(
         icon: SVGAssets.ordersTab,
         label: StringsManager.ordersTab.tr(),
-        screen: HomeScreen(),
+        screen: OrdersScreen(),
       ),
       TabItem(
         icon: SVGAssets.personTab,

@@ -3,4 +3,5 @@ class AppRoutes {
   static const String loginScreen = 'login';
   static const mainLayOut = "mainLayOutRoute";
   static const String boarding = 'boarding';
+  static const String orderScreen = 'order';
 }

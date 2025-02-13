@@ -6,6 +6,8 @@
 import 'dart:async' as _i6;
 
 import 'package:elevate_ecommerce_driver/core/network/api_manager.dart' as _i5;
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/order_respose2/order_response2/order_response2.dart'
+    as _i8;
 import 'package:elevate_ecommerce_driver/features/home/data/models/response/orders_response/orders_response.dart'
     as _i4;
 import 'package:elevate_ecommerce_driver/features/login/data/models/request/login_request.dart'
@@ -115,4 +117,13 @@ class MockApiManager extends _i1.Mock implements _i5.ApiManager {
           ),
         )),
       ) as _i6.Future<_i4.OrdersResponse>);
+
+  @override
+  _i6.Future<_i8.OrderResponse2?> getAllOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllOrders,
+          [],
+        ),
+        returnValue: _i6.Future<_i8.OrderResponse2?>.value(),
+      ) as _i6.Future<_i8.OrderResponse2?>);
 }

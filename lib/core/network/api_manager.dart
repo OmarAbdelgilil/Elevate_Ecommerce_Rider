@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:elevate_ecommerce_driver/core/network/api_constants.dart';
 import 'package:elevate_ecommerce_driver/core/providers/user_provider.dart';
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/order_respose2/order_response2/order_response2.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/models/response/orders_response/orders_response.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/request/login_request.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/login_response.dart';
@@ -47,4 +48,6 @@ abstract class ApiManager {
 
   @GET(ApiConstants.ordersPath)
   Future<OrdersResponse> getOrders();
+  @GET(ApiConstants.allOrdersPath)
+  Future<OrderResponse2?> getAllOrders();
 }

@@ -3,6 +3,7 @@ import 'package:elevate_ecommerce_driver/core/network/api_execution.dart';
 import 'package:elevate_ecommerce_driver/core/network/api_manager.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/DTOs/orders_dto.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/contracts/online_data_source.dart';
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/order_respose2/order_response2/order_response2.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/orders_entity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,8 +16,17 @@ class OnlineDataSourceImpl implements OnlineDataSource {
   Future<Result<OrdersEntity>> getOrders() {
     return executeApi(() async {
       final result = await _apiManager.getOrders();
-      print(result.orders!.first.user);
+
       return OrdersDto(result).toOrdersEntity();
+    });
+  }
+
+  @override
+  Future<Result<OrderResponse2?>> getAllOrder() {
+    return executeApi(() async {
+      final result = await _apiManager.getAllOrders();
+
+      return result;
     });
   }
 }

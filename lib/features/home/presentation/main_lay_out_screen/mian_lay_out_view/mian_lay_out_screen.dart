@@ -1,3 +1,4 @@
+import 'package:elevate_ecommerce_driver/core/providers/location_provider.dart';
 import 'package:elevate_ecommerce_driver/utils/color_manager.dart';
 import 'package:elevate_ecommerce_driver/utils/values_manager.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,7 @@ class _MainLayoutBody extends StatelessWidget {
 class _MainBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    LocationProvider().startLocationStream();
     final viewModel = context.watch<MainLayoutViewModel>();
     final selectedIndex = viewModel.selectedIndex;
     final tabs = viewModel.tabs;

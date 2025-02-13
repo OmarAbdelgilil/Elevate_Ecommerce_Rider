@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
+import 'package:elevate_ecommerce_driver/core/providers/location_provider.dart';
 import 'package:elevate_ecommerce_driver/features/login/domain/models/country.dart';
 
 import 'package:elevate_ecommerce_driver/features/login/domain/models/user.dart';
@@ -31,6 +32,11 @@ class OnBoardingViewModel extends Cubit<BoardingScreenState> {
   }
 
   Future<void> _checkCache() async {
+    await LocationProvider().requestLocationPermission();
+    if (!LocationProvider().grantedLocationPermission) {
+      emit(LocationDenied());
+      return;
+    }
     String jsonString = await rootBundle.loadString('assets/json/country.json');
     final List<dynamic> parsed = json.decode(jsonString);
     countries = parsed.map((json) => Country.fromJson(json)).toList();
@@ -70,6 +76,8 @@ class InitialState extends BoardingScreenState {}
 class LoadingScreenState extends BoardingScreenState {}
 
 class LoggedInState extends BoardingScreenState {}
+
+class LocationDenied extends BoardingScreenState {}
 
 class ErrorState extends BoardingScreenState {
   Exception? exception;

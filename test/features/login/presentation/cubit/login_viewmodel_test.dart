@@ -83,7 +83,7 @@ void main() {
 
   group('LoginViewModel test', () {
     test('Initial state is LoadingScreenState', () {
-      expect(viewModel.state, isA<LoadingScreenState>());
+      expect(viewModel.state, isA<InitialState>());
     });
 
     test(
@@ -94,7 +94,8 @@ void main() {
       when(mockGetCachedUserUseCase.getUser())
           .thenAnswer((_) async => Success<User?>(User()));
 
-      expectLater(viewModel.stream, emitsInOrder([isA<LoggedInState>()]));
+      expectLater(viewModel.stream,
+          emitsInOrder([isA<LoadingScreenState>(), isA<LoggedInState>()]));
 
       await viewModel.handleIntent(CheckCacheIntent());
     });
@@ -106,7 +107,8 @@ void main() {
       when(mockGetCachedUserUseCase.getUser())
           .thenAnswer((_) async => Fail<User?>(Exception('Error')));
 
-      expectLater(viewModel.stream, emitsInOrder([isA<ErrorState>()]));
+      expectLater(viewModel.stream,
+          emitsInOrder([isA<LoadingScreenState>(), isA<ErrorState>()]));
 
       await viewModel.handleIntent(CheckCacheIntent());
     });

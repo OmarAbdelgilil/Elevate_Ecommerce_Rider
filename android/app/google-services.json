@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "284880685668",
+    "project_id": "flowers-app-d9f88",
+    "storage_bucket": "flowers-app-d9f88.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284880685668:android:25422020aa8c9f0ad46d71",
+        "android_client_info": {
+          "package_name": "com.example.elevate_ecommerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnGWRXuwm2a938ReLE6AnWgc4ppNQRR3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284880685668:android:394da4c22d8f9cc2d46d71",
+        "android_client_info": {
+          "package_name": "com.example.elevate_ecommerce_driver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnGWRXuwm2a938ReLE6AnWgc4ppNQRR3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284880685668:android:90dd2defcbf9e8d5d46d71",
+        "android_client_info": {
+          "package_name": "com.yourcompany.elevate_ecommerce_driver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnGWRXuwm2a938ReLE6AnWgc4ppNQRR3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

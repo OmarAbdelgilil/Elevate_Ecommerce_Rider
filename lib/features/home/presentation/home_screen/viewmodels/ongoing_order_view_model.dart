@@ -172,7 +172,7 @@ class OngoingOrderViewModel extends Cubit<OngoingOrderState> {
     switch (result) {
       case Success<OrderEntity>():
         _checkOrderStatus(result.data!);
-        _startLocationStream(result.data!);
+        await _startLocationStream(result.data!);
         return;
       case Fail<OrderEntity>():
         emit(ErrorState(result.exception!));

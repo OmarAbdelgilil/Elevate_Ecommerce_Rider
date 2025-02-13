@@ -7,11 +7,13 @@ import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce_driver/core/common/result.dart' as _i4;
 import 'package:elevate_ecommerce_driver/features/home/data/contracts/offline_data_source.dart'
-    as _i7;
+    as _i8;
 import 'package:elevate_ecommerce_driver/features/home/data/contracts/online_data_source.dart'
     as _i2;
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/order_respose2/order_response2/order_response2.dart'
+    as _i7;
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart'
-    as _i8;
+    as _i9;
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/orders_entity.dart'
     as _i5;
 import 'package:mockito/mockito.dart' as _i1;
@@ -53,18 +55,35 @@ class MockOnlineDataSource extends _i1.Mock implements _i2.OnlineDataSource {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i5.OrdersEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<_i7.OrderResponse2?>> getAllOrder() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllOrder,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i7.OrderResponse2?>>.value(
+            _i6.dummyValue<_i4.Result<_i7.OrderResponse2?>>(
+          this,
+          Invocation.method(
+            #getAllOrder,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i7.OrderResponse2?>>);
 }
 
 /// A class which mocks [OfflineDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockOfflineDataSource extends _i1.Mock implements _i7.OfflineDataSource {
+class MockOfflineDataSource extends _i1.Mock implements _i8.OfflineDataSource {
   MockOfflineDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<_i4.Result<bool>> setOngoingOrder(_i8.OrderEntity? order) =>
+  _i3.Future<_i4.Result<bool>> setOngoingOrder(_i9.OrderEntity? order) =>
       (super.noSuchMethod(
         Invocation.method(
           #setOngoingOrder,
@@ -113,19 +132,19 @@ class MockOfflineDataSource extends _i1.Mock implements _i7.OfflineDataSource {
       ) as _i3.Future<_i4.Result<bool>>);
 
   @override
-  _i3.Future<_i4.Result<_i8.OrderEntity>> getOngoingOrder() =>
+  _i3.Future<_i4.Result<_i9.OrderEntity>> getOngoingOrder() =>
       (super.noSuchMethod(
         Invocation.method(
           #getOngoingOrder,
           [],
         ),
-        returnValue: _i3.Future<_i4.Result<_i8.OrderEntity>>.value(
-            _i6.dummyValue<_i4.Result<_i8.OrderEntity>>(
+        returnValue: _i3.Future<_i4.Result<_i9.OrderEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i9.OrderEntity>>(
           this,
           Invocation.method(
             #getOngoingOrder,
             [],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i8.OrderEntity>>);
+      ) as _i3.Future<_i4.Result<_i9.OrderEntity>>);
 }

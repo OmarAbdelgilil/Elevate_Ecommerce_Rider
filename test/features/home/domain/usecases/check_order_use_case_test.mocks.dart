@@ -6,6 +6,8 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce_driver/core/common/result.dart' as _i4;
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/order_respose2/order_response2/order_response2.dart'
+    as _i8;
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart'
     as _i7;
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/orders_entity.dart'
@@ -116,4 +118,21 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i7.OrderEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<_i8.OrderResponse2?>> getAllOrder() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllOrder,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i8.OrderResponse2?>>.value(
+            _i6.dummyValue<_i4.Result<_i8.OrderResponse2?>>(
+          this,
+          Invocation.method(
+            #getAllOrder,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i8.OrderResponse2?>>);
 }

@@ -1,6 +1,7 @@
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/contracts/offline_data_source.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/contracts/online_data_source.dart';
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/order_respose2/order_response2/order_response2.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/orders_entity.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/repositories/home_repository_impl.dart';
@@ -20,11 +21,14 @@ void main() {
     mockOnlineDataSource = MockOnlineDataSource();
     mockOfflineDataSource = MockOfflineDataSource();
     homeRepo = HomeRepositoryImpl(mockOnlineDataSource, mockOfflineDataSource);
+
     provideDummy<Result<OrdersEntity>>(Success(OrdersEntity(orders: [])));
     provideDummy<Result<OrdersEntity>>(
         Fail(Exception("No pending orders found")));
     provideDummy<Result<bool>>(Success(true));
     provideDummy<Result<bool>>(Fail(Exception("No ongoing order found")));
+    provideDummy<Result<OrderEntity>>(Success(OrderEntity(orderItems: [])));
+    provideDummy<Result<OrderResponse2?>>(Success(OrderResponse2(orders: [])));
   });
 
   group('HomeRepositoryImpl Tests', () {
@@ -91,7 +95,6 @@ void main() {
     });
 
     test('getOrder success', () async {
-      provideDummy<Result<OrderEntity>>(Success(OrderEntity(orderItems: [])));
       final order = OrderEntity(orderItems: []);
       final expectedResult = Success(order);
 
@@ -101,6 +104,32 @@ void main() {
       final result = await homeRepo.getOrder();
 
       expect(result, expectedResult);
+    });
+
+    test('getAllOrder retrieves all orders successfully', () async {
+      final orderResponse = OrderResponse2(orders: []);
+      final expectedResult = Success(orderResponse);
+
+      when(mockOnlineDataSource.getAllOrder())
+          .thenAnswer((_) async => expectedResult);
+
+      final result = await homeRepo.getAllOrder();
+
+      expect(result, expectedResult);
+    });
+
+    test('getAllOrder fails due to network error', () async {
+      final expectedError =
+          Fail<OrderResponse2?>(Exception('Failed to fetch all orders'));
+
+      when(mockOnlineDataSource.getAllOrder())
+          .thenAnswer((_) async => expectedError);
+
+      final result = await homeRepo.getAllOrder();
+
+      expect(result, expectedError);
+      verify(mockOnlineDataSource.getAllOrder()).called(1);
+      verifyNoMoreInteractions(mockOnlineDataSource);
     });
   });
 }

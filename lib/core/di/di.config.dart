@@ -22,10 +22,14 @@ import '../../features/home/data/repositories/home_repository_impl.dart'
     as _i76;
 import '../../features/home/domain/repositories/home_repository.dart' as _i0;
 import '../../features/home/domain/usecases/check_order_use_case.dart' as _i2;
+import '../../features/home/domain/usecases/get_all_orders_use_case.dart'
+    as _i183;
 import '../../features/home/domain/usecases/get_order_use_case.dart' as _i997;
 import '../../features/home/domain/usecases/get_pending_orders_use_case.dart'
     as _i346;
 import '../../features/home/domain/usecases/set_order_use_case.dart' as _i234;
+import '../../features/home/presentation/orders/cubit/get_all_orders_viewmodel.dart'
+    as _i591;
 import '../../features/home/presentation/viewmodels/home_view_model.dart'
     as _i514;
 import '../../features/home/presentation/viewmodels/ongoing_order_view_model.dart'
@@ -103,18 +107,22 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1005.LoginUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i571.SetCachedUserUseCase>(
         () => _i571.SetCachedUserUseCase(gh<_i184.LoginRepo>()));
-    gh.factory<_i346.GetPendingOrdersUseCase>(
-        () => _i346.GetPendingOrdersUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i2.CheckOrderUseCase>(
         () => _i2.CheckOrderUseCase(gh<_i0.HomeRepository>()));
-    gh.factory<_i234.SetOrderUseCase>(
-        () => _i234.SetOrderUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i997.GetOrderUseCase>(
         () => _i997.GetOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i346.GetPendingOrdersUseCase>(
+        () => _i346.GetPendingOrdersUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i234.SetOrderUseCase>(
+        () => _i234.SetOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i183.GetAllOrdersUseCase>(
+        () => _i183.GetAllOrdersUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i484.OnBoardingViewModel>(() => _i484.OnBoardingViewModel(
           gh<_i788.CheckCachedUserUseCase>(),
           gh<_i582.GetCachedUserUseCase>(),
         ));
+    gh.factory<_i591.OrdersViewModel>(
+        () => _i591.OrdersViewModel(gh<_i183.GetAllOrdersUseCase>()));
     gh.factory<_i821.LoginViewModel>(() => _i821.LoginViewModel(
           gh<_i1005.LoginUseCase>(),
           gh<_i571.SetCachedUserUseCase>(),

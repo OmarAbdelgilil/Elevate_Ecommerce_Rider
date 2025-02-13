@@ -201,9 +201,10 @@ class MapScreenViewModel extends Cubit<MapScreenState> {
   Future<void> _loadMapData(String locationName, String locationImage,
       double locationLat, double locationLong) async {
     emit(MapLoadingState());
+    await _startLocationStream(locationLat, locationLong);
     destMarker = await _getCustomMarker(locationName, locationImage);
     driverMarker = await _getCustomMarker('Your location', '');
-    await _startLocationStream(locationLat, locationLong);
+
     mapStyle = await rootBundle.loadString('assets/map_style/map_style.json');
 
     emit(MapLoadedState());

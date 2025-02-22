@@ -83,6 +83,11 @@ import '../../features/login/domain/usecases/set_cached_user_use_case.dart'
 import '../../features/login/presentation/cubit/login_viewmodel.dart' as _i821;
 import '../../features/login/presentation/login_validator/login_validator.dart'
     as _i538;
+import '../../features/map/data/contracts/online_data_source.dart' as _i964;
+import '../../features/map/data/datasources/online_data_source_impl.dart'
+    as _i542;
+import '../../features/map/presentation/viewmodels/map_screen_view_model.dart'
+    as _i183;
 import '../../features/on_boarding/presentation/on_boarding_view_model.dart'
     as _i484;
 import '../local/hive/hive_manager.dart' as _i228;
@@ -90,6 +95,7 @@ import '../network/api/api_manager.dart' as _i561;
 import '../network/api/network_module.dart' as _i138;
 import '../network/firebase/firebase_manager.dart' as _i18;
 import '../network/upload_image_api_manager.dart' as _i964;
+import '../providers/location_provider.dart' as _i420;
 import '../providers/user_provider.dart' as _i26;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -105,12 +111,16 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final dioModule = _$DioModule();
     gh.factory<_i18.FirebaseManager>(() => _i18.FirebaseManager());
+    gh.factory<_i420.LocationProvider>(() => _i420.LocationProvider());
     gh.factory<_i26.UserProvider>(() => _i26.UserProvider());
     gh.factory<_i538.LoginValidator>(() => _i538.LoginValidator());
     gh.singleton<_i228.HiveManager>(() => _i228.HiveManager());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.factory<_i459.OfflineDataSource>(
         () => _i294.OfflineDataSourceImpl(gh<_i228.HiveManager>()));
+    gh.factory<_i964.OnlineDataSource>(() => _i542.OnlineDataSourceImpl());
+    gh.factory<_i183.MapScreenViewModel>(
+        () => _i183.MapScreenViewModel(gh<_i964.OnlineDataSource>()));
     gh.factory<_i842.OfflineDataSource>(
         () => _i902.OfflineDataSourceImpl(gh<_i228.HiveManager>()));
     gh.singleton<_i561.ApiManager>(() => _i561.ApiManager(

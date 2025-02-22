@@ -1,4 +1,5 @@
 {
+  "Login": "Login",
   "login": "login",
   "Enter your email": "Enter your email",
   "Email": "Email",
@@ -6,6 +7,8 @@
   "Enter your password": "Enter your password",
   "Password": "Password",
   "Continue": "Continue",
+  "Remember me": "Remember me",
+ 
   "remember me": "remember me",
   "Welcome To\nFlowery rider app": "Welcome To\nFlowery rider app",
   "Apply now": "Apply now",
@@ -76,8 +79,19 @@
   "Reject": "Reject",
   "Accept": "Accept",
   "Accepted": "Accepted",
+  "Picked": "Picked",
+  "Arrived": "Arrived",
+  "Out for delivery": "Out for delivery",
+  "Delivered": "Delivered",
   "Order details": "Order details",
   "Arrived at Pickup point": "Arrived at Pickup point",
+  "Start deliver": "Start deliver",
+  "Arrived to the user": "Arrived to the user",
+  "Delivered to the user": "Delivered to the user",
   "Total": "Total",
-  "Payment Method": "Payment Method"
+  "Payment Method": "Payment Method",
+  "Thank you!!": "Thank you!!",
+  "The order delivered": "The order delivered",
+  "successfully": "successfully",
+  "Done": "Done"
 }

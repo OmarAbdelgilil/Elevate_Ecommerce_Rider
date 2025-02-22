@@ -49,6 +49,7 @@ class OrderCard extends StatelessWidget {
             StoreAddressCard(
               data: orderDetails.store!,
               showIcons: false,
+              userData: orderDetails.user!,
             ),
             const SizedBox(
               height: 16,
@@ -60,6 +61,7 @@ class OrderCard extends StatelessWidget {
             UserAddressCard(
               data: orderDetails.user!,
               showIcons: false,
+              storeData: orderDetails.store!,
             ),
             const SizedBox(
               height: 16,

@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
+import 'package:elevate_ecommerce_driver/core/providers/location_provider.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/clear_ongoing_order_use_case.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/complete_order_use_case.dart';
@@ -17,7 +19,6 @@ import 'package:injectable/injectable.dart';
 @injectable
 class OngoingOrderViewModel extends Cubit<OngoingOrderState> {
   final GetOrderUseCase _getOrderUseCase;
-  Stream<Position>? _positionStream;
   StreamSubscription<Position>? _positonListener;
   final UpdateDriverLocationUseCase _updateDriverLocationUseCase;
   final UpdateFirebaseOrderDataUseCase _updateFirebaseOrderDataUseCase;
@@ -75,31 +76,11 @@ class OngoingOrderViewModel extends Cubit<OngoingOrderState> {
   }
 
   Future<void> _startLocationStream(OrderEntity order) async {
-    bool serviceEnabled;
-    LocationPermission permission;
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return;
+    if (LocationProvider().positionStream == null) {
+      await LocationProvider().startLocationStream();
     }
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return;
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      return;
-    }
-    _positionStream = Geolocator.getPositionStream(
-      locationSettings: const LocationSettings(
-        accuracy: LocationAccuracy.high,
-        distanceFilter: 10,
-      ),
-    );
-
-    _positonListener = _positionStream!.listen((Position position) {
+    _positonListener =
+        LocationProvider().positionStream!.listen((Position position) {
       _updateDriverLocationUseCase.updateDriverLoc(
           order.id!, position.latitude, position.longitude);
     });
@@ -113,23 +94,23 @@ class OngoingOrderViewModel extends Cubit<OngoingOrderState> {
     switch (order.status) {
       case StringsManager.orderAcceptedStatus:
         stepCount = 1;
-        buttonText = StringsManager.acceptedOrderBtn;
+        buttonText = StringsManager.acceptedOrderBtn.tr();
         break;
       case StringsManager.orderArrivePickupStatus:
         stepCount = 2;
-        buttonText = StringsManager.startDeliverBtn;
+        buttonText = StringsManager.startDeliverBtn.tr();
         break;
       case StringsManager.orderDeliveringStatus:
         stepCount = 3;
-        buttonText = StringsManager.arrivedOrderBtn;
+        buttonText = StringsManager.arrivedOrderBtn.tr();
         break;
       case StringsManager.orderArriveUserStatus:
         stepCount = 4;
-        buttonText = StringsManager.deliveredOrderBtn;
+        buttonText = StringsManager.deliveredOrderBtn.tr();
         break;
       case StringsManager.orderCompletedStatus:
         stepCount = 5;
-        buttonText = StringsManager.deliveredOrderBtn;
+        buttonText = StringsManager.deliveredOrderBtn.tr();
         break;
 
       default:
@@ -191,7 +172,7 @@ class OngoingOrderViewModel extends Cubit<OngoingOrderState> {
     switch (result) {
       case Success<OrderEntity>():
         _checkOrderStatus(result.data!);
-        _startLocationStream(result.data!);
+        await _startLocationStream(result.data!);
         return;
       case Fail<OrderEntity>():
         emit(ErrorState(result.exception!));

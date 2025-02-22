@@ -15,6 +15,6 @@ Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
   } on DioException catch (ex) {
     return Fail(DioHttpException(ex));
   } on Exception catch (ex) {
-    return Fail(ex);
+    return Fail(ex,);
   }
 }

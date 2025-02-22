@@ -49,9 +49,14 @@ dependencies:
   mockito: ^5.4.4
   flutter_svg:
   shared_preferences:
-  lottie: ^3.2.0
-  url_launcher: ^6.3.1
+  lottie: ^3.3.0
+  google_fonts: ^6.2.1
+  image_picker: ^1.1.2
+  country_picker: ^2.0.27
   cached_network_image: ^3.4.1
+  mime:
+  http_parser:
+  url_launcher: ^6.3.1
   firebase_core: ^3.11.0
   cloud_firestore: ^5.6.3
   geolocator: ^13.0.2
@@ -95,7 +100,7 @@ flutter:
       - assets/translations/
       - assets/images/
       - assets/fonts/
-      - assets/html/
+#      - assets/html/
       - assets/svg/
       - assets/lotties/
       - assets/json/

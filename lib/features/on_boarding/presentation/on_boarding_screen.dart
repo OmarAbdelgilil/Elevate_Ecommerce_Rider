@@ -91,7 +91,9 @@ class OnBoardingScreen extends StatelessWidget {
                             side: const BorderSide(color: Colors.black)),
                         backgroundColor: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, AppRoutes.applyRoute);
+                      },
                       child: Text(
                         StringsManager.apply.tr(),
                         style:

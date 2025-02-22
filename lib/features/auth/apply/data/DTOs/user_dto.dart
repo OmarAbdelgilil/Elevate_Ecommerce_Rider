@@ -1,6 +1,6 @@
 // ignore_for_file: unused_label
 
-import 'package:elevate_ecommerce_driver/features/auth/domain_auth/model/user.dart';
+import 'package:elevate_ecommerce_driver/features/auth/apply/domain_auth/model/user.dart';
 
 class UserDto {
   UserDto(
@@ -66,7 +66,6 @@ class UserDto {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['_id'] = id;
     map['country'] = country;
     map['firstName'] = firstName;
     map['lastName'] = lastName;
@@ -78,8 +77,6 @@ class UserDto {
     map['password'] = password;
     map['rePassword'] = rePassword;
     map['phone'] = phone;
-    map['isVerified'] = isVerified;
-    map['token'] = token;
     return map;
   }
 

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce_driver/core/common/bloc_observer.dart';
 import 'package:elevate_ecommerce_driver/core/di/di.dart';
+import 'package:elevate_ecommerce_driver/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/core/routes/router.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/cache_user_model.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +27,11 @@ Future<void> main() async {
       supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
-      child: const MyApp()));
+      child: ChangeNotifierProvider(
+          create: (BuildContext context) {
+            return UserProvider();
+          },
+          child: const MyApp())));
 }
 
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
@@ -42,6 +48,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: scaffoldMessengerKey,
         title: 'Flowery rider app',
         theme: ThemeData(

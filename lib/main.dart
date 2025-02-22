@@ -5,6 +5,7 @@ import 'package:elevate_ecommerce_driver/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/core/routes/router.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/cache_user_model.dart';
+import 'package:elevate_ecommerce_driver/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         scaffoldMessengerKey: scaffoldMessengerKey,
         title: 'Flowery rider app',
         theme: ThemeData(
+          scaffoldBackgroundColor: ColorManager.white,
           colorScheme: ColorScheme.fromSeed(
               seedColor: const Color(0xffD21E6A),
               primary: const Color(0xffD21E6A),

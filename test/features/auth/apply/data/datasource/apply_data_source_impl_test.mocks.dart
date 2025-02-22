@@ -3,22 +3,25 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i9;
+import 'dart:async' as _i10;
 
-import 'package:dio/dio.dart' as _i11;
-import 'package:elevate_ecommerce_driver/core/network/api_manager.dart' as _i8;
+import 'package:dio/dio.dart' as _i12;
+import 'package:elevate_ecommerce_driver/core/network/api/api_manager.dart'
+    as _i9;
 import 'package:elevate_ecommerce_driver/features/auth/apply/data/models/responses/all_vehicles/VehicleResponse.dart'
     as _i5;
 import 'package:elevate_ecommerce_driver/features/auth/apply/data/models/responses/ApplyResponse.dart'
     as _i3;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/edit_profile_request.dart'
-    as _i12;
+    as _i13;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/edit_profile_response/edit_profile_response.dart'
     as _i6;
 import 'package:elevate_ecommerce_driver/features/home/data/models/response/orders_response/orders_response.dart'
     as _i7;
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/start_order_response/start_order_response.dart'
+    as _i8;
 import 'package:elevate_ecommerce_driver/features/login/data/models/request/login_request.dart'
-    as _i10;
+    as _i11;
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/login_response.dart'
     as _i2;
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/user_data_response/user_data_response.dart'
@@ -103,87 +106,98 @@ class _FakeOrdersResponse_5 extends _i1.SmartFake
         );
 }
 
+class _FakeStartOrderResponse_6 extends _i1.SmartFake
+    implements _i8.StartOrderResponse {
+  _FakeStartOrderResponse_6(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ApiManager].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiManager extends _i1.Mock implements _i8.ApiManager {
+class MockApiManager extends _i1.Mock implements _i9.ApiManager {
   MockApiManager() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i9.Future<_i2.LoginResponse> login(_i10.LoginRequest? request) =>
+  _i10.Future<_i2.LoginResponse> login(_i11.LoginRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [request],
         ),
-        returnValue: _i9.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
+        returnValue: _i10.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
           this,
           Invocation.method(
             #login,
             [request],
           ),
         )),
-      ) as _i9.Future<_i2.LoginResponse>);
+      ) as _i10.Future<_i2.LoginResponse>);
 
   @override
-  _i9.Future<_i3.ApplyResponse> applyWithFiles(_i11.FormData? formData) =>
+  _i10.Future<_i3.ApplyResponse> applyWithFiles(_i12.FormData? formData) =>
       (super.noSuchMethod(
         Invocation.method(
           #applyWithFiles,
           [formData],
         ),
-        returnValue: _i9.Future<_i3.ApplyResponse>.value(_FakeApplyResponse_1(
+        returnValue: _i10.Future<_i3.ApplyResponse>.value(_FakeApplyResponse_1(
           this,
           Invocation.method(
             #applyWithFiles,
             [formData],
           ),
         )),
-      ) as _i9.Future<_i3.ApplyResponse>);
+      ) as _i10.Future<_i3.ApplyResponse>);
 
   @override
-  _i9.Future<_i4.UserDataResponse> getUserData() => (super.noSuchMethod(
+  _i10.Future<_i4.UserDataResponse> getUserData() => (super.noSuchMethod(
         Invocation.method(
           #getUserData,
           [],
         ),
         returnValue:
-            _i9.Future<_i4.UserDataResponse>.value(_FakeUserDataResponse_2(
+            _i10.Future<_i4.UserDataResponse>.value(_FakeUserDataResponse_2(
           this,
           Invocation.method(
             #getUserData,
             [],
           ),
         )),
-      ) as _i9.Future<_i4.UserDataResponse>);
+      ) as _i10.Future<_i4.UserDataResponse>);
 
   @override
-  _i9.Future<_i5.VehicleResponse> getVehicles() => (super.noSuchMethod(
+  _i10.Future<_i5.VehicleResponse> getVehicles() => (super.noSuchMethod(
         Invocation.method(
           #getVehicles,
           [],
         ),
         returnValue:
-            _i9.Future<_i5.VehicleResponse>.value(_FakeVehicleResponse_3(
+            _i10.Future<_i5.VehicleResponse>.value(_FakeVehicleResponse_3(
           this,
           Invocation.method(
             #getVehicles,
             [],
           ),
         )),
-      ) as _i9.Future<_i5.VehicleResponse>);
+      ) as _i10.Future<_i5.VehicleResponse>);
 
   @override
-  _i9.Future<_i6.EditProfileResponse> editProfile(
-          _i12.EditProfileRequest? request) =>
+  _i10.Future<_i6.EditProfileResponse> editProfile(
+          _i13.EditProfileRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
           [request],
         ),
-        returnValue: _i9.Future<_i6.EditProfileResponse>.value(
+        returnValue: _i10.Future<_i6.EditProfileResponse>.value(
             _FakeEditProfileResponse_4(
           this,
           Invocation.method(
@@ -191,20 +205,64 @@ class MockApiManager extends _i1.Mock implements _i8.ApiManager {
             [request],
           ),
         )),
-      ) as _i9.Future<_i6.EditProfileResponse>);
+      ) as _i10.Future<_i6.EditProfileResponse>);
 
   @override
-  _i9.Future<_i7.OrdersResponse> getOrders() => (super.noSuchMethod(
+  _i10.Future<_i7.OrdersResponse> getOrders() => (super.noSuchMethod(
         Invocation.method(
           #getOrders,
           [],
         ),
-        returnValue: _i9.Future<_i7.OrdersResponse>.value(_FakeOrdersResponse_5(
+        returnValue:
+            _i10.Future<_i7.OrdersResponse>.value(_FakeOrdersResponse_5(
           this,
           Invocation.method(
             #getOrders,
             [],
           ),
         )),
-      ) as _i9.Future<_i7.OrdersResponse>);
+      ) as _i10.Future<_i7.OrdersResponse>);
+
+  @override
+  _i10.Future<_i8.StartOrderResponse> startOrder(String? orderID) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #startOrder,
+          [orderID],
+        ),
+        returnValue:
+            _i10.Future<_i8.StartOrderResponse>.value(_FakeStartOrderResponse_6(
+          this,
+          Invocation.method(
+            #startOrder,
+            [orderID],
+          ),
+        )),
+      ) as _i10.Future<_i8.StartOrderResponse>);
+
+  @override
+  _i10.Future<_i8.StartOrderResponse> completeOrder(
+    String? orderID,
+    Map<String, dynamic>? body,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #completeOrder,
+          [
+            orderID,
+            body,
+          ],
+        ),
+        returnValue:
+            _i10.Future<_i8.StartOrderResponse>.value(_FakeStartOrderResponse_6(
+          this,
+          Invocation.method(
+            #completeOrder,
+            [
+              orderID,
+              body,
+            ],
+          ),
+        )),
+      ) as _i10.Future<_i8.StartOrderResponse>);
 }

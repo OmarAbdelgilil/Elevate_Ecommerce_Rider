@@ -7,13 +7,19 @@ import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce_driver/core/common/result.dart' as _i4;
 import 'package:elevate_ecommerce_driver/features/home/data/contracts/offline_data_source.dart'
-    as _i7;
+    as _i10;
 import 'package:elevate_ecommerce_driver/features/home/data/contracts/online_data_source.dart'
     as _i2;
-import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart'
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/firebase_orders_response.dart/firebase_orders_response.dart'
     as _i8;
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/start_order_response/start_order_response.dart'
+    as _i7;
+import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart'
+    as _i11;
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/orders_entity.dart'
     as _i5;
+import 'package:elevate_ecommerce_driver/features/login/domain/models/user.dart'
+    as _i9;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
 
@@ -54,18 +60,134 @@ class MockOnlineDataSource extends _i1.Mock implements _i2.OnlineDataSource {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i5.OrdersEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<_i7.StartOrderResponse>> startOrder(String? orderId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #startOrder,
+          [orderId],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i7.StartOrderResponse>>.value(
+            _i6.dummyValue<_i4.Result<_i7.StartOrderResponse>>(
+          this,
+          Invocation.method(
+            #startOrder,
+            [orderId],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i7.StartOrderResponse>>);
+
+  @override
+  _i3.Future<_i4.Result<_i8.FirebaseOrdersResponse>> getFirebaseOrders() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getFirebaseOrders,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i8.FirebaseOrdersResponse>>.value(
+            _i6.dummyValue<_i4.Result<_i8.FirebaseOrdersResponse>>(
+          this,
+          Invocation.method(
+            #getFirebaseOrders,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i8.FirebaseOrdersResponse>>);
+
+  @override
+  _i3.Future<_i4.Result<void>> updateOrderData(
+    String? orderStatus,
+    String? orderId, {
+    _i9.User? driverData,
+    String? driverDeviceToken,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateOrderData,
+          [
+            orderStatus,
+            orderId,
+          ],
+          {
+            #driverData: driverData,
+            #driverDeviceToken: driverDeviceToken,
+          },
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
+          this,
+          Invocation.method(
+            #updateOrderData,
+            [
+              orderStatus,
+              orderId,
+            ],
+            {
+              #driverData: driverData,
+              #driverDeviceToken: driverDeviceToken,
+            },
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<void>>);
+
+  @override
+  _i3.Future<_i4.Result<void>> updateDriverLoc(
+    String? orderId,
+    double? driverLat,
+    double? driverLong,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateDriverLoc,
+          [
+            orderId,
+            driverLat,
+            driverLong,
+          ],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
+          this,
+          Invocation.method(
+            #updateDriverLoc,
+            [
+              orderId,
+              driverLat,
+              driverLong,
+            ],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<void>>);
+
+  @override
+  _i3.Future<_i4.Result<void>> completeOrder(String? orderId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #completeOrder,
+          [orderId],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
+          this,
+          Invocation.method(
+            #completeOrder,
+            [orderId],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<void>>);
 }
 
 /// A class which mocks [OfflineDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockOfflineDataSource extends _i1.Mock implements _i7.OfflineDataSource {
+class MockOfflineDataSource extends _i1.Mock implements _i10.OfflineDataSource {
   MockOfflineDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<_i4.Result<bool>> setOngoingOrder(_i8.OrderEntity? order) =>
+  _i3.Future<_i4.Result<bool>> setOngoingOrder(_i11.OrderEntity? order) =>
       (super.noSuchMethod(
         Invocation.method(
           #setOngoingOrder,
@@ -114,19 +236,19 @@ class MockOfflineDataSource extends _i1.Mock implements _i7.OfflineDataSource {
       ) as _i3.Future<_i4.Result<bool>>);
 
   @override
-  _i3.Future<_i4.Result<_i8.OrderEntity>> getOngoingOrder() =>
+  _i3.Future<_i4.Result<_i11.OrderEntity>> getOngoingOrder() =>
       (super.noSuchMethod(
         Invocation.method(
           #getOngoingOrder,
           [],
         ),
-        returnValue: _i3.Future<_i4.Result<_i8.OrderEntity>>.value(
-            _i6.dummyValue<_i4.Result<_i8.OrderEntity>>(
+        returnValue: _i3.Future<_i4.Result<_i11.OrderEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i11.OrderEntity>>(
           this,
           Invocation.method(
             #getOngoingOrder,
             [],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i8.OrderEntity>>);
+      ) as _i3.Future<_i4.Result<_i11.OrderEntity>>);
 }

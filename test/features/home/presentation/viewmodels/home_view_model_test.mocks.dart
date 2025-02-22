@@ -6,16 +6,26 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce_driver/core/common/result.dart' as _i4;
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/firebase_orders_response.dart/firebase_orders_response.dart'
+    as _i13;
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/start_order_response/start_order_response.dart'
+    as _i11;
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart'
     as _i9;
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/orders_entity.dart'
     as _i5;
+import 'package:elevate_ecommerce_driver/features/home/domain/usecases/check_firebase_orders_use_case.dart'
+    as _i12;
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/check_order_use_case.dart'
     as _i7;
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/get_pending_orders_use_case.dart'
     as _i2;
 import 'package:elevate_ecommerce_driver/features/home/domain/usecases/set_order_use_case.dart'
     as _i8;
+import 'package:elevate_ecommerce_driver/features/home/domain/usecases/start_order_use_case.dart'
+    as _i10;
+import 'package:elevate_ecommerce_driver/features/home/domain/usecases/update_firebase_order_data_use_case.dart'
+    as _i14;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
 
@@ -109,4 +119,96 @@ class MockSetOrderUseCase extends _i1.Mock implements _i8.SetOrderUseCase {
           ),
         )),
       ) as _i3.Future<_i4.Result<bool>>);
+}
+
+/// A class which mocks [StartOrderUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockStartOrderUseCase extends _i1.Mock implements _i10.StartOrderUseCase {
+  MockStartOrderUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<_i4.Result<_i11.StartOrderResponse>> startOrder(String? orderId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #startOrder,
+          [orderId],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i11.StartOrderResponse>>.value(
+            _i6.dummyValue<_i4.Result<_i11.StartOrderResponse>>(
+          this,
+          Invocation.method(
+            #startOrder,
+            [orderId],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i11.StartOrderResponse>>);
+}
+
+/// A class which mocks [CheckFirebaseOrdersUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockCheckFirebaseOrdersUseCase extends _i1.Mock
+    implements _i12.CheckFirebaseOrdersUseCase {
+  MockCheckFirebaseOrdersUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<_i4.Result<_i13.FirebaseOrdersResponse>> getFirebaseOrders() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getFirebaseOrders,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i13.FirebaseOrdersResponse>>.value(
+            _i6.dummyValue<_i4.Result<_i13.FirebaseOrdersResponse>>(
+          this,
+          Invocation.method(
+            #getFirebaseOrders,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i13.FirebaseOrdersResponse>>);
+}
+
+/// A class which mocks [UpdateFirebaseOrderDataUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUpdateFirebaseOrderDataUseCase extends _i1.Mock
+    implements _i14.UpdateFirebaseOrderDataUseCase {
+  MockUpdateFirebaseOrderDataUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<_i4.Result<void>> updateOrderData(
+    String? orderStatus,
+    String? orderId, {
+    String? driverDeviceToken,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateOrderData,
+          [
+            orderStatus,
+            orderId,
+          ],
+          {#driverDeviceToken: driverDeviceToken},
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
+          this,
+          Invocation.method(
+            #updateOrderData,
+            [
+              orderStatus,
+              orderId,
+            ],
+            {#driverDeviceToken: driverDeviceToken},
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<void>>);
 }

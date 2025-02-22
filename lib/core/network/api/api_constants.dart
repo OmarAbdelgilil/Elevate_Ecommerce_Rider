@@ -7,4 +7,6 @@ class ApiConstants {
   static const String editProfile = "/v1/drivers/editProfile";
   static const String uploadImage = "/v1/drivers/upload-photo";
   static const String ordersPath = "/v1/orders/pending-orders";
+  static const String startOrderPath = "/v1/orders/start/";
+  static const String updateOrderStatePath = "/v1/orders/state/";
 }

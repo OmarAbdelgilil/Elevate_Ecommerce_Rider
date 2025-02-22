@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/data_sources/profile_online_datasource_impl.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/edit_profile_request.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/upload_image_request.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/edit_profile_response/edit_profile_response.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/update_profile_image_response.dart';
-import 'package:elevate_ecommerce_driver/core/network/api_manager.dart';
 import 'package:elevate_ecommerce_driver/core/network/upload_image_api_manager.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/user_data_response/driver.dart';
 import 'package:flutter_test/flutter_test.dart';

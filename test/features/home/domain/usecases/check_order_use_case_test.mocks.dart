@@ -6,6 +6,10 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce_driver/core/common/result.dart' as _i4;
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/firebase_orders_response.dart/firebase_orders_response.dart'
+    as _i9;
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/start_order_response/start_order_response.dart'
+    as _i8;
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_entity.dart'
     as _i7;
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/orders_entity.dart'
@@ -117,4 +121,113 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i7.OrderEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<_i8.StartOrderResponse>> startOrder(String? orderId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #startOrder,
+          [orderId],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i8.StartOrderResponse>>.value(
+            _i6.dummyValue<_i4.Result<_i8.StartOrderResponse>>(
+          this,
+          Invocation.method(
+            #startOrder,
+            [orderId],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i8.StartOrderResponse>>);
+
+  @override
+  _i3.Future<_i4.Result<_i9.FirebaseOrdersResponse>> getFirebaseOrders() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getFirebaseOrders,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i9.FirebaseOrdersResponse>>.value(
+            _i6.dummyValue<_i4.Result<_i9.FirebaseOrdersResponse>>(
+          this,
+          Invocation.method(
+            #getFirebaseOrders,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i9.FirebaseOrdersResponse>>);
+
+  @override
+  _i3.Future<_i4.Result<void>> updateOrderData(
+    String? orderStatus,
+    String? orderId, {
+    String? driverDeviceToken,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateOrderData,
+          [
+            orderStatus,
+            orderId,
+          ],
+          {#driverDeviceToken: driverDeviceToken},
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
+          this,
+          Invocation.method(
+            #updateOrderData,
+            [
+              orderStatus,
+              orderId,
+            ],
+            {#driverDeviceToken: driverDeviceToken},
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<void>>);
+
+  @override
+  _i3.Future<_i4.Result<void>> updateDriverLoc(
+    String? orderId,
+    double? driverLat,
+    double? driverLong,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateDriverLoc,
+          [
+            orderId,
+            driverLat,
+            driverLong,
+          ],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
+          this,
+          Invocation.method(
+            #updateDriverLoc,
+            [
+              orderId,
+              driverLat,
+              driverLong,
+            ],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<void>>);
+
+  @override
+  _i3.Future<_i4.Result<void>> completeOrder(String? orderId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #completeOrder,
+          [orderId],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
+          this,
+          Invocation.method(
+            #completeOrder,
+            [orderId],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<void>>);
 }

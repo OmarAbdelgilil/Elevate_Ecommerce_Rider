@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/order_item.dart';
 import 'package:elevate_ecommerce_driver/utils/color_manager.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +17,18 @@ class OrderItemCard extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 22,
-              backgroundImage: NetworkImage(data.product!.imgCover!),
               backgroundColor: ColorManager.darkGrey,
+              child: CachedNetworkImage(
+                imageUrl: data.product!.imgCover!,
+                imageBuilder: (context, imageProvider) => CircleAvatar(
+                  radius: 22,
+                  backgroundImage: imageProvider,
+                ),
+                placeholder: (context, url) =>
+                    const CircularProgressIndicator(),
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.inventory_2, color: Colors.white),
+              ),
             ),
             const SizedBox(
               width: 8,

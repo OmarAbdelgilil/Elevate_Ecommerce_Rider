@@ -1,5 +1,5 @@
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
-import 'package:elevate_ecommerce_driver/core/network/api_manager.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/datasource/online_data_source_impl.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/login_response.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/user_data_response/driver.dart';
@@ -32,7 +32,7 @@ void main() {
 
       final result = await onlineDataSource.login(email, pass);
 
-      expect(result, isA<Success<LoginResponse>>());
+      expect(result, isA<Success<LoginResponse?>>());
     });
 
     test('login fails on invalid credentials', () async {
@@ -44,7 +44,7 @@ void main() {
 
       final result = await onlineDataSource.login(email, pass);
 
-      expect(result, isA<Fail<LoginResponse>>());
+      expect(result, isA<Fail<LoginResponse?>>());
     });
 
     test('getUserData retrieves user data successfully', () async {

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
-import 'package:elevate_ecommerce_driver/core/network/api_manager.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce_driver/features/auth/apply/data/datasource/apply_data_source_impl.dart';
 import 'package:elevate_ecommerce_driver/features/auth/apply/data/models/responses/ApplyResponse.dart';
 import 'package:elevate_ecommerce_driver/features/auth/apply/data/models/responses/all_vehicles/VehicleResponse.dart';
@@ -9,7 +9,6 @@ import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 
 import '../../../../login/data/datasource/online_data_source_impl_test.mocks.dart';
-
 
 @GenerateMocks([ApiManager])
 void main() {
@@ -35,7 +34,8 @@ void main() {
       expect((result as Success).data?.message, "success");
     });
 
-    test('should return Fail when API call fails with error response', () async {
+    test('should return Fail when API call fails with error response',
+        () async {
       final formData = FormData.fromMap({});
       final dioException = DioException(
         requestOptions: RequestOptions(path: ''),
@@ -51,7 +51,8 @@ void main() {
       final result = await applyDataSource.applyWithFiles(formData);
 
       expect(result, isA<Fail<ApplyResponse?>>());
-      expect((result as Fail).exception.toString(), contains("Invalid request"));
+      expect(
+          (result as Fail).exception.toString(), contains("Invalid request"));
     });
 
     test('should return Fail when API call fails with unknown error', () async {
@@ -71,7 +72,8 @@ void main() {
     test('should return Success when API call is successful', () async {
       final vehicleResponse = VehicleResponse();
 
-      when(mockApiManager.getVehicles()).thenAnswer((_) async => vehicleResponse);
+      when(mockApiManager.getVehicles())
+          .thenAnswer((_) async => vehicleResponse);
 
       final result = await applyDataSource.getAllVehicles();
 

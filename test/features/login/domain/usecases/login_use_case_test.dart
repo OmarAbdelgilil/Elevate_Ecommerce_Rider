@@ -16,10 +16,10 @@ void main() {
   setUp(() {
     mockLoginRepo = MockLoginRepo();
     loginUseCase = LoginUseCase(mockLoginRepo);
-    provideDummy<Result<LoginResponse>>(
+    provideDummy<Result<LoginResponse?>>(
       Success(LoginResponse()),
     );
-    provideDummy<Result<LoginResponse>>(
+    provideDummy<Result<LoginResponse?>>(
       Fail(Exception("Invalid credentials")),
     );
   });

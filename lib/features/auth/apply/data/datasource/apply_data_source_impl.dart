@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
-import 'package:elevate_ecommerce_driver/core/network/api_manager.dart';
-import 'package:elevate_ecommerce_driver/features/auth/apply/data/models/request/apply_request.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce_driver/features/auth/apply/data/models/responses/ApplyResponse.dart';
 import 'package:elevate_ecommerce_driver/features/auth/apply/data/models/responses/all_vehicles/VehicleResponse.dart';
 import 'package:injectable/injectable.dart';
@@ -23,7 +20,8 @@ class ApplyDataSourceImpl implements ApplyDataSource {
     } catch (e) {
       if (e is DioException) {
         String errorMessage = _handleDioError(e);
-        return Fail(Exception(errorMessage), data: ApplyResponse(error: errorMessage));
+        return Fail(Exception(errorMessage),
+            data: ApplyResponse(error: errorMessage));
       }
       return Fail(Exception(e.toString()));
     }
@@ -33,7 +31,8 @@ class ApplyDataSourceImpl implements ApplyDataSource {
     if (e.response != null && e.response?.data != null) {
       try {
         final errorData = e.response?.data;
-        if (errorData is Map<String, dynamic> && errorData.containsKey("error")) {
+        if (errorData is Map<String, dynamic> &&
+            errorData.containsKey("error")) {
           return errorData["error"];
         }
       } catch (error) {
@@ -43,7 +42,6 @@ class ApplyDataSourceImpl implements ApplyDataSource {
     return e.message ?? "An unknown error occurred.";
   }
 
-
   @override
   Future<Result<VehicleResponse?>> getAllVehicles() {
     return executeApi(() async {
@@ -51,6 +49,4 @@ class ApplyDataSourceImpl implements ApplyDataSource {
       return result;
     });
   }
-
-
 }

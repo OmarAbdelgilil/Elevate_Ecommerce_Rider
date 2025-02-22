@@ -1,5 +1,6 @@
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
-import 'package:elevate_ecommerce_driver/core/network/api_manager.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_manager.dart';
+import 'package:elevate_ecommerce_driver/core/network/firebase/firebase_manager.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/datasource/online_data_source_impl.dart';
 import 'package:elevate_ecommerce_driver/features/home/data/models/response/orders_response/orders_response.dart';
 import 'package:elevate_ecommerce_driver/features/home/domain/models/orders/orders_entity.dart';
@@ -9,14 +10,16 @@ import 'package:mockito/mockito.dart';
 
 import 'online_data_source_impl_test.mocks.dart';
 
-@GenerateMocks([ApiManager])
+@GenerateMocks([ApiManager, FirebaseManager])
 void main() {
   late OnlineDataSourceImpl onlineDataSource;
   late MockApiManager mockApiManager;
-
+  late MockFirebaseManager mockFirebaseManager;
   setUp(() {
     mockApiManager = MockApiManager();
-    onlineDataSource = OnlineDataSourceImpl(mockApiManager);
+    mockFirebaseManager = MockFirebaseManager();
+    onlineDataSource =
+        OnlineDataSourceImpl(mockApiManager, mockFirebaseManager);
   });
 
   group('OnlineDataSourceImpl Tests', () {

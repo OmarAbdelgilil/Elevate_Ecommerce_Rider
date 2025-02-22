@@ -5,6 +5,7 @@ import 'package:elevate_ecommerce_driver/core/network/api_constants.dart';
 import 'package:elevate_ecommerce_driver/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/edit_profile_request.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/edit_profile_response/edit_profile_response.dart';
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/orders_response/orders_response.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/request/login_request.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/login_response.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/user_data_response/user_data_response.dart';
@@ -47,4 +48,7 @@ abstract class ApiManager {
   Future<UserDataResponse> getUserData();
   @PUT(ApiConstants.editProfile)
   Future<EditProfileResponse> editProfile(@Body() EditProfileRequest request);
+
+  @GET(ApiConstants.ordersPath)
+  Future<OrdersResponse> getOrders();
 }

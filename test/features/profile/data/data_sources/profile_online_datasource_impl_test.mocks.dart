@@ -3,20 +3,22 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
-import 'dart:io' as _i11;
+import 'dart:async' as _i7;
+import 'dart:io' as _i12;
 
-import 'package:elevate_ecommerce_driver/core/network/api_manager.dart' as _i5;
+import 'package:elevate_ecommerce_driver/core/network/api_manager.dart' as _i6;
 import 'package:elevate_ecommerce_driver/core/network/upload_image_api_manager.dart'
-    as _i9;
+    as _i10;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/edit_profile_request.dart'
-    as _i8;
+    as _i9;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/edit_profile_response/edit_profile_response.dart'
     as _i4;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/update_profile_image_response.dart'
-    as _i10;
+    as _i11;
+import 'package:elevate_ecommerce_driver/features/home/data/models/response/orders_response/orders_response.dart'
+    as _i5;
 import 'package:elevate_ecommerce_driver/features/login/data/models/request/login_request.dart'
-    as _i7;
+    as _i8;
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/login_response.dart'
     as _i2;
 import 'package:elevate_ecommerce_driver/features/login/data/models/response/user_data_response/user_data_response.dart'
@@ -68,55 +70,66 @@ class _FakeEditProfileResponse_2 extends _i1.SmartFake
         );
 }
 
+class _FakeOrdersResponse_3 extends _i1.SmartFake
+    implements _i5.OrdersResponse {
+  _FakeOrdersResponse_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ApiManager].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiManager extends _i1.Mock implements _i5.ApiManager {
+class MockApiManager extends _i1.Mock implements _i6.ApiManager {
   MockApiManager() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i2.LoginResponse> login(_i7.LoginRequest? request) =>
+  _i7.Future<_i2.LoginResponse> login(_i8.LoginRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [request],
         ),
-        returnValue: _i6.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
+        returnValue: _i7.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
           this,
           Invocation.method(
             #login,
             [request],
           ),
         )),
-      ) as _i6.Future<_i2.LoginResponse>);
+      ) as _i7.Future<_i2.LoginResponse>);
 
   @override
-  _i6.Future<_i3.UserDataResponse> getUserData() => (super.noSuchMethod(
+  _i7.Future<_i3.UserDataResponse> getUserData() => (super.noSuchMethod(
         Invocation.method(
           #getUserData,
           [],
         ),
         returnValue:
-            _i6.Future<_i3.UserDataResponse>.value(_FakeUserDataResponse_1(
+            _i7.Future<_i3.UserDataResponse>.value(_FakeUserDataResponse_1(
           this,
           Invocation.method(
             #getUserData,
             [],
           ),
         )),
-      ) as _i6.Future<_i3.UserDataResponse>);
+      ) as _i7.Future<_i3.UserDataResponse>);
 
   @override
-  _i6.Future<_i4.EditProfileResponse> editProfile(
-          _i8.EditProfileRequest? request) =>
+  _i7.Future<_i4.EditProfileResponse> editProfile(
+          _i9.EditProfileRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
           [request],
         ),
-        returnValue: _i6.Future<_i4.EditProfileResponse>.value(
+        returnValue: _i7.Future<_i4.EditProfileResponse>.value(
             _FakeEditProfileResponse_2(
           this,
           Invocation.method(
@@ -124,25 +137,40 @@ class MockApiManager extends _i1.Mock implements _i5.ApiManager {
             [request],
           ),
         )),
-      ) as _i6.Future<_i4.EditProfileResponse>);
+      ) as _i7.Future<_i4.EditProfileResponse>);
+
+  @override
+  _i7.Future<_i5.OrdersResponse> getOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getOrders,
+          [],
+        ),
+        returnValue: _i7.Future<_i5.OrdersResponse>.value(_FakeOrdersResponse_3(
+          this,
+          Invocation.method(
+            #getOrders,
+            [],
+          ),
+        )),
+      ) as _i7.Future<_i5.OrdersResponse>);
 }
 
 /// A class which mocks [UploadImageApiManager].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUploadImageApiManager extends _i1.Mock
-    implements _i9.UploadImageApiManager {
+    implements _i10.UploadImageApiManager {
   MockUploadImageApiManager() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i10.UpdateProfileImageResponse?> uploadImage(_i11.File? image) =>
+  _i7.Future<_i11.UpdateProfileImageResponse?> uploadImage(_i12.File? image) =>
       (super.noSuchMethod(
         Invocation.method(
           #uploadImage,
           [image],
         ),
-        returnValue: _i6.Future<_i10.UpdateProfileImageResponse?>.value(),
-      ) as _i6.Future<_i10.UpdateProfileImageResponse?>);
+        returnValue: _i7.Future<_i11.UpdateProfileImageResponse?>.value(),
+      ) as _i7.Future<_i11.UpdateProfileImageResponse?>);
 }

@@ -24,6 +24,34 @@ import '../../features/auth/apply/domain_auth/usecases/get_allVehicles_use_case.
     as _i524;
 import '../../features/auth/apply/presentation/apply_screen/view_model/apply_viewmodel.dart'
     as _i83;
+import '../../features/auth/profile/data/contracts/profile_onlind_datasource.dart'
+    as _i46;
+import '../../features/auth/profile/data/data_sources/profile_online_datasource_impl.dart'
+    as _i535;
+import '../../features/auth/profile/data/repos/profile_repo_impl.dart' as _i629;
+import '../../features/auth/profile/domain/repos/profile_repo.dart' as _i456;
+import '../../features/auth/profile/domain/use_cases/profile_usecase.dart'
+    as _i632;
+import '../../features/auth/profile/presentation/viewmodel/edit_profile_cubit.dart'
+    as _i345;
+import '../../features/home/data/contracts/offline_data_source.dart' as _i842;
+import '../../features/home/data/contracts/online_data_source.dart' as _i89;
+import '../../features/home/data/datasource/offline_data_source_impl.dart'
+    as _i902;
+import '../../features/home/data/datasource/online_data_source_impl.dart'
+    as _i1015;
+import '../../features/home/data/repositories/home_repository_impl.dart'
+    as _i76;
+import '../../features/home/domain/repositories/home_repository.dart' as _i0;
+import '../../features/home/domain/usecases/check_order_use_case.dart' as _i2;
+import '../../features/home/domain/usecases/get_order_use_case.dart' as _i997;
+import '../../features/home/domain/usecases/get_pending_orders_use_case.dart'
+    as _i346;
+import '../../features/home/domain/usecases/set_order_use_case.dart' as _i234;
+import '../../features/home/presentation/viewmodels/home_view_model.dart'
+    as _i514;
+import '../../features/home/presentation/viewmodels/ongoing_order_view_model.dart'
+    as _i655;
 import '../../features/login/data/contracts/offline_data_source.dart' as _i459;
 import '../../features/login/data/contracts/online_data_source.dart' as _i1047;
 import '../../features/login/data/datasource/offline_data_source_impl.dart'
@@ -49,6 +77,7 @@ import '../../features/on_boarding/presentation/on_boarding_view_model.dart'
 import '../local/hive/hive_manager.dart' as _i228;
 import '../network/api_manager.dart' as _i119;
 import '../network/network_module.dart' as _i200;
+import '../network/upload_image_api_manager.dart' as _i964;
 import '../providers/user_provider.dart' as _i26;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -69,10 +98,29 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.factory<_i459.OfflineDataSource>(
         () => _i294.OfflineDataSourceImpl(gh<_i228.HiveManager>()));
+    gh.factory<_i842.OfflineDataSource>(
+        () => _i902.OfflineDataSourceImpl(gh<_i228.HiveManager>()));
     gh.singleton<_i119.ApiManager>(() => _i119.ApiManager(
           gh<_i361.Dio>(),
           gh<_i26.UserProvider>(),
         ));
+    gh.singleton<_i964.UploadImageApiManager>(() => _i964.UploadImageApiManager(
+          gh<_i361.Dio>(),
+          gh<_i26.UserProvider>(),
+        ));
+    gh.factory<_i46.ProfileOnlindDatasource>(
+        () => _i535.ProfileOnlineDatasourceImpl(
+              gh<_i119.ApiManager>(),
+              gh<_i964.UploadImageApiManager>(),
+            ));
+    gh.factory<_i456.ProfileRepo>(
+        () => _i629.ProfileRepoImpl(gh<_i46.ProfileOnlindDatasource>()));
+    gh.factory<_i632.ProfileUsecase>(
+        () => _i632.ProfileUsecase(gh<_i456.ProfileRepo>()));
+    gh.factory<_i345.EditProfileCubit>(
+        () => _i345.EditProfileCubit(gh<_i632.ProfileUsecase>()));
+    gh.factory<_i89.OnlineDataSource>(
+        () => _i1015.OnlineDataSourceImpl(gh<_i119.ApiManager>()));
     gh.factory<_i613.ApplyDataSource>(
         () => _i750.ApplyDataSourceImpl(gh<_i119.ApiManager>()));
     gh.factory<_i1047.OnlineDataSource>(
@@ -87,6 +135,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i140.ApplyUseCase(gh<_i356.ApplyRepo>()));
     gh.factory<_i524.GetAllVehicleUseCase>(
         () => _i524.GetAllVehicleUseCase(gh<_i356.ApplyRepo>()));
+    gh.factory<_i0.HomeRepository>(() => _i76.HomeRepositoryImpl(
+          gh<_i89.OnlineDataSource>(),
+          gh<_i842.OfflineDataSource>(),
+        ));
     gh.factory<_i788.CheckCachedUserUseCase>(
         () => _i788.CheckCachedUserUseCase(gh<_i184.LoginRepo>()));
     gh.factory<_i582.GetCachedUserUseCase>(
@@ -101,6 +153,14 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i140.ApplyUseCase>(),
           gh<_i524.GetAllVehicleUseCase>(),
         ));
+    gh.factory<_i2.CheckOrderUseCase>(
+        () => _i2.CheckOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i997.GetOrderUseCase>(
+        () => _i997.GetOrderUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i346.GetPendingOrdersUseCase>(
+        () => _i346.GetPendingOrdersUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i234.SetOrderUseCase>(
+        () => _i234.SetOrderUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i484.OnBoardingViewModel>(() => _i484.OnBoardingViewModel(
           gh<_i788.CheckCachedUserUseCase>(),
           gh<_i582.GetCachedUserUseCase>(),
@@ -111,6 +171,13 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i788.CheckCachedUserUseCase>(),
           gh<_i582.GetCachedUserUseCase>(),
           gh<_i1.GetUserDataUseCase>(),
+        ));
+    gh.factory<_i655.OngoingOrderViewModel>(
+        () => _i655.OngoingOrderViewModel(gh<_i997.GetOrderUseCase>()));
+    gh.lazySingleton<_i514.HomeViewModel>(() => _i514.HomeViewModel(
+          gh<_i346.GetPendingOrdersUseCase>(),
+          gh<_i2.CheckOrderUseCase>(),
+          gh<_i234.SetOrderUseCase>(),
         ));
     return this;
   }

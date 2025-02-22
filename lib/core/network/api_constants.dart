@@ -4,4 +4,7 @@ class ApiConstants {
   static const String applyPath = "/v1/drivers/apply";
   static const String logedUserDataPath = "/v1/drivers/profile-data";
   static const String getVehiclesPath = "/v1/vehicles";
+  static const String editProfile = "/v1/drivers/editProfile";
+  static const String uploadImage = "/v1/drivers/upload-photo";
+  static const String ordersPath = "/v1/orders/pending-orders";
 }

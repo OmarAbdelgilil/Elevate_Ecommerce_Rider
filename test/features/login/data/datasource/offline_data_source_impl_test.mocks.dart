@@ -101,4 +101,42 @@ class MockHiveManager extends _i1.Mock implements _i3.HiveManager {
           ),
         )),
       ) as _i4.Future<_i2.CacheUserModel>);
+
+  @override
+  _i4.Future<bool> setOngoingOrder(Map<String, dynamic>? order) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setOngoingOrder,
+          [order],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+
+  @override
+  _i4.Future<bool> clearOngoingOrder() => (super.noSuchMethod(
+        Invocation.method(
+          #clearOngoingOrder,
+          [],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+
+  @override
+  _i4.Future<bool> checkOngoingOrder() => (super.noSuchMethod(
+        Invocation.method(
+          #checkOngoingOrder,
+          [],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+
+  @override
+  _i4.Future<Map<dynamic, dynamic>> getOrder() => (super.noSuchMethod(
+        Invocation.method(
+          #getOrder,
+          [],
+        ),
+        returnValue:
+            _i4.Future<Map<dynamic, dynamic>>.value(<dynamic, dynamic>{}),
+      ) as _i4.Future<Map<dynamic, dynamic>>);
 }

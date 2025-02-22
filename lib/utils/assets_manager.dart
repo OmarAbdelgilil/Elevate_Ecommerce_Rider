@@ -14,7 +14,6 @@ class SVGAssets {
   static const String ordersTab = "${_basePath}Transaction-order (交易清单).svg";
   static const String egyptFlag = "${_basePath}egypt-flag-icon.svg";
   static const String apply = "${_basePath}check-circle.svg";
-
 }
 
 class LottieAssets {
@@ -30,5 +29,4 @@ class LottieAssets {
   static const String noPermissions = "${_basePath}no_permissions.json";
   static const String verificationPending =
       "${_basePath}verification_pending.json";
-
 }

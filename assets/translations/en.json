@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "login": "Login",
     "enterEmail": "Enter your email",
     "email": "Email",
@@ -44,3 +45,25 @@
     "validationsEnterTheSamePassword": "please enter the same password",
     "validationsUsername": "use letters and numbers only"
 }
+=======
+    "Login": "Login",
+    "Enter your email": "Enter your email",
+    "Email": "Email",
+    "Forget password?": "Forget password?",
+    "Enter your password": "Enter your password",
+    "Password": "Password",
+    "Continue": "Continue",
+    "Remember me": "Remember me",
+    "Flower order": "Flower order",
+    "Pickup address": "Pickup address",
+    "User address": "User address",
+    "Reject": "Reject",
+    "Accept": "Accept",
+    "Accepted":"Accepted",
+    "Order details":"Order details",
+    "Arrived at Pickup point":"Arrived at Pickup point",
+    "Total":"Total",
+    "Payment Method":"Payment Method"
+  }
+  
+>>>>>>> 23a64f3123f86b61d312777447abec431b476f86

@@ -1,12 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-<<<<<<< HEAD
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-=======
     <!-- Add these permissions here -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
->>>>>>> 23a64f3123f86b61d312777447abec431b476f86
 
     <application
         android:label="elevate_ecommerce_driver"

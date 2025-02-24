@@ -44,12 +44,11 @@ dependencies:
   dio: ^5.7.0
   flutter_bloc: ^8.1.6
   flutter_svg:
-  shared_preferences:
   lottie:
   hive: ^2.2.3
   hive_flutter:
   provider: ^6.1.2
-  mockito: ^5.4.4
+  mockito:
   google_fonts:
 
 

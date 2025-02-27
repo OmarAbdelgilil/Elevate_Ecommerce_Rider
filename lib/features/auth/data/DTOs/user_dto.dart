@@ -1,5 +1,3 @@
-// ignore_for_file: unused_label
-
 import 'package:elevate_ecommerce_driver/features/auth/domain_auth/model/user.dart';
 
 class UserDto {

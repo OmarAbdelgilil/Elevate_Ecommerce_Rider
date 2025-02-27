@@ -20,41 +20,30 @@ class LoginView extends StatelessWidget {
             getIt<LoginViewModel>()..handleIntent(CheckCacheIntent()),
         child: BlocListener<LoginViewModel, LoginState>(
             listener: (context, state) {
-          if (state is SuccessState || state is LoggedInState) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              Navigator.of(context).pushNamedAndRemoveUntil(
+              if (state is SuccessState || state is LoggedInState) {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      AppRoutes.mainLayOut, (Route route) => false);
+                });
+              }
 
-                  AppRoutes.mainLayOut, (Route route) => false);
-            });
-          }
-
-          if (state is ErrorState) {
-            scaffoldMessengerKey.currentState?.clearSnackBars();
-            var snackBarText = extractErrorMessage(state.exception);
-            final snackBar = SnackBar(
-              content: Text(snackBarText),
-              duration: const Duration(seconds: 2),
-            );
-            scaffoldMessengerKey.currentState?.showSnackBar(snackBar);
-          }
-        }, child: BlocBuilder<LoginViewModel, LoginState>(
-          builder: (context, state) {
-            if (state is LoadingScreenState || state is LoggedInState) {
-              return const Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-            }
-            return Scaffold(
+              if (state is ErrorState) {
+                scaffoldMessengerKey.currentState?.clearSnackBars();
+                var snackBarText = extractErrorMessage(state.exception);
+                final snackBar = SnackBar(
+                  content: Text(snackBarText),
+                  duration: const Duration(seconds: 2),
+                );
+                scaffoldMessengerKey.currentState?.showSnackBar(snackBar);
+              }
+            },
+            child: Scaffold(
                 appBar: customAppBar(
                   title: StringsManager.login.tr(),
                 ),
                 body: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: LoginViewBody(),
-                ));
-          },
-        )));
+                ))));
   }
 }

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce_driver/core/di/di.dart';
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
+import 'package:elevate_ecommerce_driver/features/on_boarding/presentation/location_permission_screen.dart';
 import 'package:elevate_ecommerce_driver/features/on_boarding/presentation/on_boarding_view_model.dart';
 import 'package:elevate_ecommerce_driver/utils/custom_button.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
@@ -25,11 +26,22 @@ class OnBoardingScreen extends StatelessWidget {
                   AppRoutes.mainLayOut, (Route route) => false);
             });
           }
+          if (state is LocationDenied) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => const LocationPermissionScreen(),
+                  ),
+                  (Route route) => false);
+            });
+          }
         },
         child: Scaffold(
           body: BlocBuilder<OnBoardingViewModel, BoardingScreenState>(
             builder: (context, state) {
-              if (state is LoadingScreenState || state is LoggedInState) {
+              if (state is LoadingScreenState ||
+                  state is LoggedInState ||
+                  state is LocationDenied) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
@@ -82,7 +94,9 @@ class OnBoardingScreen extends StatelessWidget {
                             side: const BorderSide(color: Colors.black)),
                         backgroundColor: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, AppRoutes.applyRoute);
+                      },
                       child: Text(
                         StringsManager.apply.tr(),
                         style:

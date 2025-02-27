@@ -1,14 +1,12 @@
 import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_ecommerce_driver/features/home/presentation/home_screen/views/home_screen.dart';
 import 'package:elevate_ecommerce_driver/features/auth/profile/presentation/profile_screen.dart';
-import 'package:elevate_ecommerce_driver/features/home/presentation/views/home_screen.dart';
 import 'package:elevate_ecommerce_driver/utils/assets_manager.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-
 
 class MainLayoutViewModel extends ChangeNotifier {
   int _selectedIndex = 0;
@@ -33,7 +31,7 @@ class MainLayoutViewModel extends ChangeNotifier {
       TabItem(
         icon: SVGAssets.ordersTab,
         label: StringsManager.ordersTab.tr(),
-        screen: HomeScreen(),
+        screen: Placeholder(),
       ),
       TabItem(
         icon: SVGAssets.personTab,

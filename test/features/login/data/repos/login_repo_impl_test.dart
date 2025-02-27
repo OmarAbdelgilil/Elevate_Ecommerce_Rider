@@ -28,7 +28,7 @@ void main() {
 
   group('LoginRepoImpl Tests', () {
     test('login success on OnlineDataSource', () async {
-      provideDummy<Result<LoginResponse>>(
+      provideDummy<Result<LoginResponse?>>(
           Success(LoginResponse(token: 'mockToken')));
       const email = 'test@example.com';
       const password = 'password';
@@ -47,7 +47,7 @@ void main() {
     test('login failure on OnlineDataSource', () async {
       const email = 'test@example.com';
       const password = 'password';
-      provideDummy<Result<LoginResponse>>(Fail(Exception()));
+      provideDummy<Result<LoginResponse?>>(Fail(Exception()));
       final expectedError = Fail<LoginResponse>(Exception());
 
       when(mockOnlineDataSource.login(any, any))

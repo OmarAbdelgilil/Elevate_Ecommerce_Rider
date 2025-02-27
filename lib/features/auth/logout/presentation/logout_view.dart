@@ -83,26 +83,29 @@ class LogoutWidget extends StatelessWidget {
               ? Center(child: CircularProgressIndicator())
               : InkWell(
             onTap: () => _showLogoutDialog(context, viewModel),
-            child:Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(children: [
+            child:Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(children: [
+                    SvgPicture.asset(
+                      SVGAssets.logoutIcon,
+                      width: 23.w,
+                      height: 23.h,
+                    ),
+                    Text( StringsManager.logout.tr(),)
+                  ],),
                   SvgPicture.asset(
                     SVGAssets.logoutIcon,
                     width: 25.w,
-                    height: 25.h,
+                    height: 30.h,
+                    colorFilter: const ColorFilter.mode(
+                        ColorManager.darkGrey, BlendMode.srcIn),
                   ),
-                  Text( StringsManager.logout.tr(),)
-                ],),
-                SvgPicture.asset(
-                  SVGAssets.logoutIcon,
-                  width: 35.w,
-                  height: 38.h,
-                  colorFilter: const ColorFilter.mode(
-                      ColorManager.darkGrey, BlendMode.srcIn),
-                ),
 
-              ],
+                ],
+              ),
             ),
           );
         },

@@ -1,6 +1,8 @@
 import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
+import 'package:elevate_ecommerce_driver/core/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class ProfileHeader extends StatelessWidget {
   final String name;
@@ -16,6 +18,7 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.watch<UserProvider>().user;
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(AppRoutes.editProfileScreen);
@@ -27,7 +30,11 @@ class ProfileHeader extends StatelessWidget {
             CircleAvatar(
               radius: 30.r,
               backgroundColor: Colors.grey[200],
-              child: Icon(Icons.person, size: 40.r, color: Colors.grey),
+              backgroundImage:
+                  user?.photo != null ? NetworkImage(user!.photo!) : null,
+              child: user?.photo == null
+                  ? Icon(Icons.person, size: 40.r, color: Colors.grey)
+                  : null,
             ),
             SizedBox(width: 16.w),
             Expanded(

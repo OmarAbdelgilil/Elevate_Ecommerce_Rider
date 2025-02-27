@@ -1,5 +1,5 @@
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
-import 'package:elevate_ecommerce_driver/core/network/api_manager.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce_driver/features/auth/domain_auth/model/user.dart';
 import 'package:elevate_ecommerce_driver/features/auth/forget_password/data/data_sources/forget_password_online_datasource_impl.dart';
 import 'package:elevate_ecommerce_driver/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
@@ -12,7 +12,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'forget_password_online_datasource_impl_test.mocks.dart';
+import '../../../../profile/data/data_sources/profile_online_datasource_impl_test.mocks.dart';
+
 
 @GenerateMocks([ApiManager])
 void main() {

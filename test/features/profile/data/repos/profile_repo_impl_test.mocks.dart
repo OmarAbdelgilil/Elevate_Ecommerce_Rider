@@ -10,8 +10,12 @@ import 'package:elevate_ecommerce_driver/features/auth/profile/data/contracts/pr
     as _i2;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/edit_profile_request.dart'
     as _i6;
+import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/upload_image_request.dart'
+    as _i9;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/edit_profile_response/edit_profile_response.dart'
     as _i5;
+import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/update_profile_image_response.dart'
+    as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i7;
 
@@ -54,4 +58,23 @@ class MockProfileOnlindDatasource extends _i1.Mock
           ),
         )),
       ) as _i3.Future<_i4.Result<_i5.EditProfileResponse?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i8.UpdateProfileImageResponse?>> uploadImage(
+          _i9.UploadImageRequest? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadImage,
+          [request],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<_i8.UpdateProfileImageResponse?>>.value(
+                _i7.dummyValue<_i4.Result<_i8.UpdateProfileImageResponse?>>(
+          this,
+          Invocation.method(
+            #uploadImage,
+            [request],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i8.UpdateProfileImageResponse?>>);
 }

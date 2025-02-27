@@ -1,5 +1,5 @@
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
-import 'package:elevate_ecommerce_driver/core/network/api_manager.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce_driver/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce_driver/features/auth/domain_auth/model/user.dart';
 import 'package:elevate_ecommerce_driver/features/auth/update_password/data/dataSource/updatePassword_OnlineDataSourse_impl.dart';
@@ -9,7 +9,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'updatePassword_OnlineDataSourse_impl_test.mocks.dart';
+import '../../../../login/data/repos/login_repo_impl_test.mocks.dart';
+import '../../../../profile/data/data_sources/profile_online_datasource_impl_test.mocks.dart';
+
 
 @GenerateMocks([ApiManager,UserProvider])
 void main() {

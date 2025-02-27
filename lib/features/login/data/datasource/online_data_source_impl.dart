@@ -1,6 +1,6 @@
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
 import 'package:elevate_ecommerce_driver/core/network/api_execution.dart';
-import 'package:elevate_ecommerce_driver/core/network/api_manager.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/contracts/online_data_source.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/dtos/user_dto.dart';
 import 'package:elevate_ecommerce_driver/features/login/data/models/request/login_request.dart';

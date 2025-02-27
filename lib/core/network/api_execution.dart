@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
-import 'package:elevate_ecommerce_driver/core/network/api_error_handler.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_error_handler.dart';
 
 Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
   try {
@@ -15,6 +15,6 @@ Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
   } on DioException catch (ex) {
     return Fail(DioHttpException(ex));
   } on Exception catch (ex) {
-    return Fail(ex);
+    return Fail(ex,);
   }
 }

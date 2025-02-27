@@ -8,8 +8,12 @@ import 'dart:async' as _i3;
 import 'package:elevate_ecommerce_driver/core/common/result.dart' as _i4;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/edit_profile_request.dart'
     as _i6;
+import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/requests/upload_image_request.dart'
+    as _i9;
 import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/edit_profile_response/edit_profile_response.dart'
     as _i5;
+import 'package:elevate_ecommerce_driver/features/auth/profile/data/models/response/update_profile_image_response.dart'
+    as _i8;
 import 'package:elevate_ecommerce_driver/features/auth/profile/domain/repos/profile_repo.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -53,4 +57,23 @@ class MockProfileRepo extends _i1.Mock implements _i2.ProfileRepo {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i5.EditProfileResponse?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i8.UpdateProfileImageResponse?>> uploadImage(
+          _i9.UploadImageRequest? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadImage,
+          [request],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<_i8.UpdateProfileImageResponse?>>.value(
+                _i7.dummyValue<_i4.Result<_i8.UpdateProfileImageResponse?>>(
+          this,
+          Invocation.method(
+            #uploadImage,
+            [request],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i8.UpdateProfileImageResponse?>>);
 }

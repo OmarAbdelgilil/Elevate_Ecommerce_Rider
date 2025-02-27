@@ -1,8 +1,8 @@
 
 
 import 'package:elevate_ecommerce_driver/core/common/result.dart';
+import 'package:elevate_ecommerce_driver/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce_driver/core/network/api_execution.dart';
-import 'package:elevate_ecommerce_driver/core/network/api_manager.dart';
 import 'package:elevate_ecommerce_driver/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce_driver/features/auth/logout/data/contracts/logout_online_datasource.dart';
 import 'package:elevate_ecommerce_driver/features/auth/logout/data/models/logout_response.dart';

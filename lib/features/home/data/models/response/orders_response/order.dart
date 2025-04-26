@@ -6,7 +6,7 @@ class Order {
   String? id;
   User? user;
   List<OrderItem>? orderItems;
-  int? totalPrice;
+  double? totalPrice;
   String? paymentType;
   bool? isPaid;
   bool? isDelivered;
@@ -41,7 +41,7 @@ class Order {
         orderItems: (json['orderItems'] as List<dynamic>?)
             ?.map((e) => OrderItem.fromJson(e as Map<String, dynamic>))
             .toList(),
-        totalPrice: json['totalPrice'] as int?,
+        totalPrice: (json['totalPrice'] as num?)?.toDouble(),
         paymentType: json['paymentType'] as String?,
         isPaid: json['isPaid'] as bool?,
         isDelivered: json['isDelivered'] as bool?,

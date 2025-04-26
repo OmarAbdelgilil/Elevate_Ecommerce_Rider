@@ -49,7 +49,7 @@ dependencies:
   mockito: ^5.4.4
   flutter_svg:
   shared_preferences:
-  lottie: ^3.3.0
+  lottie: 
   google_fonts: ^6.2.1
   image_picker: ^1.1.2
   country_picker: ^2.0.27

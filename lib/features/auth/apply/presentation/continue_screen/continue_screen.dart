@@ -3,6 +3,7 @@ import 'package:elevate_ecommerce_driver/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce_driver/utils/assets_manager.dart';
 import 'package:elevate_ecommerce_driver/utils/custom_button.dart';
 import 'package:elevate_ecommerce_driver/utils/strings_manager.dart';
+import 'package:elevate_ecommerce_driver/utils/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -16,15 +17,20 @@ class ContinueScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 20,
           children: [
             SvgPicture.asset(SVGAssets.apply),
+            const SizedBox(height: AppSize.s20),
             Text(StringsManager.applicationMessage.tr()),
+            const SizedBox(height: AppSize.s20),
             Text(StringsManager.applicationMessage2.tr()),
-
-            CustomButton(text: StringsManager.login.tr(),onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.loginScreen );
-            },)
+            const SizedBox(height: AppSize.s20),
+            CustomButton(
+              text: StringsManager.login.tr(),
+              onPressed: () {
+                Navigator.pushNamed(context, AppRoutes.loginScreen);
+              },
+            ),
+            const SizedBox(height: AppSize.s20),
           ],
         ),
       ),

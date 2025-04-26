@@ -18,8 +18,7 @@ class ApplyScreenBody extends StatelessWidget {
   final ApplyViewModel viewModel;
 
   static final GlobalKey _formKey = GlobalKey<FormState>();
-   const ApplyScreenBody({super.key, required this.viewModel});
-
+  const ApplyScreenBody({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -29,55 +28,73 @@ class ApplyScreenBody extends StatelessWidget {
         child: Form(
           key: _formKey,
           child: Column(
-            spacing: AppSize.s20,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(StringsManager.welcome.tr(),style: AppTextStyles.title(fontSize: 20,fontWeight: FontWeight.w500),),
-              Text(StringsManager.applyMessage.tr(),style: AppTextStyles.title(fontSize: 16,fontWeight: FontWeight.w500,color: ColorManager.darkGrey),),
-              Text(StringsManager.applyMessage2.tr(),style: AppTextStyles.title(fontSize: 16,fontWeight: FontWeight.w500,color: ColorManager.darkGrey),),
-
+              Text(
+                StringsManager.welcome.tr(),
+                style: AppTextStyles.title(
+                    fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: AppSize.s20),
+              Text(
+                StringsManager.applyMessage.tr(),
+                style: AppTextStyles.title(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: ColorManager.darkGrey,
+                ),
+              ),
+              const SizedBox(height: AppSize.s20),
+              Text(
+                StringsManager.applyMessage2.tr(),
+                style: AppTextStyles.title(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: ColorManager.darkGrey,
+                ),
+              ),
+              const SizedBox(height: AppSize.s20),
               MainTextField(
                 label: StringsManager.country.tr(),
                 readOnly: true,
-
                 controller: viewModel.getCountryController,
                 validation: AppValidators.validateNotEmpty,
                 customPrefixIcon: viewModel.selectedCountryFlag != null
                     ? Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    viewModel.selectedCountryFlag!,
-                    style: const TextStyle(fontSize: 24),
-                  ),
-                )
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          viewModel.selectedCountryFlag!,
+                          style: const TextStyle(fontSize: 24),
+                        ),
+                      )
                     : null,
                 onTap: () {
                   showCountryPicker(
                     context: context,
                     useSafeArea: true,
-
                     showPhoneCode: true,
                     onSelect: (Country country) {
                       viewModel.getCountryController.text = country.name;
-                      viewModel.setCountryFlag=country.flagEmoji;
+                      viewModel.setCountryFlag = country.flagEmoji;
                     },
                   );
                 },
               ),
+              const SizedBox(height: AppSize.s20),
               MainTextField(
                 textInputType: TextInputType.name,
                 label: StringsManager.firstName.tr(),
                 controller: viewModel.getFirstNameController,
                 validation: AppValidators.validateName,
               ),
+              const SizedBox(height: AppSize.s20),
               MainTextField(
                 textInputType: TextInputType.name,
-
                 label: StringsManager.secondName.tr(),
                 controller: viewModel.getLastNameController,
                 validation: AppValidators.validateName,
               ),
-
+              const SizedBox(height: AppSize.s20),
               MainTextField(
                 label: StringsManager.vehicleType.tr(),
                 controller: viewModel.getVehicleTypeController,
@@ -87,16 +104,15 @@ class ApplyScreenBody extends StatelessWidget {
                   mainIcon: SvgPicture.asset(SVGAssets.menu),
                   items: viewModel.menuItems,
                 ),
-
               ),
-
+              const SizedBox(height: AppSize.s20),
               MainTextField(
                 textInputType: TextInputType.number,
-
                 label: StringsManager.vehicleNumber.tr(),
                 controller: viewModel.getVehicleNumberController,
-                validation:  AppValidators.validateNotEmpty,
+                validation: AppValidators.validateNotEmpty,
               ),
+              const SizedBox(height: AppSize.s20),
               FilePickerField(
                 controlledFile: viewModel.getNidImagePath,
                 placeholder: StringsManager.vehicleImage.tr(),
@@ -106,27 +122,29 @@ class ApplyScreenBody extends StatelessWidget {
                   }
                 },
               ),
+              const SizedBox(height: AppSize.s20),
               MainTextField(
                 textInputType: TextInputType.emailAddress,
-
                 label: StringsManager.email.tr(),
                 controller: viewModel.getEmailController,
                 validation: AppValidators.validateEmail,
               ),
+              const SizedBox(height: AppSize.s20),
               MainTextField(
                 textInputType: TextInputType.phone,
-
                 label: StringsManager.phoneNumber.tr(),
                 controller: viewModel.getPhoneController,
-                validation : (val) => AppValidators.validatePhoneNumber(val,viewModel.getCountryFlag),
+                validation: (val) => AppValidators.validatePhoneNumber(
+                    val, viewModel.getCountryFlag),
               ),
+              const SizedBox(height: AppSize.s20),
               MainTextField(
                 textInputType: TextInputType.number,
-
                 label: StringsManager.idNumber.tr(),
                 controller: viewModel.getNidController,
                 validation: AppValidators.validateNotEmpty,
               ),
+              const SizedBox(height: AppSize.s20),
               FilePickerField(
                 controlledFile: viewModel.getVehicleLicenseImagePath,
                 placeholder: StringsManager.idImage.tr(),
@@ -136,6 +154,7 @@ class ApplyScreenBody extends StatelessWidget {
                   }
                 },
               ),
+              const SizedBox(height: AppSize.s20),
               Row(
                 children: [
                   Expanded(
@@ -145,8 +164,6 @@ class ApplyScreenBody extends StatelessWidget {
                       label: StringsManager.password.tr(),
                       controller: viewModel.getPasswordController,
                       isObscured: true,
-
-
                     ),
                   ),
                   const SizedBox(width: AppSize.s5),
@@ -154,10 +171,12 @@ class ApplyScreenBody extends StatelessWidget {
                     child: MainTextField(
                       textInputType: TextInputType.text,
                       isObscured: true,
-                      validation: (val) => AppValidators.validateConfirmPassword(
+                      validation: (val) =>
+                          AppValidators.validateConfirmPassword(
                         val,
                         viewModel.getPasswordController.text,
-                      ),                      label: StringsManager.confirmPassword.tr(),
+                      ),
+                      label: StringsManager.confirmPassword.tr(),
                       controller: viewModel.getRePasswordController,
                     ),
                   ),
@@ -167,7 +186,7 @@ class ApplyScreenBody extends StatelessWidget {
               Row(
                 children: [
                   Text(StringsManager.gender.tr()),
-const Spacer(),
+                  const Spacer(),
                   Row(
                     children: [
                       Radio<String>(
@@ -190,15 +209,14 @@ const Spacer(),
                   ),
                 ],
               ),
+              const SizedBox(height: AppSize.s20),
               CustomButton(
-                text:StringsManager.continueApply,
+                text: StringsManager.continueApply,
                 onPressed: () async {
                   if ((_formKey.currentState as FormState).validate()) {
-
                     return await viewModel.applyWithFiles();
                   }
                 },
-
               ),
             ],
           ),

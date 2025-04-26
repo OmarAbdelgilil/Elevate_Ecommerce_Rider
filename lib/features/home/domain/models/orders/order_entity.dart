@@ -6,7 +6,7 @@ class OrderEntity {
   String? id;
   User? user;
   List<OrderItem>? orderItems;
-  int? totalPrice;
+  double? totalPrice;
   String? paymentType;
   bool? isPaid;
   bool? isDelivered;
@@ -18,21 +18,22 @@ class OrderEntity {
   Store? store;
   String? status;
 
-  OrderEntity(
-      {this.id,
-      this.user,
-      this.orderItems,
-      this.totalPrice,
-      this.paymentType,
-      this.isPaid,
-      this.isDelivered,
-      this.state,
-      this.createdAt,
-      this.updatedAt,
-      this.orderNumber,
-      this.v,
-      this.store,
-      this.status});
+  OrderEntity({
+    this.id,
+    this.user,
+    this.orderItems,
+    this.totalPrice,
+    this.paymentType,
+    this.isPaid,
+    this.isDelivered,
+    this.state,
+    this.createdAt,
+    this.updatedAt,
+    this.orderNumber,
+    this.v,
+    this.store,
+    this.status,
+  });
 
   factory OrderEntity.fromJson(Map<String, dynamic> json) => OrderEntity(
         id: json['_id'] as String?,
@@ -42,7 +43,7 @@ class OrderEntity {
         orderItems: (json['orderItems'] as List<dynamic>?)
             ?.map((e) => OrderItem.fromJson(e as Map<String, dynamic>))
             .toList(),
-        totalPrice: json['totalPrice'] as int?,
+        totalPrice: (json['totalPrice'] as num?)?.toDouble(),
         paymentType: json['paymentType'] as String?,
         isPaid: json['isPaid'] as bool?,
         isDelivered: json['isDelivered'] as bool?,
@@ -75,6 +76,6 @@ class OrderEntity {
         'orderNumber': orderNumber,
         '__v': v,
         'store': store?.toJson(),
-        'status': status
+        'status': status,
       };
 }
